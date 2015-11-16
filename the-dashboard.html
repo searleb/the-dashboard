@@ -1,0 +1,27 @@
+<head>
+    <title>the-dashboard</title>
+</head>
+
+
+<body>
+    <div class="container">
+        <div class="row">
+          {{> linksBar }}
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>The Dashboard</h1>
+                {{> loginButtons}}
+                {{> userProfile}}
+            </div>
+        </div>
+
+        <div class="row">
+            {{> searchDrive}}
+            {{> weather }}
+            {{> calendar }}
+
+        </div>
+    </div>
+
+</body>
