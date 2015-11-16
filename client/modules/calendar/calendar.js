@@ -10,8 +10,8 @@ Template.calendar.onCreated( function () {
     console.log('on created');
     this.autorun(function(){
         userData = Meteor.user();
-        console.log('userData is:', typeof(userData));
-        if ( typeof(userData) == 'object' ) {
+        console.log('userData is:', typeof(userData), userData);
+        if ( typeof(userData) == 'object' && userData != null) {
             getCalendar();
         }
     });
