@@ -27,3 +27,5 @@ accounts-ui
 accounts-base
 percolate:google-api
 fourseven:scss
+http
+peerlibrary:xml2js

@@ -7,14 +7,12 @@
             {{#each gCalendar.items }}
             <li class="list-group-item">
                 <span class="label label-primary pull-right">{{this.start.dateTime}} - {{this.end.dateTime}}</span>
-                    <h5>
-                        <a href="{{this.htmlLink}}" target="_blank">{{this.summary}}</a>
-                        <small>{{this.location}}</small>
-                    </h5>
+                <h5>
+                    <a href="{{this.htmlLink}}" target="_blank">{{this.summary}}</a>
+                    <small>{{this.location}}</small>
+                </h5>
             </li>
             {{/each}}
-
         </ul>
     </div>
-
 </template>
