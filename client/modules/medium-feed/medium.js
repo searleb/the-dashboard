@@ -5,9 +5,9 @@ Template.mediumFeed.helpers({
         var times = content.responseData.feed.entries;
 
         $(times).each(function(index, el) {
-            var object = $(el);
-            object.publishedDate = moment(object.publishedDate).format('ddd, DD MMM YYYY');
-            content.responseData.feed.entries[index].publishedDate = object.publishedDate;
+            var timeString = JSON.stringify(el.publishedDate);
+            var formattedTime = moment(timeString).format('DD MMM YYYY');
+            content.responseData.feed.entries[index].publishedDate = formattedTime;
         });
 
         return content.responseData.feed.entries;

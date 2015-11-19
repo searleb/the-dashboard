@@ -4,9 +4,15 @@ Meteor.startup(function () {
         if (err) {
             throw new Meteor.error( 500, err );
         } else {
-            MediumFeed.insert({
-                feed: data
-            });
+            if ( MediumFeed.find().count() === 0) {
+                console.log("SERVER RECORD: " + MediumFeed.find().count() );
+                MediumFeed.insert({
+                    feed: data
+                });
+            } else {
+                var record = MediumFeed.find().fetch()[0]._id;
+                MediumFeed.update(record, {feed: data});
+            }
         }
     });
 });
