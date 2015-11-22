@@ -5,7 +5,7 @@ Meteor.startup(function () {
             throw new Meteor.error( 500, err );
         } else {
             if ( MediumFeed.find().count() === 0) {
-                console.log("SERVER RECORD: " + MediumFeed.find().count() );
+                console.log("SERVER RECORD MEDIUM: " + MediumFeed.find().count() );
                 MediumFeed.insert({
                     feed: data
                 });
