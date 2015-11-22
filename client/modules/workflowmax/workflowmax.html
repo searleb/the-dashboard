@@ -1,11 +1,9 @@
 <template name="workflowmax">
-    <div class="col-sm-4">
-        <div class="blog" id="workflowmax">
-            <h2>Times</h2>
-            {{#each loggedHours}}
-                {{this.day}}
-                {{this.hours}}
-            {{/each}}
-        </div>
+    <div id="workflowmax">
+        <h2>Times</h2>
+        {{#each loggedHours}}
+            {{this.day}}
+            {{this.hours}}
+        {{/each}}
     </div>
 </template>

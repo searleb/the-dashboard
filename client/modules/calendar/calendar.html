@@ -1,8 +1,13 @@
 <template name="calendar">
-    <div class="col-sm-4" id="calendar-template">
+    <div id="calendar-template">
         <h2>
-            <a href="//.calendar.google.com" target="_blank">Calendar</a>
+            Today
         </h2>
+        <h4>
+            <small>
+                <a href="//.calendar.google.com" target="_blank">Calendar</a>
+            </small>
+        </h4>
         {{#if gCalendar.items}}
         <ul class="list-group">
             {{#each gCalendar.items }}

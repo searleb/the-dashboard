@@ -1,10 +1,11 @@
 Template.tools.onCreated( function(){
 
     var tabIDs = {
-        'developers': 'ozcs9yb',
-        'designers': 'od6',
-        'accounts': 'oq5732i',
-        'managers': 'oluqtiy'
+        'development': 'ozcs9yb',
+        'creative': 'od6',
+        'product-managers': 'oq5732i',
+        'operations': 'oluqtiy',
+        'strategy': 'oqs3meb'
     };
     var tools = {};
 
@@ -21,7 +22,7 @@ Template.tools.onCreated( function(){
                 $('.tools .content .list-container').append('<ul class="' + key + '"><h4>' + key + '</h4>');
                 $(entry).each(function(){
                     // Column names are title, link, desc.
-                    $('.tools .content .list-container ul.' + key).append('<li style="display:none;"><a target="_blank" href=http://' + this.gsx$link.$t + '>' + this.gsx$title.$t + '</a><span class="type">'+ this.gsx$desc.$t + '</span></li>');
+                    $('.tools .content .list-container ul.' + key).append('<li style="display:none;"><a target="_blank" href=//' + this.gsx$link.$t + '>' + this.gsx$title.$t + '</a><span class="type">'+ this.gsx$desc.$t + '</span></li>');
                 }).promise().done(function(){
                     $('.tools .content .list-container ul li').fadeIn(200);
                 });

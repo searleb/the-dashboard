@@ -6,10 +6,9 @@ $(document).ready(function() {
             location: 'Sydney, AUS',
             unit: 'c',
             success: function(weather) {
-                html = '<h2><i class="sw icon-'+weather.code+'"></i> ';
-                html += weather.temp+'&deg;'+weather.units.temp+'</h2>';
-                html += '<ul><li>'+weather.city+'</li>';
-                html += '<li class="currently">'+weather.currently+'</li>';
+                html = '<i class="sw icon-'+weather.code+'"></i>';
+                html += '<span>'+weather.temp+'&deg;'+weather.units.temp+'</span>';
+                html += '<span class="currently">&nbsp;&amp;&nbsp;'+weather.currently+'</span>';
 
                 $(".weather-syd").html(html);
             },
@@ -27,10 +26,9 @@ $(document).ready(function() {
             location: 'London, UK',
             unit: 'c',
             success: function(weather) {
-                html = '<small><i class="sw icon-'+weather.code+'"></i> ';
-                html += weather.temp+'&deg;'+weather.units.temp+'</small>';
-                html += '<ul><li>'+weather.city+'</li>';
-                html += '<li class="currently">'+weather.currently+'</li>';
+                html = '<i class="sw icon-'+weather.code+'"></i>';
+                html += '<span>'+weather.temp+'&deg;'+weather.units.temp+'</span>';
+                html += '<span class="currently">&nbsp;&amp;&nbsp;'+weather.currently+'</span>';
 
                 $(".weather-ldn").html(html);
             },
@@ -48,7 +46,7 @@ $(document).ready(function() {
     setInterval(function () {
         sydWeather();
         ldnWeather();
-    }, 10000 * 30);
+    }, (1000 * 60) * 30);
 
 
     // get time for each studio
@@ -57,13 +55,11 @@ $(document).ready(function() {
         // Sydney
         var timezoneSyd = moment.tz(time, 'Australia/Sydney').format("h:mm");
         var amPmSyd = moment.tz(time, 'Australia/Sydney').format("a");
-        $('.studio-status .time-syd').html(timezoneSyd);
-        $('.studio-status .am-pm-syd').html(amPmSyd);
+        $('.studio-status .time-syd').html(timezoneSyd + '<small>' + amPmSyd + '</small>');
         // London
         var timezoneLdn = moment.tz(time, 'Europe/London').format("h:mm");
         var amPmLdn = moment.tz(time, 'Europe/London').format("a");
-        $('.studio-status .time-ldn').html(timezoneLdn);
-        $('.studio-status .am-pm-ldn').html(amPmLdn);
+        $('.studio-status .time-ldn').html(timezoneLdn  + '<small>' + amPmLdn + '</small>');
     }, 1000);
 
 });
