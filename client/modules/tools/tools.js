@@ -7,7 +7,7 @@ Template.tools.onCreated( function(){
         'operations': 'oluqtiy',
         'strategy': 'oqs3meb'
     };
-    var tools = {};
+    // var tools = {};
 
     // google sheets has an ID for each tab, found here, search for 'full/':
     // https://spreadsheets.google.com/feeds/worksheets/1i8WWy8BWOZXVDATgLAicRzRdi3i8wmv00ZMsEerdFQ8/private/full
@@ -18,7 +18,7 @@ Template.tools.onCreated( function(){
         $.getJSON(url, function(data) {
             if (data) {
                 var entry = data.feed.entry;
-                tools[key] = entry;
+                // tools[key] = entry;
                 $('.tools .content .list-container').append('<ul class="' + key + '"><h4>' + key + '</h4>');
                 $(entry).each(function(){
                     // Column names are title, link, desc.
@@ -29,4 +29,20 @@ Template.tools.onCreated( function(){
             }
         });
     });
+});
+
+Template.tools.onRendered( function(){
+    $('ul').first().addClass('shown');
+});
+
+function showSelectedList(ulClass) {
+    $('#tools .list-container ul').hide();
+    $('#toosl .list-container ul.' + ulClass).show();
+}
+
+Template.tools.events({
+    "click button": function(e){
+        var ulClass = $(e.target).attr('name');
+        showSelectedList(ulClass);
+    }
 });
