@@ -37,7 +37,7 @@ Template.tools.onRendered( function(){
 
 function showSelectedList(ulClass) {
     $('#tools .list-container ul').hide();
-    $('#toosl .list-container ul.' + ulClass).show();
+    $('#tools .list-container ul.' + ulClass).show();
 }
 
 Template.tools.events({
