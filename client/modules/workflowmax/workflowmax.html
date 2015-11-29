@@ -1,9 +1,18 @@
 <template name="workflowmax">
     <div id="workflowmax">
         <h2>Times</h2>
+        <ul class="list-inline">
         {{#each loggedHours}}
-            {{this.day}}
-            {{this.hours}}
+            <li>
+                <span class="day">
+                    {{this.day}}
+                </span>
+                <span class="hours">
+                    {{this.hours}}
+                </span>
+            </li>
         {{/each}}
+        </ul>
+        <a href="https://my.workflowmax.com/my/timesheet.aspx?">Log time now</a>
     </div>
 </template>

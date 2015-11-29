@@ -1,7 +1,25 @@
-.blog{
-    img{
-        max-width: 100%;
-        display: block;
-        height: auto;
+#workflowmax{
+    ul{
+        list-style: none;
+        li{
+            span{
+                display: block;
+                text-align: center;
+                &.day{
+                    margin-bottom: 5px;
+                }
+                &.hours{
+                    height: 44px;
+                    width: 44px;
+                    // color: #fff;
+                    border-radius: 44px;
+                    border: 1px solid #ccc;
+                    font-size: 23px;
+                    line-height: 43px;
+                    // background-color: $c-accent;
+                    font-weight: 300;
+                }
+            }
+        }
     }
 }

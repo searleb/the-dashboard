@@ -48,7 +48,6 @@ Meteor.startup(function() {
 
                 // loop each group
                 _.each(groupedByDate, function(el, index) {
-
                     // track minutes logged here
                     var runningTotal = 0;
 
