@@ -1,3 +1,10 @@
+Tracker.autorun(function () {
+    Meteor.call('getMediumFeed', function (err, data) {
+        Session.set('mediumFeed', data);
+    });
+});
+
+
 Template.mediumFeed.helpers({
     feed: function() {
         var serverFeed = MediumFeed.find().fetch()[0];
@@ -11,5 +18,9 @@ Template.mediumFeed.helpers({
         });
 
         return content.responseData.feed.entries;
+    },
+    sessionFeed: function(){
+        return Session.get('mediumFeed');
     }
+
 });

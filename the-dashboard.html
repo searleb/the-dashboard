@@ -15,50 +15,60 @@
 
 
 <body>
-    {{> userProfile}}
-    <div class="container">
-        <!-- <div class="row"> -->
-        <div class="col-sm-12">
-            {{> linksBar }}
-        </div>
-        <!-- </div>
-        <div class="row"> -->
-        <div class="col-sm-6 col-md-4">
-            {{> workflowmax}}
+    <div class="body-wrapper">
+
+        {{> userProfile}}
+        <div class="container">
+            <!-- <div class="row"> -->
+            <div class="col-sm-12">
+                {{> linksBar }}
+            </div>
+            <!-- </div>
+            <div class="row"> -->
+            <div class="col-sm-6 col-md-4">
+                {{> workflowmax}}
+            </div>
+
+            <div class="col-sm-6 col-md-4">
+                {{> calendar }}
+            </div>
+
+            <div class="col-sm-6 col-md-4">
+                {{> weather }}
+            </div>
+            <!-- </div> -->
+
+            <!-- <div class="row"> -->
+            <div class="col-sm-6 col-md-4">
+                {{> searchDrive}}
+            </div>
+
+            <div class="col-sm-6 col-md-4">
+                {{> searchWiki}}
+            </div>
+
+            <div class="col-sm-6 col-md-4">
+                {{> tools}}
+            </div>
+            <!-- </div> -->
+
+            <!-- <div class="row"> -->
+            <div class="col-sm-6 col-md-4">
+                {{> favourites}}
+            </div>
+            <div class="col-sm-6 col-md-4">
+                {{> mediumFeed}}
+            </div>
+
+            <!-- </div> -->
         </div>
 
-        <div class="col-sm-6 col-md-4">
-            {{> calendar }}
-        </div>
-
-        <div class="col-sm-6 col-md-4">
-            {{> weather }}
-        </div>
-        <!-- </div> -->
-
-        <!-- <div class="row"> -->
-        <div class="col-sm-6 col-md-4">
-            {{> searchDrive}}
-        </div>
-
-        <div class="col-sm-6 col-md-4">
-            {{> searchWiki}}
-        </div>
-
-        <div class="col-sm-6 col-md-4">
-            {{> tools}}
-        </div>
-        <!-- </div> -->
-
-        <!-- <div class="row"> -->
-        <div class="col-sm-6 col-md-4">
-            {{> favourites}}
-        </div>
-        <div class="col-sm-6 col-md-4">
-            {{> mediumFeed}}
-        </div>
-
-        <!-- </div> -->
     </div>
-
+    <!-- <div class="welcome-overlay">
+        <div class="center-center">
+            <h1 class="animated tada">Home Sweet Home</h1>
+            <h2 class="animated zoomInUp">Beta</h2>
+        </div>
+        {{> loginButtons}}
+    </div> -->
 </body>

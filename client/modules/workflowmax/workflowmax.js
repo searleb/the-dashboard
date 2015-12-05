@@ -6,7 +6,6 @@ Tracker.autorun(function(){
     } else{
         console.log('Not logged in buddy');
     }
-
 });
 
 Template.workflowmax.helpers({
