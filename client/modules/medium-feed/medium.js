@@ -6,21 +6,24 @@ Tracker.autorun(function () {
 
 
 Template.mediumFeed.helpers({
-    feed: function() {
-        var serverFeed = MediumFeed.find().fetch()[0];
-        var content = $.parseJSON(serverFeed.feed.content);
-        var times = content.responseData.feed.entries;
-
-        $(times).each(function(index, el) {
-            var timeString = JSON.stringify(el.publishedDate);
-            var formattedTime = moment(timeString).format('DD MMM YYYY');
-            content.responseData.feed.entries[index].publishedDate = formattedTime;
-        });
-
-        return content.responseData.feed.entries;
-    },
     sessionFeed: function(){
-        return Session.get('mediumFeed');
+        var feed = Session.get('mediumFeed');
+        $(feed.items).each(function(index, el) {
+            el.pubDate = moment(el.pubDate).format('DD MMM YYYY');
+            el.description = el.description.replace("Continue reading on Medium »", "");
+        });
+        return feed;
     }
+});
 
+Template.mediumFeed.onRendered(function (argument) {
+    console.log("HELLO");
+    $('.slider').slick({
+        autoplay: true,
+        dots: true,
+        fade: true,
+        rows: 2,
+        autoplaySpeed: 5000,
+        arrows: false
+    });
 });

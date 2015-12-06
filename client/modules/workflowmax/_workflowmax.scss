@@ -2,6 +2,8 @@
     ul{
         list-style: none;
         li{
+            display: inline-block;
+            margin: 0px 5px;
             span{
                 display: block;
                 text-align: center;
@@ -16,7 +18,7 @@
                     border: 1px solid #ccc;
                     font-size: 23px;
                     line-height: 43px;
-                    // background-color: $c-accent;
+                    background-color: $secondary-color;
                     font-weight: 300;
                 }
             }

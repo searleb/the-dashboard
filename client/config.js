@@ -17,6 +17,18 @@ UI.registerHelper("arrayify", function(obj){
     for (var key in obj){
         result.push({name:key,value:obj[key]});
     }
-    console.log(result);
     return result;
+});
+
+Meteor.startup(function () {
+    // Packery
+    // Initialize all popups whenever any template is rendered
+    // var $container = $('.container');
+    // // init
+    // $container.packery({
+    //     itemSelector: '.module',
+    //     gutter: 20,
+    //     rowHeight: 100,
+    //     percentPosition: true
+    // });
 });

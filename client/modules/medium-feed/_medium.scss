@@ -1,7 +1,11 @@
 .blog{
-    img{
-        max-width: 100%;
-        display: block;
+    .slider{
         height: auto;
+        .slick-prev, .slick-next{
+            &:before{
+                color: $secondary-color;
+            }
+        }
     }
+
 }

@@ -19,10 +19,10 @@ Template.tools.onCreated( function(){
             if (data) {
                 var entry = data.feed.entry;
                 // tools[key] = entry;
-                $('.tools .content .list-container').append('<ul class="' + key + '"><h4>' + key + '</h4>');
+                $('.tools .content .list-container').append('<ul id="' + key + '">');
                 $(entry).each(function(){
                     // Column names are title, link, desc.
-                    $('.tools .content .list-container ul.' + key).append('<li style="display:none;"><a target="_blank" href=//' + this.gsx$link.$t + '>' + this.gsx$title.$t + '</a><span class="type">'+ this.gsx$desc.$t + '</span></li>');
+                    $('.tools .content .list-container ul#' + key).append('<li style="display:none;"><a target="_blank" href=//' + this.gsx$link.$t + '>' + this.gsx$title.$t + '</a><span class="type">'+ this.gsx$desc.$t + '</span></li>');
                 }).promise().done(function(){
                     $('.tools .content .list-container ul li').fadeIn(200);
                 });
@@ -37,7 +37,7 @@ Template.tools.onRendered( function(){
 
 function showSelectedList(ulClass) {
     $('#tools .list-container ul').hide();
-    $('#tools .list-container ul.' + ulClass).show();
+    $('#tools .list-container ul#' + ulClass).show();
 }
 
 Template.tools.events({

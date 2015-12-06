@@ -1,7 +1,6 @@
 <head>
     <title>Home Sweet Home</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400' rel='stylesheet' type='text/css'>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,64 +10,52 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick-theme.css"/>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.min.js"></script>
+
+
 </head>
 
 
 <body>
-    <div class="body-wrapper">
 
-        {{> userProfile}}
-        <div class="container">
-            <!-- <div class="row"> -->
-            <div class="col-sm-12">
+
+    {{> userProfile}}
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
                 {{> linksBar }}
             </div>
-            <!-- </div>
-            <div class="row"> -->
-            <div class="col-sm-6 col-md-4">
-                {{> workflowmax}}
+            <div class="col s12 m4">
+                {{> workflowmax }}
             </div>
-
-            <div class="col-sm-6 col-md-4">
+            <div class="col s12 m4">
                 {{> calendar }}
             </div>
-
-            <div class="col-sm-6 col-md-4">
+            <div class="col s12 m4">
                 {{> weather }}
             </div>
-            <!-- </div> -->
-
-            <!-- <div class="row"> -->
-            <div class="col-sm-6 col-md-4">
-                {{> searchDrive}}
+            <div class="col s12 m4">
+                {{> searchDrive }}
             </div>
-
-            <div class="col-sm-6 col-md-4">
-                {{> searchWiki}}
+            <div class="col s12 m4">
+                {{> searchWiki }}
             </div>
-
-            <div class="col-sm-6 col-md-4">
-                {{> tools}}
+            <div class="col s12 m4">
+                {{> favourites }}
             </div>
-            <!-- </div> -->
-
-            <!-- <div class="row"> -->
-            <div class="col-sm-6 col-md-4">
-                {{> favourites}}
+            <div class="col s12 m6">
+                {{> tools }}
             </div>
-            <div class="col-sm-6 col-md-4">
-                {{> mediumFeed}}
+            <div class="col s12 m6">
+                {{> mediumFeed }}
             </div>
-
-            <!-- </div> -->
         </div>
-
     </div>
-    <!-- <div class="welcome-overlay">
-        <div class="center-center">
-            <h1 class="animated tada">Home Sweet Home</h1>
-            <h2 class="animated zoomInUp">Beta</h2>
-        </div>
-        {{> loginButtons}}
-    </div> -->
+
+
+
 </body>
