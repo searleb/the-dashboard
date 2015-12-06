@@ -17,7 +17,6 @@ Template.mediumFeed.helpers({
 });
 
 Template.mediumFeed.onRendered(function (argument) {
-    console.log("HELLO");
     $('.slider').slick({
         autoplay: true,
         dots: true,

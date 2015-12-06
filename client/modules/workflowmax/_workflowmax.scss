@@ -13,13 +13,18 @@
                 &.hours{
                     height: 44px;
                     width: 44px;
-                    // color: #fff;
                     border-radius: 44px;
                     border: 1px solid #ccc;
                     font-size: 23px;
                     line-height: 43px;
-                    background-color: $secondary-color;
                     font-weight: 300;
+                    &.not-complete{
+                        border-color: $error-color;
+                        color: $error-color;
+                    }
+                    &.complete{
+                        border-color: $success-color;
+                    }
                 }
             }
         }
