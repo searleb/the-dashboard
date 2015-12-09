@@ -1,7 +1,5 @@
 <head>
     <title>Home Sweet Home</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- <link href='https://fonts.googleapis.com/css?family=Lato:400,700,300' rel='stylesheet' type='text/css'> -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,59 +14,42 @@
 
 <body>
     <div class="body-wrapper">
-
         {{> userProfile}}
         <div class="container-fluid">
-            <!-- <div class="row"> -->
-            <div class="col-sm-12">
-                {{> linksBar }}
-            </div>
-            <!-- </div>
-            <div class="row"> -->
-            <div class="col-sm-6 col-md-4">
-                {{> workflowmax}}
-            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    {{> linksBar }}
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    {{> workflowmax}}
+                </div>
 
-            <div class="col-sm-6 col-md-4">
-                {{> calendar }}
-            </div>
+                <div class="col-sm-6 col-md-4">
+                    {{> calendar }}
+                </div>
 
-            <div class="col-sm-6 col-md-4">
-                {{> weather }}
-            </div>
-            <!-- </div> -->
+                <div class="col-sm-6 col-md-4">
+                    {{> weather }}
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    {{> searchDrive}}
+                </div>
 
-            <!-- <div class="row"> -->
-            <div class="col-sm-6 col-md-4">
-                {{> searchDrive}}
-            </div>
+                <div class="col-sm-6 col-md-4">
+                    {{> searchWiki}}
+                </div>
 
-            <div class="col-sm-6 col-md-4">
-                {{> searchWiki}}
-            </div>
+                <div class="col-sm-6 col-md-4">
+                    {{> tools}}
+                </div>
 
-            <div class="col-sm-6 col-md-4">
-                {{> tools}}
+                <div class="col-sm-6 col-md-4">
+                    {{> favourites}}
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    {{> mediumFeed}}
+                </div>
             </div>
-            <!-- </div> -->
-
-            <!-- <div class="row"> -->
-            <div class="col-sm-6 col-md-4">
-                {{> favourites}}
-            </div>
-            <div class="col-sm-6 col-md-4">
-                {{> mediumFeed}}
-            </div>
-
-            <!-- </div> -->
         </div>
-
     </div>
-    <!-- <div class="welcome-overlay">
-        <div class="center-center">
-            <h1 class="animated tada">Home Sweet Home</h1>
-            <h2 class="animated zoomInUp">Beta</h2>
-        </div>
-        {{> loginButtons}}
-    </div> -->
 </body>

@@ -1,8 +1,18 @@
 #tools{
-    ul{
-        display: none;
-        &.shown{
-            display: block;
+    .tabs{
+        .tab{
+            min-width: 0px;
+        }
+    }
+    .list-container{
+        ul{
+            display: none;
+            li{
+                margin: 5px 0px;
+                .type{
+                    float: right;
+                }
+            }
         }
     }
 }

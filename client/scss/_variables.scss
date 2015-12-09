@@ -8,3 +8,9 @@
 $c-background: #F6F4F0;
 $c-accent: #AAC03F;
 $c-dark: #141F31;
+
+// media queries: http://getbootstrap.com/css/#grid-media-queries
+$media-xs: '(max-width:767px)';
+$media-sm: '(min-width:768px)';
+$media-md: '(min-width:992px)';
+$media-lg: '(min-width:1200px)';

@@ -17,6 +17,5 @@ UI.registerHelper("arrayify", function(obj){
     for (var key in obj){
         result.push({name:key,value:obj[key]});
     }
-    console.log(result);
     return result;
 });

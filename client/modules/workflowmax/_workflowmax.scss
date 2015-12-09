@@ -2,6 +2,8 @@
     ul{
         list-style: none;
         li{
+            display: inline-block;
+            margin: 0px 5px;
             span{
                 display: block;
                 text-align: center;
@@ -11,13 +13,18 @@
                 &.hours{
                     height: 44px;
                     width: 44px;
-                    // color: #fff;
                     border-radius: 44px;
                     border: 1px solid #ccc;
                     font-size: 23px;
                     line-height: 43px;
-                    // background-color: $c-accent;
                     font-weight: 300;
+                    &.not-complete{
+                        // border-color: $error-color;
+                        // color: $error-color;
+                    }
+                    &.complete{
+                        // border-color: $success-color;
+                    }
                 }
             }
         }
