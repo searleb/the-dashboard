@@ -1,6 +1,6 @@
 @import "toolkit-light.min.scss";
 @import "variables";
-// @import "the-dashboard";
+@import "the-dashboard";
 
 // can't use varibles in @import statements :(
 @import "../modules/calendar/calendar";
