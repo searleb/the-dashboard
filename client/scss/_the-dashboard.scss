@@ -1,3 +1,11 @@
+// container padding to make space for sidebar
+.container-fluid{
+    padding-left: 15px;
+    @media #{$media-sm}{
+        padding-left: 90px;
+    }
+}
+
 ul{
     padding-left: 0px;
     list-style: none;
