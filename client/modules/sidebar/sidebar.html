@@ -1,50 +1,55 @@
 <template name="sidebar">
     <nav class="iconav">
         <a class="iconav-brand" href="#">
-            <span class="icon icon-leaf iconav-brand-icon"></span>
+            MF
         </a>
         <div class="iconav-slider">
             <ul class="nav nav-pills iconav-nav">
-                <li >
-                    <a href="#" title="Overview" data-toggle="tooltip" data-placement="right" data-container="body">
-                        <span class="icon icon-home"></span>
-                        <small class="iconav-nav-label visible-xs-block">Overview</small>
-                    </a>
+                <li>
+                    {{> loginButtons}}
                 </li>
-                <li >
-                    <a href="#" title="Order history" data-toggle="tooltip" data-placement="right" data-container="body">
-                        <span class="icon icon-text-document"></span>
-                        <small class="iconav-nav-label visible-xs-block">History</small>
-                    </a>
-                </li>
-                <li >
-                    <a href="#" title="Fluid layout" data-toggle="tooltip" data-placement="right" data-container="body">
-                        <span class="icon icon-globe"></span>
-                        <small class="iconav-nav-label visible-xs-block">Fluid layout</small>
-                    </a>
-                </li>
-                <li class="active">
-                    <a href="#" title="Icon-nav layout" data-toggle="tooltip" data-placement="right" data-container="body">
-                        <span class="icon icon-area-graph"></span>
-                        <small class="iconav-nav-label visible-xs-block">Icon nav</small>
-                    </a>
-                </li>
-                <li >
-                    <a href="#" title="Docs" data-toggle="tooltip" data-placement="right" data-container="body">
-                        <span class="icon icon-list"></span>
-                        <small class="iconav-nav-label visible-xs-block">Docs</small>
-                    </a>
-                </li>
-                <li >
-                    <a href="#" title="Light UI" data-toggle="tooltip" data-placement="right" data-container="body">
-                        <span class="icon icon-flash"></span>
-                        <small class="iconav-nav-label visible-xs-block">Light UI</small>
-                    </a>
-                </li>
+                {{#if userData}}
                 <li>
                     <a href="https://myaccount.google.com" target="_blank" title="Signed in as {{userData.services.google.name}}" data-toggle="tooltip" data-placement="right" data-container="body">
                         <img src="{{userData.services.google.picture}}" alt="" class="img-responsive img-circle" />
                         <small class="iconav-nav-label visible-xs-block">@mdo</small>
+                    </a>
+                </li>
+                {{/if}}
+                <li>
+                    <a href="#" title="Settings" data-toggle="tooltip" data-placement="right" data-container="body">
+                        <span class="icon icon-cog"></span>
+                        <small class="iconav-nav-label visible-xs-block">Settings</small>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://mentally-friendly.floatschedule.com/" target="_blank" title="Float" data-toggle="tooltip" data-placement="right" data-container="body">
+                        <span class="icon icon-list"></span>
+                        <small class="iconav-nav-label visible-xs-block">Float</small>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://docs.google.com/a/mentallyfriendly.com/forms/d/1-Y4_T_E0gc8y4ehC3L0RaF6yxmC4bA4mjabxkbgkbwk/viewform" target="_blank" title="Suggestion Box" data-toggle="tooltip" data-placement="right" data-container="body">
+                        <span class="icon icon-typing"></span>
+                        <small class="iconav-nav-label visible-xs-block">Suggestion Box</small>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://docs.google.com/spreadsheets/d/1wwVxQAejQlX6FgPchzwC7b9TpmKDZXL6vAthjRIJyuw/edit#gid=1673363062" target="_blank" title="OKR Tracking" data-toggle="tooltip" data-placement="right" data-container="body">
+                        <span class="icon icon-area-graph"></span>
+                        <small class="iconav-nav-label visible-xs-block">OKR Tracking</small>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://mentallyfriendly.workable.com/" target="_blank" title="Hiring!" data-toggle="tooltip" data-placement="right" data-container="body">
+                        <span class="icon icon-thumbs-up"></span>
+                        <small class="iconav-nav-label visible-xs-block">Hiring!</small>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://docs.google.com/a/mentallyfriendly.com/forms/d/1-VYw0mIIv1pgDTQBkgJJXzRtEcpqn1iRWPmFrqN8zWY/viewform" target="_blank" title="Praises" data-toggle="tooltip" data-placement="right" data-container="body">
+                        <span class="icon icon-heart"></span>
+                        <small class="iconav-nav-label visible-xs-block">Praises</small>
                     </a>
                 </li>
             </ul>
