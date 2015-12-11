@@ -4,7 +4,6 @@ Tracker.autorun(function () {
     });
 });
 
-
 Template.mediumFeed.helpers({
     sessionFeed: function(){
         var feed = Session.get('mediumFeed');
@@ -16,13 +15,15 @@ Template.mediumFeed.helpers({
     }
 });
 
-Template.mediumFeed.onRendered(function (argument) {
-    $('.slider').slick({
-        autoplay: true,
-        dots: true,
-        fade: true,
-        rows: 2,
-        autoplaySpeed: 5000,
-        arrows: false
+Template.mediumFeed.onRendered(function () {
+    this.autorun(function () {
+        $('.slider').slick({
+            autoplay: true,
+            dots: true,
+            fade: true,
+            rows: 2,
+            autoplaySpeed: 5000,
+            arrows: false
+        });
     });
 });
