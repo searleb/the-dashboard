@@ -19,11 +19,11 @@
                     line-height: 43px;
                     font-weight: 300;
                     &.not-complete{
-                        // border-color: $error-color;
-                        // color: $error-color;
+                        border-color: $brand-danger;
+                        color: $brand-danger;
                     }
                     &.complete{
-                        // border-color: $success-color;
+                        border-color: $brand-success;
                     }
                 }
             }
