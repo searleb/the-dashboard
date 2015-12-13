@@ -1,5 +1,6 @@
-Accounts.onCreateUser(function(options, user) {
-    user.profile = {};
-    _.extend(user.profile, { favourites : [], office : [] }); // OR user.someField = 'initialValue';
-    return user;
+Meteor.methods({
+    'saveUserOffice': function(office) {
+        var user = Meteor.user();
+        Meteor.users.update({_id: Meteor.user()._id}, {$set: {"profile.office": office}});
+    }
 });
