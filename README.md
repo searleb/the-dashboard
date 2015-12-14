@@ -20,8 +20,8 @@ To add your new _*example*.SCSS to the project you will need to import it via cl
 
 ### TODO
 - [ ] WorkflowMax
-  - [x ] Colour code by hours logged
-  - [x ] Add support for LDN
+  - [x] Colour code by hours logged
+  - [x] Add support for LDN
   - [ ] Add date to day
   - [ ] Update button or mayb poll every few hours
 - [ ] Calendar
