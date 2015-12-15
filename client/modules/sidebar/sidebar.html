@@ -55,41 +55,5 @@
             </ul>
         </div>
     </nav>
-    <div class="modal" id="settings-modal">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Settings</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="hr-divider">
-                        <h3 class="hr-divider-content hr-divider-heading">
-                            Your Office
-                        </h3>
-                    </div>
-                    <div class="radio custom-control custom-radio">
-                        <label>
-                            <input type="radio" id="radio-sydney" name="office" value="sydney" checked="{{#if sydChecked}} true {{/if}}">
-                            <span class="custom-control-indicator"></span>
-                            Sydney
-                        </label>
-                    </div>
-                    <div class="radio custom-control custom-radio">
-                        <label>
-                            <input type="radio" id="radio-london" name="office" value="london" checked="{{#if ldnChecked}} true {{/if}}">
-                            <span class="custom-control-indicator"></span>
-                            London
-                        </label>
-                    </div>
-                </div>
-                <div class="modal-actions">
-                    <button type="button" class="btn-link modal-action" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn-link modal-action" data-dismiss="modal">
-                        <strong>Continue</strong>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+    {{> settingsModal}}
 </template>

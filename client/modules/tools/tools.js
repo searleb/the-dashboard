@@ -18,31 +18,29 @@ Template.tools.onCreated( function(){
         $.getJSON(url, function(data) {
             if (data) {
                 var entry = data.feed.entry;
-                // tools[key] = entry;
+                var userData = Meteor.user();
                 $('.tools .content .list-container').append('<ul id="' + key + '">');
+
                 $(entry).each(function(){
                     // Column names are title, link, desc.
                     $('.tools .content .list-container ul#' + key).append('<li style="display:none;"><a target="_blank" href=//' + this.gsx$link.$t + '>' + this.gsx$title.$t + '</a><span class="type">'+ this.gsx$desc.$t + '</span></li>');
                 }).promise().done(function(){
                     $('.tools .content .list-container ul li').fadeIn(200);
+                    showSelectedList(userData.profile.role);
                 });
             }
         });
     });
 });
 
-Template.tools.onRendered( function(){
-    $('ul').first().addClass('shown');
-});
-
-function showSelectedList(ulClass) {
+function showSelectedList(id) {
     $('#tools .list-container ul').hide();
-    $('#tools .list-container ul#' + ulClass).show();
+    $('#tools .list-container ul#' + id).show();
 }
 
 Template.tools.events({
     "click button": function(e){
-        var ulClass = $(e.target).attr('name');
-        showSelectedList(ulClass);
+        var id = $(e.target).attr('name');
+        showSelectedList(id);
     }
 });
