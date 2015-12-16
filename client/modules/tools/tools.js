@@ -7,18 +7,16 @@ Template.tools.onCreated( function(){
         'operations': 'oluqtiy',
         'strategy': 'oqs3meb'
     };
-    // var tools = {};
 
     // google sheets has an ID for each tab, found here, search for 'full/':
     // https://spreadsheets.google.com/feeds/worksheets/1i8WWy8BWOZXVDATgLAicRzRdi3i8wmv00ZMsEerdFQ8/private/full
+    var userData = Meteor.user();
     $.each( tabIDs, function(key, value) {
-        // console.log(key, value);
         var spreadsheetID = "1i8WWy8BWOZXVDATgLAicRzRdi3i8wmv00ZMsEerdFQ8",
         url = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/" + value + "/public/full?alt=json";
         $.getJSON(url, function(data) {
             if (data) {
                 var entry = data.feed.entry;
-                var userData = Meteor.user();
                 $('.tools .content .list-container').append('<ul id="' + key + '">');
 
                 $(entry).each(function(){
@@ -31,6 +29,13 @@ Template.tools.onCreated( function(){
             }
         });
     });
+});
+
+
+Tracker.autorun(function () {
+    // watch the session userRole and update page if it changes
+    var userRole = Session.get("userRole");
+    showSelectedList(userRole);
 });
 
 function showSelectedList(id) {

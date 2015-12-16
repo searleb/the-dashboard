@@ -1,3 +1,10 @@
+Template.settingsModal.onCreated(function (argument) {
+    var userData = Meteor.user();
+    if (userData !== null) {
+        Session.set('userRole', userData.profile.role);
+    }
+});
+
 Template.settingsModal.helpers({
     userData: function(){
         return Meteor.user();
@@ -18,9 +25,15 @@ Template.settingsModal.helpers({
         }
         return checked;
     },
-    role: function () {
-        var userData = Meteor.user();
-        return userData.profile.role;
+    attributes: function (e) {
+        // {{attributes val=""}} check the radio button is this button matches the users saved role
+        var userRole = Session.get('userRole');
+        var condition = e.hash.val;
+        if (userRole == condition) {
+            return {
+                checked: true
+            };
+        }
     }
 });
 
@@ -35,6 +48,9 @@ Template.settingsModal.events({
     },
     'change #user-role input[name="role"]' : function (e) {
         var usersRole = $(e.currentTarget).val();
+        // save the users role to their profile, so this data is maintained on reload
         Meteor.call('saveUserRole', usersRole);
+        // also set a session varible which the tools template watching for changes and updates the page when the settings are changes
+        Session.set('userRole', usersRole);
     }
 });
