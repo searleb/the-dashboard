@@ -12,7 +12,46 @@
         <div class="tools">
             <div class="content">
                 <div class="list-container">
-
+                    <ul id="creative">
+                        {{#each creative}}
+                        <li>
+                            <a href="{{this.link}}" target="_blank">{{this.title}}</a>
+                            <span class="type">{{this.desc}}</span>
+                        </li>
+                        {{/each}}
+                    </ul>
+                    <ul id="development">
+                        {{#each development}}
+                        <li>
+                            <a href="{{this.link}}" target="_blank">{{this.title}}</a>
+                            <span class="type">{{this.desc}}</span>
+                        </li>
+                        {{/each}}
+                    </ul>
+                    <ul id="operations">
+                        {{#each operations}}
+                        <li>
+                            <a href="{{this.link}}" target="_blank">{{this.title}}</a>
+                            <span class="type">{{this.desc}}</span>
+                        </li>
+                        {{/each}}
+                    </ul>
+                    <ul id="product-managers">
+                        {{#each productManagers}}
+                        <li>
+                            <a href="{{this.link}}" target="_blank">{{this.title}}</a>
+                            <span class="type">{{this.desc}}</span>
+                        </li>
+                        {{/each}}
+                    </ul>
+                    <ul id="strategy">
+                        {{#each strategy}}
+                        <li>
+                            <a href="{{this.link}}" target="_blank">{{this.title}}</a>
+                            <span class="type">{{this.desc}}</span>
+                        </li>
+                        {{/each}}
+                    </ul>
                 </div>
             </div>
         </div>

@@ -15,6 +15,9 @@ Template.favourites.events({
 
 Template.favourites.helpers({
     favourites: function() {
-        return Meteor.user().profile.favourites;
+        var userData = Meteor.user();
+        if (userData) {
+            return userData.profile.favourites;
+        }
     }
 });

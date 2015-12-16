@@ -1,8 +1,11 @@
-Template.settingsModal.onCreated(function (argument) {
-    var userData = Meteor.user();
-    if (userData) {
-        Session.set('userRole', userData.profile.role);
-    }
+Template.settingsModal.onCreated(function () {
+    this.autorun(function (argument) {
+        var userData = Meteor.user();
+        if (userData) {
+            Session.set('userRole', userData.profile.role);
+            Session.set('userOffice', userData.profile.office);
+        }
+    });
 });
 
 Template.settingsModal.helpers({
@@ -10,17 +13,17 @@ Template.settingsModal.helpers({
         return Meteor.user();
     },
     sydChecked: function(){
-        var userData = Meteor.user();
+        var userData = Session.get('userOffice');
         var checked = false;
-        if (userData.profile.office == "sydney") {
+        if (userData == "sydney") {
             checked = true;
         }
         return checked;
     },
     ldnChecked: function(){
-        var userData = Meteor.user();
+        var userData = Session.get('userOffice');
         var checked = false;
-        if (userData.profile.office == "london") {
+        if (userData == "london") {
             checked = true;
         }
         return checked;
