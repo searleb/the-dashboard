@@ -1,7 +1,7 @@
 <template name="mediumFeed">
     <div class="blog" id="medium-blog">
         <h2>Medium Feed</h2>
-        <ul class="slider">
+        <ul>
             {{#if sessionFeed.items}}
                 {{#each sessionFeed.items}}
                 <li>
@@ -12,9 +12,11 @@
                     <p>
                         <a href="{{this.link}}" target="_blank">{{this.description}}</a>
                     </p>
+                    <hr>
                 </li>
                 {{/each}}
             {{/if}}
         </ul>
+        <div class="shadow"></div>
     </div>
 </template>

@@ -1,6 +1,6 @@
 Template.settingsModal.onCreated(function (argument) {
     var userData = Meteor.user();
-    if (userData !== null) {
+    if (userData) {
         Session.set('userRole', userData.profile.role);
     }
 });

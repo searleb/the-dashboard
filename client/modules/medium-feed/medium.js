@@ -7,23 +7,12 @@ Tracker.autorun(function () {
 Template.mediumFeed.helpers({
     sessionFeed: function(){
         var feed = Session.get('mediumFeed');
-        $(feed.items).each(function(index, el) {
-            el.pubDate = moment(el.pubDate).format('DD MMM YYYY');
-            el.description = el.description.replace("Continue reading on Medium »", "");
-        });
+        if (feed) {
+            $(feed.items).each(function(index, el) {
+                el.pubDate = moment(el.pubDate).format('DD MMM YYYY');
+                el.description = el.description.replace("Continue reading on Medium »", "");
+            });
+        }
         return feed;
     }
-});
-
-Template.mediumFeed.onRendered(function () {
-    this.autorun(function () {
-        $('.slider').slick({
-            autoplay: true,
-            dots: true,
-            fade: true,
-            rows: 2,
-            autoplaySpeed: 5000,
-            arrows: false
-        });
-    });
 });

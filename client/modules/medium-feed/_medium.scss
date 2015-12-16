@@ -1,10 +1,12 @@
-.blog{
-    .slider{
-        height: auto;
-        .slick-prev, .slick-next{
-            &:before{
-            }
-        }
+#medium-blog{
+    .shadow{
+        box-shadow: 0px -4px 10px 11px $white;
+        width: 100%;
+        position: relative;
     }
-
+    ul{
+        max-height: 300px;
+        overflow-y: scroll;
+        margin-bottom: 0px;
+    }
 }
