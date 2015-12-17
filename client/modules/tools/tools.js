@@ -37,10 +37,18 @@ Template.tools.onCreated( function(){
 });
 
 Tracker.autorun(function () {
-    // watch the session userRole and update page if it changes
+    // Watch the session userRole and update page if it changes
+    // This also runs on page load and waits 1 second if the <li> have not been populated yet. Yes it's dumb.
     var userRole = Session.get("userRole");
-    console.log('userRole', userRole);
-    showSelectedList(userRole);
+    var listLength = $('.tools .list-container ul li').length;
+    if (listLength > 0) {
+        showSelectedList(userRole);
+    } else {
+        Meteor.setTimeout(function () {
+            showSelectedList(userRole);
+        }, 1000);
+    }
+
 });
 
 Template.tools.events({
