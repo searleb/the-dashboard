@@ -1,7 +1,9 @@
 #tools{
-    .tabs{
-        .tab{
-            min-width: 0px;
+    button{
+        &.active{
+            color: #111;
+            background-color: #dcdcdc;
+            border-color: #bdbdbd;
         }
     }
     .list-container{

@@ -3,6 +3,16 @@ function showSelectedList(id) {
     $('#tools .list-container ul#' + id).show();
 }
 
+function activeTheButton(userRole) {
+    $('#tools button').removeClass('active');
+    $('#tools').find("button[name='" + userRole +"']").addClass('active');
+}
+
+Template.tools.onRendered(function () {
+    var userRole = Session.get("userRole");
+    activeTheButton(userRole);
+});
+
 Template.tools.onCreated( function(){
     var tabIDs = {
         'development': 'ozcs9yb',
@@ -48,13 +58,14 @@ Tracker.autorun(function () {
             showSelectedList(userRole);
         }, 1000);
     }
-
+    activeTheButton(userRole);
 });
 
 Template.tools.events({
     "click button": function(e){
         var id = $(e.target).attr('name');
         showSelectedList(id);
+        activeTheButton(id);
     }
 });
 
