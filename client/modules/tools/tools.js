@@ -34,7 +34,7 @@ Template.tools.onCreated( function(){
                 $(entry).each(function(){
                     var toolsObj = {};
                     toolsObj.id = key;
-                    toolsObj.link = this.gsx$link.$t;
+                    toolsObj.link = 'http://' + this.gsx$link.$t;
                     toolsObj.title = this.gsx$title.$t;
                     toolsObj.desc = this.gsx$desc.$t;
                     tools.push(toolsObj);

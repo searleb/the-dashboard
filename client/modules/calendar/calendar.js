@@ -9,7 +9,7 @@ var userData = null;
 Template.calendar.onCreated( function () {
     this.autorun(function(){
         userData = Meteor.user();
-        if ( typeof(userData) == 'object' && userData !== null) {
+        if (userData) {
             getCalendar();
         }
     });
