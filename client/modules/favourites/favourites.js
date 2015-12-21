@@ -10,6 +10,10 @@ Template.favourites.events({
         event.target.favouriteUrl.value = "";
 
         Meteor.call('addFavourite', favouriteName, favouriteUrl);
+    },
+    "click .toggle-fav-form": function(event){
+        event.preventDefault();
+        Template.instance().$('.add-new-link-wrapper').slideToggle(200);
     }
 });
 
