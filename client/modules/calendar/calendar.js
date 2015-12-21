@@ -1,35 +1,50 @@
 
 Template.calendar.helpers({
     gCalendar: function(){
-        return Session.get('google-calendar');
+        return Session.get('googleCalendar');
     }
 });
 
-var userData = null;
 Template.calendar.onCreated( function () {
-    this.autorun(function(){
-        userData = Meteor.user();
-        if (userData) {
+    this.autorun(function () {
+        if (Meteor.user()) {
             getCalendar();
         }
     });
 
     function getCalendar(argument) {
+        var userData = Meteor.user();
         var timeMin = new moment().set('hour', 0).set('minute', 0).set('second', 0),
-            timeMax = new moment().add(1,'days').set('hour', 0).set('minute', 0).set('second', 0),
-            url = 'calendar/v3/calendars/' + userData.services.google.email + '/events/?timeMin=' + timeMin.toISOString() + '&timeMax=' + timeMax.toISOString() + '&maxResults=10' + '&orderBy=startTime' + '&singleEvents=true' + '&access_token=' + userData.services.google.accessToken;
+        timeMax = new moment().add(1,'days').set('hour', 0).set('minute', 0).set('second', 0),
+        url = 'calendar/v3/calendars/' + userData.services.google.email + '/events/?timeMin=' + timeMin.toISOString() + '&timeMax=' + timeMax.toISOString() + '&maxResults=10' + '&orderBy=startTime' + '&singleEvents=true' + '&access_token=' + userData.services.google.accessToken;
         GoogleApi.get(url, {}, function(error, data){
             for (var i in data.items) {
-                var startTime = moment(data.items[i].start.dateTime).format('hh:mma'),
-                    endTime = moment(data.items[i].end.dateTime).format('hh:mma');
-                data.items[i].start.dateTime = startTime;
-                data.items[i].end.dateTime = endTime;
-            }
-            Session.set('google-calendar', data);
-        } );
+                // format the start and end times
+                data.items[i].start.formattedTime = moment(data.items[i].start.dateTime).format('hh:mma');
+                data.items[i].end.formattedTime = moment(data.items[i].end.dateTime).format('hh:mma');
 
-    }
+                // determine what time the event was
+                var now = new moment().format('HHmm');
+                var startTime = moment(data.items[i].start.dateTime).format('HHmm');
+                var endTime = moment(data.items[i].end.dateTime).format('HHmm');
+                // console.log('now ', now, 'start ', startTime, 'end ', endTime );
+                if(now >= startTime - 10 && now < endTime) {
+                    // console.log('current');
+                    data.items[i].timeClass = 'current';
+                } else if (now > endTime){
+                    // console.log('past');
+                    data.items[i].timeClass = 'past';
+                } else {
+                    // console.log('future');
+                    data.items[i].timeClass = 'future';
+                }
+            }
+            Session.set('googleCalendar', data);
+        });
+
+
+}
     (function(){
-        Meteor.setInterval(getCalendar, 100000 * 5);
+        Meteor.setInterval(getCalendar, 300000); // 5 minute update cycle
     })();
 });

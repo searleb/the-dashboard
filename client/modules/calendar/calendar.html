@@ -7,12 +7,14 @@
         {{#if gCalendar.items}}
         <ul class="list-group">
             {{#each gCalendar.items }}
-            <li class="list-group-item">
-                <span class="label label-default pull-right">{{this.start.dateTime}} - {{this.end.dateTime}}</span>
-                <h5>
-                    <a href="{{this.htmlLink}}" target="_blank">{{this.summary}}</a>
-                    <small>{{this.location}}</small>
-                </h5>
+            <li class="list-group-item {{this.timeClass}}">
+                <a href="{{this.htmlLink}}" target="_blank">
+                    <span class="label label-default pull-right">{{this.start.formattedTime}} - {{this.end.formattedTime}}</span>
+                    <h5>
+                        {{this.summary}}
+                        <small>{{this.location}}</small>
+                    </h5>
+                </a>
             </li>
             {{/each}}
         </ul>
