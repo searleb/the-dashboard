@@ -1,5 +1,5 @@
 Tracker.autorun(function(){
-    if (Meteor.user() !== null) {
+    if ( Meteor.user() ) {
         Meteor.call('getUserTimes', function (err, data) {
             Session.set('loggedHours', data);
         });

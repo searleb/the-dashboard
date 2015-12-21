@@ -6,6 +6,6 @@ Meteor.startup(function (argument) {
     Router.route('/', function () {
         this.render('home');
     });
-    //
+    // Meeting rooms
     Router.route('/meeting-rooms');
 });
