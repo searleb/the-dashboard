@@ -1,14 +1,25 @@
 Meteor.startup(function() {
     var workflowmaxURL = WORKFLOWMAXURL,
         apiKey = WFMAPIKEY,
-        accountKey = WFMACCOUNTKEY;
+        accountKey;
 
     Meteor.methods({
         getUserTimes: function() {
             var userID;
             // Get current user data
             var userData = Meteor.user();
-
+            var userOffice = userData.profile.office;
+            switch (userOffice) {
+                case 'sydney':
+                    accountKey = SYD_ACCOUNT_KEY;
+                    break;
+                case 'london':
+                    accountKey = LDN_ACCOUNT_KEY;
+                    break;
+                default:
+                    console.log("Please select an office from settings");
+                    return false;
+            }
             // Get staff list
             var stafflist = HTTP.get(workflowmaxURL + 'staff.api/list?apiKey=' + apiKey + '&accountKey=' + accountKey);
 

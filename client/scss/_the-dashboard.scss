@@ -1,89 +1,16 @@
-body{
-    font-family: $font-body;
-    background-color: $c-background;
-    color: $c-dark;
-}
-h2{
-    text-transform: uppercase;
-    color: $c-accent;
-    font-size: 25px;
-}
-.btn{
-    color: $c-dark;
-    &:focus{
-        outline-color: darken($c-accent, 5);
+// container padding to make space for sidebar
+.container-fluid{
+    padding-left: 15px;
+    @media #{$media-sm}{
+        padding-left: 90px;
     }
-}
-.btn-default{
-    background-color: $c-accent;
-    border-color: $c-accent;
-    &:hover, &:focus{
-        background-color: lighten($c-accent, 5);
-        border-color: lighten($c-accent, 5);
-    }
-}
-.list-group-item{
-    background-color: transparent;
-}
-a{
-    color: $c-dark;
-    &:hover, &:focus{
-        color: $c-accent;
-        text-decoration: none;
-    }
-}
-.label-default{
-    background-color: $c-accent;
-}
-.form-control{
-    color: $c-dark;
-}
-input, textarea, button {
-    outline-color: $c-accent;
 }
 
-.welcome-overlay{
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    background-color: $c-background;
-    z-index: 5;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    .center-center{
-        text-align: center;
-        position: relative;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        h1, h2{
-            display: inline-block;
-            span{
-                &:first-of-type{
-                    animation-delay: 0.2s;
-                }
-                &:nth-of-type(2){
-                    animation-delay: 0.4s;
-                }
-                &:nth-of-type(3){
-                    animation-delay: 0.6s;
-                }
-                &:nth-of-type(4){
-                    animation-delay: 0.8s;
-                }
-                &:nth-of-type(5){
-                    animation-delay: 0.2s;
-                }
-            }
-        }
-        h2{
-            transform: rotate(-15deg);
-            animation-delay: 1s;
-        }
-    }
+ul{
+    padding-left: 0px;
+    list-style: none;
 }
-.body-wrapper{
-    // display: none;
+
+.module{
+    margin-bottom: 40px;
 }

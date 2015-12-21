@@ -5,4 +5,40 @@
             display: block;
         }
     }
+
+    li{
+        background-color: $white;
+        a{
+            &:hover, &focus{
+                text-decoration: none;
+            }
+        }
+        &.past{
+            -webkit-filter: grayscale(100%);
+            filter: grayscale(100%);
+        }
+        &.current{
+            border-color: $brand-danger;
+            z-index: 2;
+            transform: scale(1.075);
+            border-radius: 4px;
+            a{
+                color: $brand-danger;
+                font-weight: 500;
+            }
+            .label-default{
+                background-color: $brand-danger;
+            }
+        }
+        &.future{
+            z-index: 1;
+            transform: scale(1.035);
+            a{
+                color: $brand-primary
+            }
+            .label-default{
+                background-color: $brand-primary;
+            }
+        }
+    }
 }

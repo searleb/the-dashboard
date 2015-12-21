@@ -33,7 +33,7 @@ ejson@1.0.7
 es5-shim@4.1.14
 fastclick@1.0.7
 fourseven:scss@3.4.1
-froatsnook:request@2.53.3
+froatsnook:request@2.64.0
 geojson-utils@1.0.4
 google@1.1.7
 handlebars@1.0.4
@@ -88,7 +88,6 @@ standard-minifiers@1.0.2
 templating@1.1.5
 templating-tools@1.0.0
 tracker@1.0.9
-twbs:bootstrap@3.3.6
 ui@1.0.8
 underscore@1.0.4
 url@1.0.5

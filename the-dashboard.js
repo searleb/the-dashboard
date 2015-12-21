@@ -1,12 +1,10 @@
 if (Meteor.isClient) {
-    // if (Meteor.user() !== null) {
-    //     console.log("hello");
-    //     $(document).ready(function() {
-    //         $('.welcome-overlay').hide();
-    //     });
-    // }
-}
-
-if (Meteor.isServer) {
-
+    // helper to convert objects to arrays for use in blaze templates
+    UI.registerHelper("arrayify", function(obj){
+        result = [];
+        for (var key in obj){
+            result.push({name:key,value:obj[key]});
+        }
+        return result;
+    });
 }

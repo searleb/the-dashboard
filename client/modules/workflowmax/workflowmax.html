@@ -1,5 +1,5 @@
 <template name="workflowmax">
-    <div id="workflowmax">
+    <div id="workflowmax" class="module">
         <h2>Times</h2>
         <ul class="list-inline">
         {{#each loggedHours}}
@@ -7,12 +7,12 @@
                 <span class="day">
                     {{this.day}}
                 </span>
-                <span class="hours">
+                <span class="hours {{this.class}}">
                     {{this.hours}}
                 </span>
             </li>
         {{/each}}
         </ul>
-        <a href="https://my.workflowmax.com/my/timesheet.aspx?">Log time now</a>
+        <a href="https://my.workflowmax.com/my/timesheet.aspx?" target="_blank">Log time now</a>
     </div>
 </template>

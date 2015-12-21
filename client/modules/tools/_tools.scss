@@ -1,8 +1,20 @@
 #tools{
-    ul{
-        display: none;
-        &.shown{
-            display: block;
+    button{
+        &.active{
+            color: #111;
+            background-color: #dcdcdc;
+            border-color: #bdbdbd;
+        }
+    }
+    .list-container{
+        ul{
+            display: none;
+            li{
+                margin: 5px 0px;
+                .type{
+                    float: right;
+                }
+            }
         }
     }
 }

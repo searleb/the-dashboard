@@ -10,6 +10,14 @@ Tracker.autorun(function(){
 
 Template.workflowmax.helpers({
     loggedHours: function() {
-        return Session.get('loggedHours');
+        var hours =  Session.get('loggedHours');
+        $(hours).each(function(index, el) {
+            if (el.hours < 7) {
+                el.class = "not-complete";
+            } else if ( el.hours == 8){
+                el.class = "complete";
+            }
+        });
+        return hours;
     }
 });

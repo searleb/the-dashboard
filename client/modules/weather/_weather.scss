@@ -1,9 +1,11 @@
 #weather-template{
     .studio-wrapper{
-        width: 50%;
+        width: 49%;
         display: inline-block;
+        vertical-align: top;
     }
     i{
         font-size: 40px;
+        margin-right: 5px;
     }
 }
