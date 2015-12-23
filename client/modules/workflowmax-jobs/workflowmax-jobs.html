@@ -1,0 +1,27 @@
+<template name="workflowmaxJobs">
+    <div id="workflowmax-jobs" class="module">
+        <h2>Jobs</h2>
+        <div class="col-sm-6">
+            <ul>
+                {{#if jobList}}
+                    {{#each jobList}}
+                    <li>
+                        <h3>
+                            <a href="/workflowmax-jobs/{{this.id}}" data-id="{{this.id}}">
+                                {{this.client.name}}
+                            </a>
+                            <br>
+                            <small>{{this.name}}</small>
+                        </h3>
+                        <h5>{{this.manager.name}}</h5>
+                        <p>State: {{this.state}}</p>
+                        <p>{{this.description}}</p>
+                    </li>
+                    {{/each}}
+                {{else}}
+                    <li>Loading...</li>
+                {{/if}}
+            </ul>
+        </div>
+    </div>
+</template>

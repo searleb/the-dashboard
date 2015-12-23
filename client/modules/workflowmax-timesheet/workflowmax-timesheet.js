@@ -8,7 +8,7 @@ Tracker.autorun(function(){
     }
 });
 
-Template.workflowmax.helpers({
+Template.workflowmaxTimeSheet.helpers({
     loggedHours: function() {
         var hours =  Session.get('loggedHours');
         $(hours).each(function(index, el) {
