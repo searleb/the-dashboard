@@ -1,0 +1,50 @@
+// Jobs Listing
+Template.workflowmaxJobs.onCreated(function(){
+    Meteor.call('getJobList', function (err, data) {
+        if (err) {
+            Session.set('jobList', err);
+        } else {
+            Session.set('jobList', data);
+        }
+    });
+});
+
+Template.workflowmaxJobs.helpers({
+    jobList: function() {
+        var jobList = Session.get('jobList');
+        // Session.set('jobList', jobList);
+        console.log("Client helper: ", jobList);
+        return jobList;
+    }
+});
+
+Template.workflowmaxJobs.events({
+    'click a': function(e){
+        // e.preventDefault();
+        var jobId = $(e.target).attr('data-id');
+        var details = Meteor.call('getJobDetails', jobId);
+        Session.set('jobDetails-' + jobId, details);
+    }
+});
+
+
+// Job details
+Template.jobDetails.onCreated(function(){
+    var id = Router.current().params._id;
+    var details = Meteor.call('getJobDetails', id, function(err, data){
+        if (err) {
+            Session.set('jobDetails-' + id, err);
+        } else {
+            Session.set('jobDetails-' + id, data);
+        }
+    });
+});
+
+Template.jobDetails.helpers({
+    jobCosts: function(){
+        var id = Router.current().params._id;
+        var jobDetails = Session.get('jobDetails-' + id);
+        console.log(jobDetails.costs);
+        return jobDetails.costs;
+    }
+});

@@ -29,3 +29,5 @@ fourseven:scss
 http
 peerlibrary:xml2js
 anonyfox:scrape
+iron:router
+manuelschoebel:wait-on-lib

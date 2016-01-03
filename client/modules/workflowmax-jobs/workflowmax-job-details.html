@@ -1,0 +1,10 @@
+<template name="jobDetails">
+    <div id="workflowmax-jobs" class="module">
+        <h2>Job {{params}}</h2>
+        {{#with jobCosts}}
+            <p>{{cost.note}}</p>
+            <p>{{cost.unitcost}}</p>
+            <p>{{cost.unitprice}}</p>
+        {{/with}}
+    </div>
+</template>

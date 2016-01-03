@@ -29,7 +29,6 @@ Meteor.startup(function() {
                 explicitArray: false
             }, function(err, data) {
                 var staffList = data.response.stafflist.staff;
-
                 // Find the current users WorkflowMax ID by matching with google email
                 for (var i = 0; i < staffList.length; i++) {
                     if (staffList[i].email == userData.services.google.email) {

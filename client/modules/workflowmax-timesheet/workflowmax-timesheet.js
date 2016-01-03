@@ -1,5 +1,5 @@
 Tracker.autorun(function(){
-    if (Meteor.user() !== null) {
+    if ( Meteor.user() ) {
         Meteor.call('getUserTimes', function (err, data) {
             Session.set('loggedHours', data);
         });
@@ -8,7 +8,7 @@ Tracker.autorun(function(){
     }
 });
 
-Template.workflowmax.helpers({
+Template.workflowmaxTimeSheet.helpers({
     loggedHours: function() {
         var hours =  Session.get('loggedHours');
         $(hours).each(function(index, el) {
