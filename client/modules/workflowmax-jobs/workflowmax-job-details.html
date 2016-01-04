@@ -1,43 +1,50 @@
 <template name="jobDetails">
     <div id="workflowmax-job-details" class="module">
         <h2>Job {{params}}</h2>
-        {{#if jobDetails}}
+        <div class="col-sm-6">
+            <h3>Details</h3>
+            {{#unless jobDetails}}
+                <p>Loading...</p>
+            {{/unless}}
             {{#with jobDetails}}
-                <h4>{{name}}</h4>
-                <h4>{{manager.name}}</h4>
-                <p>Status: {{state}}</p>
-                <p>{{description}}</p>
+            <h4>{{name}}</h4>
+            <h4>{{manager.name}}</h4>
+            <p>Status: {{state}}</p>
+            <p>{{description}}</p>
 
-                <ul>
+            <ul>
+                <li>
+                    <p>Client: {{client.name}}</p>
+                </li>
+                <li>
+                    Start Date: {{formatTime startdate 'DD MMM YY'}}
+                    <br>
+                    Due Date: {{formatTime duedate 'DD MMM YY'}}
+                </li>
+                <ol>
+                    <h4>Tasks</h4>
+                    {{#each tasks.task}}
                     <li>
-                        <p>Client: {{client.name}}</p>
-                    </li>
-                    <li>
-                        Start Date: {{startdate}}
+                        {{this.name}}
                         <br>
-                        Due Date: {{duedate}}
+                        Estimated Minutes: {{this.estimatedminutes}}
+                        <br>
+                        Actual Minutes: {{this.actualminutes}}
+                        <br>
+                        Billable: {{this.billable}}
                     </li>
-                    <ol>
-                        <h4>Tasks</h4>
-                        {{#each tasks.task}}
-                        <li>
-                            {{this.name}}
-                            <br>
-                            Estimated Minutes: {{this.estimatedminutes}}
-                            <br>
-                            Actual Minutes: {{this.actualminutes}}
-                            <br>
-                            Billable: {{this.billable}}
-                        </li>
-                        {{/each}}
-                    </ol>
-                </ul>
+                    {{/each}}
+                </ol>
+            </ul>
             {{/with}}
-        {{else}}
-            <p>Loading...</p>
-        {{/if}}
+        </div>
 
-        {{#with jobCosts}}
+        <div class="col-sm-6">
+            <h3>Costs</h3>
+            {{#unless jobCosts}}
+            <p>Loading...</p>
+            {{/unless}}
+            {{#with jobCosts}}
             <ul>
                 <li>
                     <p>Description: {{cost.description}}</p>
@@ -46,6 +53,7 @@
                     <p>Unit Price: {{cost.unitprice}}</p>
                 </li>
             </ul>
-        {{/with}}
+            {{/with}}
+        </div>
     </div>
 </template>

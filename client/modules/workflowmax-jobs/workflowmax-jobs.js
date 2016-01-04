@@ -42,7 +42,19 @@ Template.jobDetails.helpers({
     jobDetails: function(){
         var id = Router.current().params._id;
         var jobDetails = Session.get('jobDetails-' + id);
-        console.log(jobDetails);
         return jobDetails;
+    },
+    jobCosts: function(){
+        var id = Router.current().params._id;
+        var costs = Meteor.call('getJobCosts', id, function (err, data) {
+            if (err) {
+                Session.set('jobCosts-' + id, err);
+            } else {
+                Session.set('jobCosts-' + id, data);
+            }
+        });
+        var jobCosts = Session.get('jobCosts-' + id);
+        console.log('jobCosts', jobCosts);
+        return jobCosts;
     }
 });

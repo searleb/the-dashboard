@@ -7,4 +7,16 @@ if (Meteor.isClient) {
         }
         return result;
     });
+
+    // format time
+    UI.registerHelper('formatTime', function(time, formatting) {
+        if(formatting) {
+            return moment(time).format(formatting);
+        }
+    });
+
+    // format time
+    UI.registerHelper('dateToday', function() {
+        return moment().format('DD MMM YY');
+    });
 }
