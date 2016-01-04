@@ -1,10 +1,51 @@
 <template name="jobDetails">
-    <div id="workflowmax-jobs" class="module">
+    <div id="workflowmax-job-details" class="module">
         <h2>Job {{params}}</h2>
+        {{#if jobDetails}}
+            {{#with jobDetails}}
+                <h4>{{name}}</h4>
+                <h4>{{manager.name}}</h4>
+                <p>Status: {{state}}</p>
+                <p>{{description}}</p>
+
+                <ul>
+                    <li>
+                        <p>Client: {{client.name}}</p>
+                    </li>
+                    <li>
+                        Start Date: {{startdate}}
+                        <br>
+                        Due Date: {{duedate}}
+                    </li>
+                    <ol>
+                        <h4>Tasks</h4>
+                        {{#each tasks.task}}
+                        <li>
+                            {{this.name}}
+                            <br>
+                            Estimated Minutes: {{this.estimatedminutes}}
+                            <br>
+                            Actual Minutes: {{this.actualminutes}}
+                            <br>
+                            Billable: {{this.billable}}
+                        </li>
+                        {{/each}}
+                    </ol>
+                </ul>
+            {{/with}}
+        {{else}}
+            <p>Loading...</p>
+        {{/if}}
+
         {{#with jobCosts}}
-            <p>{{cost.note}}</p>
-            <p>{{cost.unitcost}}</p>
-            <p>{{cost.unitprice}}</p>
+            <ul>
+                <li>
+                    <p>Description: {{cost.description}}</p>
+                    <p>Notes: {{cost.note}}</p>
+                    <p>Unit Cost: {{cost.unitcost}}</p>
+                    <p>Unit Price: {{cost.unitprice}}</p>
+                </li>
+            </ul>
         {{/with}}
     </div>
 </template>

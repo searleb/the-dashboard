@@ -12,8 +12,6 @@ Template.workflowmaxJobs.onCreated(function(){
 Template.workflowmaxJobs.helpers({
     jobList: function() {
         var jobList = Session.get('jobList');
-        // Session.set('jobList', jobList);
-        console.log("Client helper: ", jobList);
         return jobList;
     }
 });
@@ -41,10 +39,10 @@ Template.jobDetails.onCreated(function(){
 });
 
 Template.jobDetails.helpers({
-    jobCosts: function(){
+    jobDetails: function(){
         var id = Router.current().params._id;
         var jobDetails = Session.get('jobDetails-' + id);
-        console.log(jobDetails.costs);
-        return jobDetails.costs;
+        console.log(jobDetails);
+        return jobDetails;
     }
 });

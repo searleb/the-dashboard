@@ -26,8 +26,8 @@ Meteor.startup(function() {
         },
         getJobDetails: function(jobId){
             console.log("getJobDetails ", jobId);
-            console.log(workflowmaxURL + 'job.api/costs/' + jobId + '?apiKey=' + apiKey + '&accountKey=' + accountKey);
-            var jobDetailRequest = HTTP.get(workflowmaxURL + 'job.api/costs/' + jobId + '?apiKey=' + apiKey + '&accountKey=' + accountKey);
+            console.log(workflowmaxURL + 'job.api/get/' + jobId + '?apiKey=' + apiKey + '&accountKey=' + accountKey);
+            var jobDetailRequest = HTTP.get(workflowmaxURL + 'job.api/get/' + jobId + '?apiKey=' + apiKey + '&accountKey=' + accountKey);
             var jobDetails;
             xml2js.parseString(jobDetailRequest.content, {
                 normalizeTags: true,
@@ -40,8 +40,27 @@ Meteor.startup(function() {
                 }
             });
             // return to client
-            console.log(jobDetails);
-            return jobDetails;
+            console.log(jobDetails.job);
+            return jobDetails.job;
         }
+        // getJobCosts: function(jobId){
+        //     console.log("getJobCosts ", jobId);
+        //     console.log(workflowmaxURL + 'job.api/costs/' + jobId + '?apiKey=' + apiKey + '&accountKey=' + accountKey);
+        //     var jobCostsRequest = HTTP.get(workflowmaxURL + 'job.api/costs/' + jobId + '?apiKey=' + apiKey + '&accountKey=' + accountKey);
+        //     var jobCosts;
+        //     xml2js.parseString(jobCostsRequest.content, {
+        //         normalizeTags: true,
+        //         explicitArray: false
+        //     }, function(err, data) {
+        //         if (err) {
+        //             jobCosts = err;
+        //         } else {
+        //             jobCosts = data.response;
+        //         }
+        //     });
+        //     // return to client
+        //     console.log(jobCosts);
+        //     return jobCosts;
+        // }
     });
 });
