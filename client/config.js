@@ -10,3 +10,8 @@ Accounts.ui.config({
         google: true
     }
 });
+
+// restrict signups to only @mentallyfriendly.com email addresses
+Accounts.config({
+    restrictCreationByEmailDomain: 'mentallyfriendly.com'
+});
