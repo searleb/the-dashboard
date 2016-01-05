@@ -1,0 +1,14 @@
+.iconav{
+    margin-top: 0px;
+    .login-text-and-button{
+        text-align: center;
+        #login-buttons-logout{
+            font-size: 85%;
+            &:hover{
+                color: $gray-lighter;
+                cursor: pointer;
+            }
+        }
+    }
+
+}

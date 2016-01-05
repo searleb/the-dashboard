@@ -22,7 +22,6 @@ momentjs:moment
 selaias:meteor-simpleweather
 mrt:moment-timezone
 accounts-google
-accounts-ui
 accounts-base
 percolate:google-api
 fourseven:scss
@@ -31,3 +30,4 @@ peerlibrary:xml2js
 anonyfox:scrape
 iron:router
 manuelschoebel:wait-on-lib
+accounts-ui-unstyled

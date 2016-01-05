@@ -5,6 +5,7 @@
         </a>
         <div class="iconav-slider">
             <ul class="nav nav-pills iconav-nav">
+                {{#if userData}}
                 <li>
                     {{> loginButtons}}
                 </li>
@@ -16,6 +17,7 @@
                         <small class="iconav-nav-label visible-xs-block">{{userData.profile.name}}</small>
                     </a>
                 </li>
+                {{/if}}
                 <li>
                     <a href="#" id="user-settings" title="Settings" data-toggle="tooltip" data-placement="right" data-container="body">
                         <span class="icon icon-cog"></span>
