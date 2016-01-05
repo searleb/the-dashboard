@@ -1,6 +1,7 @@
-@import "toolkit-light.min.scss";
-// @import "toolkit-inverse.min.scss";
+// @import "toolkit-light.min.scss";
+@import "toolkit-inverse.min.scss";
 @import "variables";
+@import "variables-inverse";
 @import "the-dashboard";
 
 // can't use varibles in @import statements :(

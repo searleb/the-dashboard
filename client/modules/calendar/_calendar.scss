@@ -7,15 +7,21 @@
     }
 
     li{
-        background-color: $white;
+        background-color: $body-bg;
         a{
             &:hover, &focus{
                 text-decoration: none;
             }
         }
         &.past{
-            -webkit-filter: grayscale(100%);
-            filter: grayscale(100%);
+            a{
+                h5, small{
+                    color: $gray-dark;
+                }
+                span{
+                    background-color: $gray-dark;
+                }
+            }
         }
         &.current{
             border-color: $brand-danger;
