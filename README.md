@@ -24,20 +24,20 @@ To add your new _*example*.SCSS to the project you will need to import it via cl
   - [x] Add support for LDN
   - [ ] Add date to day
   - [ ] Update button or mayb poll every few hours
-- [ ] Calendar
-  - [ ] Restyle
-  - [ ] Indicate/grey out past event
+- [] Calendar
+  - [x] Restyle
+  - [x] Indicate/grey out past event
 - [ ] Search Drive / Wiki
   - [ ] Styles
-  - [ ] Combine Drive and Wiki search into one module?
+  - [x] Combine Drive and Wiki search into one module?
 - [ ] Tools
-  - [ ] Default group per user selection
-  - [ ] Style
+  - [x] Default group per user selection
+  - [x] Style
 - [ ] Favourites
   - [ ] Style
 - [ ] Medium Feed
- - [ ] Style
- - [ ] Limit results list
+ - [x] Style
+ - [x] Limit results list
 - [ ] Create sign in /loading page
 - [ ] Deployment stuff
  - [ ] Remove Autopublish and Insecure then fix everything that breaks
