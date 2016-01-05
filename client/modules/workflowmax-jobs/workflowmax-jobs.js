@@ -27,34 +27,39 @@ Template.workflowmaxJobs.events({
 
 
 // Job details
-Template.jobDetails.onCreated(function(){
-    var id = Router.current().params._id;
-    var details = Meteor.call('getJobDetails', id, function(err, data){
-        if (err) {
-            Session.set('jobDetails-' + id, err);
-        } else {
-            Session.set('jobDetails-' + id, data);
-        }
-    });
-});
-
 Template.jobDetails.helpers({
     jobDetails: function(){
         var id = Router.current().params._id;
+        var details = Meteor.call('getJobDetails', id, function(err, data){
+            if (err) {
+                Session.set('jobDetails-' + id, err);
+            } else {
+                Session.set('jobDetails-' + id, data);
+            }
+        });
         var jobDetails = Session.get('jobDetails-' + id);
         return jobDetails;
     },
+
     jobCosts: function(){
         var id = Router.current().params._id;
         var costs = Meteor.call('getJobCosts', id, function (err, data) {
             if (err) {
                 Session.set('jobCosts-' + id, err);
             } else {
-                Session.set('jobCosts-' + id, data);
+                if (data.costs.length === 0) {
+                    var array = [];
+                    var newObj = {costs: {cost:[{description: 'None'}]}};
+                    array.push(newObj);
+                    Session.set('jobCosts-' + id, newObj );
+                } else {
+                    Session.set('jobCosts-' + id, data);
+                }
             }
         });
-        var jobCosts = Session.get('jobCosts-' + id);
-        console.log('jobCosts', jobCosts);
-        return jobCosts;
+        jobCosts = Session.get('jobCosts-' + id);
+        if (jobCosts !== undefined) {
+            return jobCosts.costs;
+        }
     }
 });

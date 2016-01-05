@@ -21,6 +21,7 @@
                     <br>
                     Due Date: {{formatTime duedate 'DD MMM YY'}}
                 </li>
+                {{#if tasks.task}}
                 <ol>
                     <h4>Tasks</h4>
                     {{#each tasks.task}}
@@ -35,6 +36,7 @@
                     </li>
                     {{/each}}
                 </ol>
+                {{/if}}
             </ul>
             {{/with}}
         </div>
@@ -42,16 +44,23 @@
         <div class="col-sm-6">
             <h3>Costs</h3>
             {{#unless jobCosts}}
-            <p>Loading...</p>
+                <p>Loading...</p>
             {{/unless}}
             {{#with jobCosts}}
             <ul>
+                {{#each cost}}
                 <li>
-                    <p>Description: {{cost.description}}</p>
-                    <p>Notes: {{cost.note}}</p>
-                    <p>Unit Cost: {{cost.unitcost}}</p>
-                    <p>Unit Price: {{cost.unitprice}}</p>
+                    Description: {{description}}
+                    <br>
+                    Notes: {{note}}
+                    <br>
+                    Quantity: {{quantity}}
+                    <br>
+                    Unit Cost: {{unitcost}}
+                    <br>
+                    Unit Price: {{unitprice}}
                 </li>
+                {{/each}}
             </ul>
             {{/with}}
         </div>

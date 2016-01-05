@@ -1,4 +1,17 @@
 Meteor.startup(function() {
+
+    function checkIsArray(argument) {
+        // if the arg is not at array, return it within an array
+        if (Array.isArray(argument) === false) {
+            var array = [];
+            array.push(argument);
+            return array;
+        } else {
+            // else just return the args with no modification
+            return argument;
+        }
+    }
+
     var workflowmaxURL = WORKFLOWMAXURL,
     apiKey = WFMAPIKEY,
     accountKey = SYD_ACCOUNT_KEY;
@@ -33,15 +46,7 @@ Meteor.startup(function() {
                 if (err) {
                     jobDetails = err;
                 } else {
-                    // if there is only 1 task object xml2js does not add this obj to an array but we need an array for the template.
-                    var tasks = data.response.job.tasks.task;
-                    if (Array.isArray(tasks) === false) {
-                        taskArray = [];
-                        for (var i = 0; i < 1; i++) {
-                            taskArray.push(tasks);
-                        }
-                        data.response.job.tasks.task = taskArray;
-                    }
+                    data.response.job.tasks.task = checkIsArray(data.response.job.tasks.task);
                     jobDetails = data.response;
                 }
             });
@@ -59,11 +64,17 @@ Meteor.startup(function() {
                 if (err) {
                     jobCosts = err;
                 } else {
+                    data.response.costs.cost = checkIsArray(data.response.costs.cost);
                     jobCosts = data.response;
                 }
             });
             // return to client
-            return jobCosts.costs;
+            return jobCosts;
+        },
+
+        getCustomFields: function(){
+            var customFields = HTTP.get(workflowmaxURL + 'customfield.api/definition/' + jobId + '?apiKey=' + apiKey + '&accountKey=' + accountKey);
+            console.log(customFields);
         }
 
     });
