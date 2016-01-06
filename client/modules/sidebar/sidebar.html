@@ -1,23 +1,20 @@
 <template name="sidebar">
     <nav class="iconav">
+    {{#if userData}}
         <a class="iconav-brand" href="/">
             MF
         </a>
         <div class="iconav-slider">
             <ul class="nav nav-pills iconav-nav">
-                {{#if userData}}
                 <li>
                     {{> loginButtons}}
                 </li>
                 <li>
                     <a href="https://myaccount.google.com" target="_blank" title="Google Account" data-toggle="tooltip" data-placement="right" data-container="body">
-                        {{#if userData}}
                         <img src="{{userData.services.google.picture}}" alt="" class="img-responsive img-circle" />
-                        {{/if}}
                         <small class="iconav-nav-label visible-xs-block">{{userData.profile.name}}</small>
                     </a>
                 </li>
-                {{/if}}
                 <li>
                     <a href="#" id="user-settings" title="Settings" data-toggle="tooltip" data-placement="right" data-container="body">
                         <span class="icon icon-cog"></span>
@@ -49,33 +46,34 @@
                 <small class="iconav-nav-label visible-xs-block">Float</small>
             </a>
         </li>
-    -->
-    <li>
-        <a href="https://docs.google.com/a/mentallyfriendly.com/forms/d/1-Y4_T_E0gc8y4ehC3L0RaF6yxmC4bA4mjabxkbgkbwk/viewform" target="_blank" title="Suggestion Box" data-toggle="tooltip" data-placement="right" data-container="body">
-            <span class="icon icon-typing"></span>
-            <small class="iconav-nav-label visible-xs-block">Suggestion Box</small>
-        </a>
-    </li>
-    <li>
-        <a href="https://docs.google.com/spreadsheets/d/1wwVxQAejQlX6FgPchzwC7b9TpmKDZXL6vAthjRIJyuw/edit#gid=1673363062" target="_blank" title="OKR Tracking" data-toggle="tooltip" data-placement="right" data-container="body">
-            <span class="icon icon-area-graph"></span>
-            <small class="iconav-nav-label visible-xs-block">OKR Tracking</small>
-        </a>
-    </li>
-    <li>
-        <a href="https://mentallyfriendly.workable.com/" target="_blank" title="Hiring!" data-toggle="tooltip" data-placement="right" data-container="body">
-            <span class="icon icon-thumbs-up"></span>
-            <small class="iconav-nav-label visible-xs-block">Hiring!</small>
-        </a>
-    </li>
-    <li>
-        <a href="https://docs.google.com/a/mentallyfriendly.com/forms/d/1-VYw0mIIv1pgDTQBkgJJXzRtEcpqn1iRWPmFrqN8zWY/viewform" target="_blank" title="Praises" data-toggle="tooltip" data-placement="right" data-container="body">
-            <span class="icon icon-heart"></span>
-            <small class="iconav-nav-label visible-xs-block">Praises</small>
-        </a>
-    </li>
-</ul>
-</div>
-</nav>
+                -->
+                <li>
+                    <a href="https://docs.google.com/a/mentallyfriendly.com/forms/d/1-Y4_T_E0gc8y4ehC3L0RaF6yxmC4bA4mjabxkbgkbwk/viewform" target="_blank" title="Suggestion Box" data-toggle="tooltip" data-placement="right" data-container="body">
+                        <span class="icon icon-typing"></span>
+                        <small class="iconav-nav-label visible-xs-block">Suggestion Box</small>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://docs.google.com/spreadsheets/d/1wwVxQAejQlX6FgPchzwC7b9TpmKDZXL6vAthjRIJyuw/edit#gid=1673363062" target="_blank" title="OKR Tracking" data-toggle="tooltip" data-placement="right" data-container="body">
+                        <span class="icon icon-area-graph"></span>
+                        <small class="iconav-nav-label visible-xs-block">OKR Tracking</small>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://mentallyfriendly.workable.com/" target="_blank" title="Hiring!" data-toggle="tooltip" data-placement="right" data-container="body">
+                        <span class="icon icon-thumbs-up"></span>
+                        <small class="iconav-nav-label visible-xs-block">Hiring!</small>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://docs.google.com/a/mentallyfriendly.com/forms/d/1-VYw0mIIv1pgDTQBkgJJXzRtEcpqn1iRWPmFrqN8zWY/viewform" target="_blank" title="Praises" data-toggle="tooltip" data-placement="right" data-container="body">
+                        <span class="icon icon-heart"></span>
+                        <small class="iconav-nav-label visible-xs-block">Praises</small>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        {{/if}}
+    </nav>
 {{> settingsModal}}
 </template>
