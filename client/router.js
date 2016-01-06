@@ -5,13 +5,13 @@ Meteor.startup(function (argument) {
         layoutTemplate: 'siteLayout',
         loadingTemplate: 'loading'
     });
-    
+
     // Home page - main dashboard
     Router.route('/', function () {
         if (Meteor.user()) {
             this.render('home');
         } else {
-            this.redirect('/workflowmax-jobs');
+            this.render('login');
         }
     });
 
