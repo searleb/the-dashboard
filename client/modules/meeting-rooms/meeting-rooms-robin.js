@@ -1,6 +1,13 @@
-Template.robinFeed.onCreated(function(){
+Template.meetingRooms.onCreated(function(){
     var robinFeed = Meteor.call('getRobinRooms', function (err, data) {
-        console.log(err, data);
+        Session.set('meetingRooms', data);
     });
-    console.log(robinFeed);
+});
+
+Template.meetingRooms.helpers({
+    room: function () {
+        var test = Session.get('meetingRooms');
+        console.log(test);
+        return Session.get('meetingRooms');
+    }
 });

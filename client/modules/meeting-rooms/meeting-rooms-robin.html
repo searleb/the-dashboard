@@ -1,4 +1,31 @@
-<template name="robinFeed">
-    <h1>Robin</h1>
-    <!-- {{> authRobin}} -->
+<template name="meetingRooms">
+    <h1>Meeting Rooms</h1>
+    <div class="col-sm-12">
+    {{#each room}}
+        {{#with space}}
+            <h1>{{name}}</h1>
+        {{/with}}
+
+        {{#if bookings}}
+        <ul class="list-group">
+            {{#each bookings}}
+
+            <li class="list-group-item">
+                <h5>{{formatTime started_at 'h:mm'}} - {{formatTime ended_at 'h:mm'}} {{formatTime started_at 'Do MMM'}}</h5>
+                <h4>{{title}}</h4>
+                {{#each invitees}}
+                    {{#if display_name}}
+                        <small><span class="icon icon-dot-single"></span> {{display_name}}</small>
+                    {{/if}}
+                {{/each}}
+                <span class="list-group-progress" style="width: 0%;"></span>
+            </li>
+
+            {{/each}}
+        </ul>
+        {{else}}
+            <h3>No Bookings</h3>
+        {{/if}}
+    {{/each}}
+    </div>
 </template>
