@@ -1,5 +1,8 @@
 <template name="siteLayout">
-    {{> sidebar}}
+    {{#if currentUser}}
+        {{> sidebar}}
+    {{/if}}
+
     <div class="container">
         {{> yield}}
     </div>
