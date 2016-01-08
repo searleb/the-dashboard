@@ -3,7 +3,6 @@ Template.sidebar.onRendered(function (argument) {
     $('.iconav [data-toggle="tooltip"]').tooltip();
 
     (function isNewTab() {
-        console.log('isNewTab');
         var list = $('.iconav-slider .iconav-nav').children('li');
         $(list).each(function(index, el) {
             $this = $(el);

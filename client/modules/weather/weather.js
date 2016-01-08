@@ -1,6 +1,5 @@
 // Docs at http://simpleweatherjs.com
-$(document).ready(function() {
-
+Template.weather.onRendered(function () {
     function sydWeather() {
         var options = {
             location: 'Sydney, AUS',
@@ -43,14 +42,14 @@ $(document).ready(function() {
 
     sydWeather();
     ldnWeather();
-    setInterval(function () {
+    Meteor.setInterval(function () {
         sydWeather();
         ldnWeather();
     }, (1000 * 60) * 30);
 
 
     // get time for each studio
-    setInterval(function(){
+    Meteor.setInterval(function(){
         var time = moment();
         // Sydney
         var timezoneSyd = moment.tz(time, 'Australia/Sydney').format("h:mm");
