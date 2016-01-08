@@ -68,7 +68,7 @@ Meteor.startup(function() {
                     });
 
                     // format the date into day
-                    var formattedDate = moment(index).format('ddd').toString();
+                    var formattedDate = moment(index).format('ddd Do').toString();
 
                     // push the hours and day in to returnArray
                     returnArray.push({

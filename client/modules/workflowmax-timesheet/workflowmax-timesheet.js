@@ -12,7 +12,7 @@ Template.workflowmaxTimeSheet.helpers({
         $(hours).each(function(index, el) {
             if (el.hours < 7) {
                 el.class = "not-complete";
-            } else if ( el.hours == 8){
+            } else if ( el.hours >= 8){
                 el.class = "complete";
             }
         });

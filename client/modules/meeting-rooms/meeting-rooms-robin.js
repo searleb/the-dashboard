@@ -12,9 +12,9 @@ Template.meetingRooms.onCreated(function(){
 
 Template.meetingRooms.helpers({
     room: function () {
-        var test = Session.get('meetingRooms');
         return Session.get('meetingRooms');
     },
+    // returns a percentage progress of the current booking
     progress: function(start, end, id){
         Meteor.setInterval(function(){
             var now = moment().format('HHmmss');
@@ -32,6 +32,7 @@ Template.meetingRooms.helpers({
 
         return Session.get('progress-percent' + id);
     },
+    // returns a class name if the booking is in session or not
     isInSession: function (start, end) {
         var now = moment().format('HHmmss');
         var starting = moment(start).format('HHmmss');
