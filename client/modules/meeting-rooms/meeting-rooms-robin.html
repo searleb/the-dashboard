@@ -1,31 +1,41 @@
 <template name="meetingRooms">
-    <h1>Meeting Rooms</h1>
-    <div class="col-sm-12">
-    {{#each room}}
-        {{#with space}}
-            <h1>{{name}}</h1>
-        {{/with}}
+    <div id="meeting-rooms">
+        <h1>Meeting Rooms</h1>
+        {{#unless room}}
+            <p>Loading...</p>
+        {{/unless}}
+        {{#each room}}
+            <div class="col-20">
 
-        {{#if bookings}}
-        <ul class="list-group">
-            {{#each bookings}}
+                {{#with space}}
+                    <h1>{{name}}</h1>
+                {{/with}}
 
-            <li class="list-group-item">
-                <h5>{{formatTime started_at 'h:mm'}} - {{formatTime ended_at 'h:mm'}} {{formatTime started_at 'Do MMM'}}</h5>
-                <h4>{{title}}</h4>
-                {{#each invitees}}
-                    {{#if display_name}}
-                        <small><span class="icon icon-dot-single"></span> {{display_name}}</small>
-                    {{/if}}
-                {{/each}}
-                <span class="list-group-progress" style="width: 0%;"></span>
-            </li>
+                {{#if bookings}}
+                <ul class="list-group">
+                    {{#each bookings}}
 
-            {{/each}}
-        </ul>
-        {{else}}
-            <h3>No Bookings</h3>
-        {{/if}}
-    {{/each}}
+                    <li class="list-group-item {{isInSession started_at ended_at}}">
+                        <div class="session-notice">
+                            <span class="icon icon-clock"></span>
+                            <small>Session in progress.</small>
+                        </div>
+                        <h5>{{formatTime started_at 'h:mma'}} - {{formatTime ended_at 'h:mma'}} {{formatTime started_at 'Do MMM'}}</h5>
+                        <h4>{{title}}</h4>
+                        {{#each invitees}}
+                            {{#if display_name}}
+                                <small><span class="icon icon-dot-single"></span> {{display_name}}</small>
+                            {{/if}}
+                        {{/each}}
+                        <span class="list-group-progress" style="width: {{progress started_at ended_at id}}%;"></span>
+                    </li>
+
+                    {{/each}}
+                </ul>
+                {{else}}
+                    <h3>No Bookings</h3>
+                {{/if}}
+            </div>
+        {{/each}}
     </div>
 </template>

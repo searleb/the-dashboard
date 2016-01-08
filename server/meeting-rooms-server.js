@@ -38,16 +38,21 @@ Meteor.methods({
             return sorted;
         }
 
-
         return returnArray;
 
-        // HTTP.get(robinURL + 'free-busy/spaces', {
-        //     headers: {
-        //         Authorization: 'Access-Token ' + robinToken
-        //     }
-        // }, function (err, data) {
-        //     console.log("FREE? ",data);
-        // });
+    },
+    whatsFree: function () {
+        console.log('whatsFree');
+        var robinToken = ROBIN_APP_TOKEN;
+        var robinURL = 'https://api.robinpowered.com/v1.0/';
+
+        HTTP.get(robinURL + 'free-busy/spaces', {
+            headers: {
+                Authorization: 'Access-Token ' + robinToken
+            }
+        }, function (err, data) {
+            console.log("FREE? ",data);
+        });
     }
 
 

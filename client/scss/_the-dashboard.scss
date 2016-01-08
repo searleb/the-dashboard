@@ -1,5 +1,5 @@
 // container padding to make space for sidebar
-.container{
+.container, .container-fluid{
     padding-left: 15px;
     @media #{$media-sm}{
         padding-left: 85px;
