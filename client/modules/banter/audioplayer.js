@@ -2,8 +2,6 @@
 	AUTHOR: Osvaldas Valutis, www.osvaldas.info
 */
 
-
-
 ;(function( $, window, document, undefined )
 {
 	var isTouch		  = 'ontouchstart' in window,

@@ -186,7 +186,8 @@
 .player-wrapper {
   position: fixed;
   bottom: 0;
-  width: 100%;
+  right: 0;
+  width: calc(100% - 70px);
   z-index: 9999;
   background: #FFFFFF;
   transform: translateY(100%);
