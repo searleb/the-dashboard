@@ -1,8 +1,12 @@
 Template.meetingRooms.onCreated(function(){
-    Meteor.setInterval(function(){
+    (function getRooms() {
+        console.log('getRooms');
         var robinFeed = Meteor.call('getRobinRooms', function (err, data) {
             Session.set('meetingRooms', data);
         });
+    })();
+    Meteor.setInterval(function(){
+        getRooms();
     }, 1000 * 60 * 5);
 });
 

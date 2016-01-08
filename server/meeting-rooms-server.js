@@ -1,6 +1,5 @@
 Meteor.methods({
     getRobinRooms: function(){
-        console.log('getRobinRooms');
         var robinToken = ROBIN_APP_TOKEN;
         var robinURL = 'https://api.robinpowered.com/v1.0/';
 
@@ -54,7 +53,4 @@ Meteor.methods({
             console.log("FREE? ",data);
         });
     }
-
-
 });
-// 1548
