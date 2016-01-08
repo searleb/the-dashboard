@@ -3,7 +3,6 @@
 @import "variables";
 @import "variables-inverse";
 @import "the-dashboard";
-@import "sidebar";
 
 // can't use varibles in @import statements :(
 @import "../modules/calendar/calendar";
@@ -17,3 +16,4 @@
 @import "../modules/login/login";
 @import "../modules/meeting-rooms/meeting-rooms";
 @import "../modules/settings-modal/settings-modal";
+@import "../modules/sidebar/sidebar";

@@ -1,0 +1,43 @@
+.iconav{
+    margin-top: 0px;
+    #login-buttons{
+        margin: 10px 0px;
+    }
+    .login-text-and-button{
+        text-align: center;
+        #login-buttons-logout{
+            &:hover{
+                color: $gray-lighter;
+                cursor: pointer;
+            }
+        }
+        .login-display-name{
+            font-size: 90%;
+        }
+    }
+    .iconav-slider{
+        .iconav-nav{
+            li{
+                &.new-tab{
+                    &:before{
+                        content: "\EA96";
+                        position: absolute;
+                        top: 4px;
+                        right: 4px;
+                        display: inline-block;
+                        font-family: "toolkit-entypo";
+                        speak: none;
+                        font-size: 70%;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-variant: normal;
+                        text-transform: none;
+                        line-height: 1;
+                        -webkit-font-smoothing: antialiased;
+                        -moz-osx-font-smoothing: grayscale;
+                    }
+                }
+            }
+        }
+    }
+}
