@@ -10,58 +10,9 @@
         </div>
         <div class="scroll-area">
           <ul class="col-md-6">
-            <li class="latest">
-              <span class="episode-number">Episode One</span>
-              <h3 class="episode-title">Flight of the Condors</h3>
-              <button type="submit" class="btn btn-default btn-play">
-                <span class="glyphicon glyphicon-play" aria-hidden="true"></span><span>Play</span>
-              </button>
-              <div class="collapse" id="episode-info">
-                <div class="info-inner">
-                  In this episode we talk all about Data, BrandData with Liam, and also ponys and other majestic creatures.
-                </div>
-              </div>
-            </li>
-            <li>
-              <span class="episode-number">Episode Two</span>
-              <h3 class="episode-title">Empire State of Mind</h3>
-              <button type="submit" class="btn btn-default btn-play">
-                <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Play
-              </button>
-              <div class="collapse" id="episode-info">
-                <div class="info-inner">
-                  In this episode we talk Jay Z
-                </div>
-              </div>
-            </li>
-            <li>
-              <span class="episode-number">Episode One</span>
-              <h3 class="episode-title">Flight of the Condors</h3>
-              <button type="submit" class="btn btn-default btn-play">
-                <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Play
-              </button>
-            </li>
-            <li>
-              <span class="episode-number">Episode One</span>
-              <h3 class="episode-title">Flight of the Condors</h3>
-              <button type="submit" class="btn btn-default btn-play">
-                <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Play
-              </button>
-            </li>
-            <li>
-              <span class="episode-number">Episode Three</span>
-              <h3 class="episode-title">Elastic Beanstalks</h3>
-              <button type="submit" class="btn btn-default btn-play">
-                <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Play
-              </button>
-            </li>
-            <li>
-              <span class="episode-number">Episode Three</span>
-              <h3 class="episode-title">Digital Eskimos</h3>
-              <button type="submit" class="btn btn-default btn-play">
-                <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Play
-              </button>
-            </li>
+            {{#each episode}}
+              {{> episodeItem}}
+            {{/each}}
           </ul>
         </div>
       </div>
@@ -80,4 +31,19 @@
       </div>
     </div>
   </div>
+</template>
+
+<template name="episodeItem">
+  <li>
+    <span class="episode-number">{{number}}</span>
+    <h3 class="episode-title">{{title}}</h3>
+    <button type="submit" class="btn btn-default btn-play">
+      <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Play
+    </button>
+    <div class="collapse" id="episode-info">
+      <div class="info-inner">
+        {{info}}
+      </div>
+    </div>
+  </li>
 </template>
