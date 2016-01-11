@@ -1,13 +1,18 @@
 Template.meetingRooms.onCreated(function(){
-    (function getRooms() {
+    function getRooms() {
         console.log('getRooms');
         var robinFeed = Meteor.call('getRobinRooms', function (err, data) {
             Session.set('meetingRooms', data);
         });
-    })();
+    }
+
+    // call getRooms and update every 5 minutes
     Meteor.setInterval(function(){
         getRooms();
-    }, 1000 * 60 * 5);
+    }, (1000 * 60) * 5);
+    
+    getRooms();
+
 });
 
 Template.meetingRooms.helpers({
@@ -17,9 +22,9 @@ Template.meetingRooms.helpers({
     // returns a percentage progress of the current booking
     progress: function(start, end, id){
         Meteor.setInterval(function(){
-            var now = moment().format('HHmmss');
-            var starting = moment(start).format('HHmmss');
-            var ending = moment(end).format('HHmmss');
+            var now = moment();
+            var starting = moment(start);
+            var ending = moment(end);
 
             if (starting <= now && ending >= now) {
                 var duration = ending - starting;
@@ -34,9 +39,10 @@ Template.meetingRooms.helpers({
     },
     // returns a class name if the booking is in session or not
     isInSession: function (start, end) {
-        var now = moment().format('HHmmss');
-        var starting = moment(start).format('HHmmss');
-        var ending = moment(end).format('HHmmss');
+        var now = moment();
+        var starting = moment(start);
+        var ending = moment(end);
+
         if (starting <= now && ending >= now) {
             return 'in-session';
         } else {
