@@ -17,7 +17,7 @@
 		canPlayType	  = function( file )
 		{
 			var audioElement = document.createElement( 'audio' );
-			return !!( audioElement.canPlayType && audioElement.canPlayType( 'audio/' + file.split( '.' ).pop().toLowerCase() + ';' ).replace( /no/, '' ) );
+			return true;
 		};
 
 	$.fn.audioPlayer = function( params )
