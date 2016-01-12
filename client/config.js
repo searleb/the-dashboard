@@ -15,3 +15,9 @@ Accounts.ui.config({
 Accounts.config({
     restrictCreationByEmailDomain: 'mentallyfriendly.com'
 });
+
+// cms accounts options
+AccountsTemplates.configure({
+    forbidClientAccountCreation: true,
+    hideSignUpLink: true
+});

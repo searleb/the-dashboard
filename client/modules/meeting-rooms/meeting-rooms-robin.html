@@ -2,7 +2,7 @@
     <div id="meeting-rooms" class="container-fluid">
         <h1>Meeting Rooms</h1>
         {{#unless room}}
-            <p>Loading...</p>
+            {{> loading}}
         {{/unless}}
         {{#each room}}
             <div class="col-20">

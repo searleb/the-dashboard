@@ -15,3 +15,12 @@ Meteor.methods({
         Meteor.users.update({_id: Meteor.user()._id}, {$set: {"profile.role": role}});
     }
 });
+
+Meteor.publish("userData", function () {
+    if (this.userId) {
+        return Meteor.users.find({_id: this.userId},
+            { fields: {'services.google.picture': 1} });
+    } else {
+        this.ready();
+    }
+});
