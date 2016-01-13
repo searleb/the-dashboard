@@ -73,8 +73,29 @@ Meteor.startup(function() {
         },
 
         getCustomFields: function(){
-            var customFields = HTTP.get(workflowmaxURL + 'customfield.api/definition/' + jobId + '?apiKey=' + apiKey + '&accountKey=' + accountKey);
-            console.log(customFields);
+            var customFieldsRequest = HTTP.get(workflowmaxURL + 'customfield.api/definition/?apiKey=' + apiKey + '&accountKey=' + accountKey);
+            var customFields;
+            xml2js.parseString(customFieldsRequest.content, {
+                normalizeTags: true,
+                explicitArray: false
+            }, function(err, data) {
+                console.log('getCustomFields', data);
+                if (err) {
+                    customFields = err;
+                } else {
+                    data.response.customfielddefinitions.customfielddefinition = checkIsArray(data.response.customfielddefinitions.customfielddefinition);
+                    customFields = data.response.customfielddefinitions.customfielddefinition;
+
+                    _.each(customFields, function (el) {
+                        var id = el.id;
+                        var getcustom = HTTP.get(workflowmaxURL + 'job.api/cost/' + id + '?apiKey=' + apiKey + '&accountKey=' + accountKey);
+                        console.log(getcustom);
+                        // console.log(id);
+                    });
+                }
+            });
+            // return to client
+            return customFields;
         }
 
     });

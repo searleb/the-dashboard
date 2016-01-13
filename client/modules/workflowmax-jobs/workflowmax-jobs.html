@@ -3,22 +3,30 @@
         <div class="row">
             <div id="workflowmax-jobs" class="module">
                 <h2>Current Jobs List</h2>
+                {{customFields}}
                 <div class="col-sm-12">
-                    <ul>
-                        {{#if jobList}}
+                    {{#if jobList}}
+                    <table id="current-jobs-table" class="tablesorter table table-hover table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Client</th>
+                                <th>Project Name</th>
+                                <th>Project Number</th>
+                                <th>Est. Cost</th>
+                                <th>Cost to Client</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
                             {{#each jobList}}
-                            <li>
-                                <h3>
-                                    <a href="/workflowmax-jobs/{{this.id}}" data-id="{{this.id}}">
-                                        {{this.client.name}}
-                                    </a>
-                                    <br>
-                                    <small>{{this.name}}</small>
-                                </h3>
-                                <h5>{{this.manager.name}}</h5>
-                                <p>State: {{this.state}}</p>
-                                <p>{{this.description}}</p>
-                            </li>
+                                <tr>
+                                    <td>{{client.name}}</td>
+                                    <td>{{name}}</td>
+                                    <td><a href="/workflowmax-jobs/{{id}}" data-id="{{id}}">{{id}}</a></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>{{state}}</td>
+                                </tr>
                             {{/each}}
                         {{else}}
                             {{> loading}}

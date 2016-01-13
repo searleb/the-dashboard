@@ -9,11 +9,40 @@ Template.workflowmaxJobs.onCreated(function(){
     });
 });
 
+// Template.workflowmaxJobs.onRendered(function(){
+//     // call the tablesorter plugin
+//     $(document).ready(function() {
+//         $("#current-jobs-table").tablesorter({
+//             // Sort on the first column (client name), in ascending order
+//             // then third column (job number), in ascending order
+//             sortList: [[0,0], [2,0]]
+//         });
+//     });
+// });
+
 Template.workflowmaxJobs.helpers({
     jobList: function() {
         var jobList = Session.get('jobList');
+        $("#current-jobs-table").tablesorter({
+            // Sort on the first column (client name), in ascending order
+            // then third column (job number), in ascending order
+            sortList: [[0,0], [2,0]]
+        });
+        console.log(jobList);
         return jobList;
+    },
+    customFields: function() {
+        Meteor.call('getCustomFields', function (err, data) {
+            if (err) {
+                Session.set('customFields', err);
+            } else {
+                Session.set('customFields', data);
+            }
+        });
+        console.log(Session.get('customFields'));
+        return Session.get('customFields');
     }
+
 });
 
 Template.workflowmaxJobs.events({
