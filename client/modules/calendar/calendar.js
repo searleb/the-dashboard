@@ -27,15 +27,11 @@ Template.calendar.onCreated( function () {
                 var now = new moment().format('HHmm');
                 var startTime = moment(data.items[i].start.dateTime).format('HHmm');
                 var endTime = moment(data.items[i].end.dateTime).format('HHmm');
-                // console.log('now ', now, 'start ', startTime, 'end ', endTime );
                 if(now >= startTime - 10 && now < endTime) {
-                    // console.log('current');
                     data.items[i].timeClass = 'current';
                 } else if (now > endTime){
-                    // console.log('past');
                     data.items[i].timeClass = 'past';
                 } else {
-                    // console.log('future');
                     data.items[i].timeClass = 'future';
                 }
             }
