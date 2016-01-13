@@ -37,6 +37,12 @@
                         -moz-osx-font-smoothing: grayscale;
                     }
                 }
+                &.active.banter{
+                   > a{
+                      background-color: #55BAD6;
+                      color: $body-bg;
+                   }
+                }
             }
         }
     }
