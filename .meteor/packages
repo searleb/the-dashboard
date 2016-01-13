@@ -33,3 +33,5 @@ msavin:mongol
 orionjs:core
 fortawesome:fontawesome
 orionjs:bootstrap
+cfs:standard-packages
+cfs:gridfs

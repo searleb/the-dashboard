@@ -35,8 +35,7 @@
 
 .info-outer {
   position: absolute;
-  // top: 50%;
-  // transform: translateY(-50%);
+  z-index: 999;
   padding-top: 300px;
   float: left;
   width: 550px;
