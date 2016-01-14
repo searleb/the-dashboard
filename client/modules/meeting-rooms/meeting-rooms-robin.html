@@ -2,18 +2,18 @@
    <div id="meeting-rooms" class="container-fluid">
       <h1>Meeting Rooms</h1>
       {{#unless room}}
-      {{> loading}}
+         {{> loading}}
       {{/unless}}
       {{#each room}}
       <div class="col-20">
          {{#with space}}
-         <h1>{{name}}</h1>
+            <h1>{{name}}</h1>
          {{/with}}
 
          {{#if bookings}}
          <ul class="list-group">
             {{#each bookings}}
-            <li class="list-group-item {{isInSession started_at ended_at}}">
+            <li class="list-group-item {{isInSession started_at ended_at id}}">
                <div class="session-notice">
                   <span class="icon icon-clock"></span>
                   <small>Session in progress.</small>
@@ -22,9 +22,9 @@
                <h4>{{title}}</h4>
 
                {{#each invitees}}
-               {{#if display_name}}
-               <small><span class="icon icon-dot-single"></span> {{display_name}}</small>
-               {{/if}}
+                  {{#if display_name}}
+                  <small><span class="icon icon-dot-single"></span> {{display_name}}</small>
+                  {{/if}}
                {{/each}}
 
                <span class="list-group-progress" style="width: {{progress started_at ended_at id}}%;"></span>

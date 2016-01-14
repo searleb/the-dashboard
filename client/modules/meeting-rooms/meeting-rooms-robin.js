@@ -2,7 +2,12 @@ Template.meetingRooms.onCreated(function(){
    function getRooms() {
       console.log('getRooms');
       var robinFeed = Meteor.call('getRobinRooms', function (err, data) {
-         Session.set('meetingRooms', data);
+         if (err) {
+            Session.set('meetingRooms', err);
+         } else {
+            Session.set('meetingRooms', data);
+            console.log(data);
+         }
       });
    }
 
@@ -21,7 +26,7 @@ Template.meetingRooms.helpers({
    },
    // returns a percentage progress of the current booking
    progress: function(start, end, id){
-      Meteor.setInterval(function(){
+      (function getProgress(){
          var now = moment();
          var starting = moment(start);
          var ending = moment(end);
@@ -33,21 +38,33 @@ Template.meetingRooms.helpers({
 
             Session.set('progress-percent' + id, percentage);
          }
-      }, 1000);
+      })();
+
+      Meteor.setInterval(function(){
+         getProgress();
+      }, 1000 * 30);
 
       return Session.get('progress-percent' + id);
    },
    // returns a class name if the booking is in session or not
-   isInSession: function (start, end) {
-      var now = moment();
-      var starting = moment(start);
-      var ending = moment(end);
+   isInSession: function (start, end, id) {
+      (function getIsSession() {
+         var now = moment();
+         var starting = moment(start);
+         var ending = moment(end);
+         var className;
+         if (starting <= now && ending >= now) {
+            Session.set('is-session-class' + id, 'in-session');
+         } else {
+            Session.set('is-session-class' + id, 'not-in-session');
+         }
+      })();
 
-      if (starting <= now && ending >= now) {
-         return 'in-session';
-      } else {
-         return 'not-in-session';
-      }
+      Meteor.setInterval(function () {
+         getIsSession();
+      }, 1000 * 30);
+
+      return Session.get('is-session-class' + id);
    },
    whatsFree: function () {
       var robinFeed = Meteor.call('whatsFree', function (err, data) {
