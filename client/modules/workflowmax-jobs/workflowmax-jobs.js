@@ -6,29 +6,24 @@ Template.workflowmaxJobs.onCreated(function(){
         } else {
             Session.set('jobList', data);
         }
+        console.log(Session.get('jobList'));
     });
 });
 
-// Template.workflowmaxJobs.onRendered(function(){
-//     // call the tablesorter plugin
-//     $(document).ready(function() {
-//         $("#current-jobs-table").tablesorter({
-//             // Sort on the first column (client name), in ascending order
-//             // then third column (job number), in ascending order
-//             sortList: [[0,0], [2,0]]
-//         });
-//     });
-// });
+Template.workflowmaxJobs.onRendered(function(){
+   Tracker.autorun(function () {
+      var fields = Session.get('customFields');
+      $("#current-jobs-table").tablesorter({
+         // Sort on the first column (client name), in ascending order
+         // then third column (job number), in ascending order
+         sortList: [[0,0], [2,0]]
+      });
+   });
+});
 
 Template.workflowmaxJobs.helpers({
     jobList: function() {
         var jobList = Session.get('jobList');
-        $("#current-jobs-table").tablesorter({
-            // Sort on the first column (client name), in ascending order
-            // then third column (job number), in ascending order
-            sortList: [[0,0], [2,0]]
-        });
-        console.log(jobList);
         return jobList;
     },
     customFields: function() {
