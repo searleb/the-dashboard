@@ -1,3 +1,4 @@
+
 Template.meetingRooms.onCreated(function(){
    function getRooms() {
       console.log('getRooms');
@@ -9,6 +10,7 @@ Template.meetingRooms.onCreated(function(){
             console.log(data);
          }
       });
+
    }
 
    // call getRooms and update every 5 minutes
@@ -20,13 +22,42 @@ Template.meetingRooms.onCreated(function(){
 
 });
 
+Template.roomsCalendar.helpers({
+   allBookings: function() {
+      var rooms = Session.get('meetingRooms');
+      var events = [];
+
+      _.each(rooms, function (room) {
+         _.each(room.bookings, function (booking) {
+            var obj = {
+               title: booking.location + " - " + booking.title,
+               start: moment(booking.started_at).format(),
+               end: moment(booking.ended_at).format(),
+               allDay: booking.is_all_day
+            };
+            events.push(obj);
+            // console.log(events);
+         });
+      });
+      console.log(events);
+
+      return {
+         defaultView: 'agendaDay',
+         minTime: '07:00',
+         maxTime: '21:00',
+         slotEventOverlap: false,
+         events: events
+      };
+   }
+});
+
 Template.meetingRooms.helpers({
    room: function () {
       return Session.get('meetingRooms');
    },
    // returns a percentage progress of the current booking
    progress: function(start, end, id){
-      (function getProgress(){
+      function getProgress(){
          var now = moment();
          var starting = moment(start);
          var ending = moment(end);
@@ -38,8 +69,9 @@ Template.meetingRooms.helpers({
 
             Session.set('progress-percent' + id, percentage);
          }
-      })();
+      }
 
+      getProgress();
       Meteor.setInterval(function(){
          getProgress();
       }, 1000 * 30);
@@ -48,7 +80,7 @@ Template.meetingRooms.helpers({
    },
    // returns a class name if the booking is in session or not
    isInSession: function (start, end, id) {
-      (function getIsSession() {
+      function getIsSession() {
          var now = moment();
          var starting = moment(start);
          var ending = moment(end);
@@ -58,8 +90,9 @@ Template.meetingRooms.helpers({
          } else {
             Session.set('is-session-class' + id, 'not-in-session');
          }
-      })();
+      }
 
+      getIsSession();
       Meteor.setInterval(function () {
          getIsSession();
       }, 1000 * 30);

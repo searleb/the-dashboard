@@ -4,6 +4,7 @@
       {{#unless room}}
          {{> loading}}
       {{/unless}}
+
       {{#each room}}
       <div class="col-20">
          {{#with space}}
@@ -36,5 +37,11 @@
          {{/if}}
       </div>
       {{/each}}
+
+      <div class="col-sm-12">
+         {{#if room}}
+            {{>roomsCalendar}}
+         {{/if}}
+      </div>
    </div>
 </template>
