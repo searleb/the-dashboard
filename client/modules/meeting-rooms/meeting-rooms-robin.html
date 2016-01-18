@@ -13,7 +13,7 @@
          {{#if bookings}}
          <ul class="list-group">
             {{#each bookings}}
-            <li class="list-group-item {{isInSession started_at ended_at id}}">
+            <li class="list-group-item {{isInSession id}}">
                <div class="session-notice">
                   <span class="icon icon-clock"></span>
                   <small>Session in progress.</small>
@@ -27,7 +27,7 @@
                   {{/if}}
                {{/each}}
 
-               <span class="list-group-progress" style="width: {{progress started_at ended_at id}}%;"></span>
+               <span class="list-group-progress" style="width: {{progressPercent id}}%;"></span>
             </li>
             {{/each}}
          </ul>
