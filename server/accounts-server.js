@@ -1,7 +1,16 @@
 // restrict signups to only @mentallyfriendly.com email addresses
 Meteor.startup(function () {
    Accounts.config({
-      restrictCreationByEmailDomain: 'mentallyfriendly.com'
+      restrictCreationByEmailDomain: function(email) {
+         var domain = email.slice(email.lastIndexOf("@")+1); // or regex
+         var allowed = ["mentallyfriendly.com", "branddata.com", "digitaleskimo.net"];
+         var oneOfOurs = _.contains(allowed, domain);
+         if (oneOfOurs) {
+            return true;
+         } else {
+            return false;
+         }
+      }
    });
 });
 
@@ -22,9 +31,10 @@ Meteor.publish("userData", function () {
          { fields: {
             'services.google.picture': 1,
             'services.google.accessToken': 1,
-            'services.google.email': 1 }
-         });
-      } else {
-         this.ready();
-      }
-   });
+            'services.google.email': 1
+         }
+      });
+   } else {
+      this.ready();
+   }
+});
