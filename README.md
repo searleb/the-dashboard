@@ -22,9 +22,9 @@ To add your new _*example*.SCSS to the project you will need to import it via cl
 - [ ] WorkflowMax
   - [x] Colour code by hours logged
   - [x] Add support for LDN
-  - [ ] Add date to day
+  - [x] Add date to day
   - [ ] Update button or mayb poll every few hours
-- [] Calendar
+- [ ] Calendar
   - [x] Restyle
   - [x] Indicate/grey out past event
 - [ ] Search Drive / Wiki
@@ -38,7 +38,7 @@ To add your new _*example*.SCSS to the project you will need to import it via cl
 - [ ] Medium Feed
  - [x] Style
  - [x] Limit results list
-- [ ] Create sign in /loading page
+- [x] Create sign in /loading page
 - [ ] Deployment stuff
- - [ ] Remove Autopublish and Insecure then fix everything that breaks
+ - [x] Remove Autopublish and Insecure then fix everything that breaks
  - [ ] Maybe set up [settings.json](https://themeteorchef.com/snippets/making-use-of-settings-json/)
