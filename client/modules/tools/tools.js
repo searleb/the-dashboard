@@ -11,6 +11,7 @@ function activeTheButton(userRole) {
 Template.tools.onRendered(function () {
     var userRole = Session.get("userRole");
     activeTheButton(userRole);
+    showSelectedList(userRole);
 });
 
 Template.tools.onCreated( function(){
