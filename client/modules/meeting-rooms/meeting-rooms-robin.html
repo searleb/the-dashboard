@@ -7,30 +7,32 @@
       {{#each room}}
       <div class="col-20">
          {{#with space}}
-            <h1>{{name}}</h1>
+            <!-- <pre>{{id}}</pre> -->
+            <h1>{{name}} <img src="{{image}}" class="img-rounded img-responsive" /></h1>
+            <a href="https://dashboard.robinpowered.com/mfsyd/locations/1548/spaces/{{id}}/details" target="_blank">Book me</a>
          {{/with}}
 
          {{#if bookings}}
-         <ul class="list-group">
-            {{#each bookings}}
-            <li class="list-group-item {{isInSession id}}">
-               <div class="session-notice">
-                  <span class="icon icon-clock"></span>
-                  <small>Session in progress.</small>
-               </div>
-               <h5>{{formatTime started_at 'h:mma'}} - {{formatTime ended_at 'h:mma'}} {{formatTime started_at 'Do MMM'}}</h5>
-               <h4>{{title}}</h4>
+            <ul class="list-group">
+               {{#each bookings}}
+               <li class="list-group-item {{isInSession id}}">
+                  <div class="session-notice">
+                     <span class="icon icon-clock"></span>
+                     <small>Session in progress.</small>
+                  </div>
+                  <h5>{{formatTime started_at 'h:mma'}} - {{formatTime ended_at 'h:mma'}} {{formatTime started_at 'Do MMM'}}</h5>
+                  <h4>{{title}}</h4>
 
-               {{#each invitees}}
-                  {{#if display_name}}
-                  <small><span class="icon icon-dot-single"></span> {{display_name}}</small>
-                  {{/if}}
+                  {{#each invitees}}
+                     {{#if display_name}}
+                     <small><span class="icon icon-dot-single"></span> {{display_name}}</small>
+                     {{/if}}
+                  {{/each}}
+
+                  <span class="list-group-progress" style="width: {{progressPercent id}}%;"></span>
+               </li>
                {{/each}}
-
-               <span class="list-group-progress" style="width: {{progressPercent id}}%;"></span>
-            </li>
-            {{/each}}
-         </ul>
+            </ul>
          {{else}}
             <h3>No Bookings</h3>
          {{/if}}

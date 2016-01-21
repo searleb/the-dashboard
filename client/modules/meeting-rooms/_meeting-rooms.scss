@@ -1,28 +1,43 @@
 #meeting-rooms{
-    .col-20{
-        float: left;
-        width: 100%;
-        display: inline-block;
-        padding: 5px;
-        @media #{$media-lg}{
-            width: 20%;
-        }
-    }
-    .list-group-item{
-        &.not-in-session{
-            .session-notice{
-                display: none;
-            }
-        }
-        &.in-session{
-            .session-notice{
-                display: block;
-                color: $brand-danger;
-            }
-        }
-    }
-    .list-group-progress{
-        transition: all 0.2s ease;
-
-    }
+   img{
+      width: 45px;
+      height: 45px;
+      display: inline-block;
+   }
+   .col-20{
+      float: left;
+      width: 100%;
+      display: inline-block;
+      padding: 5px;
+      @media #{$media-lg}{
+         width: 20%;
+      }
+      h1{
+         background-position: bottom;
+         background-repeat: no-repeat;
+         background-size: cover;
+      }
+      h5{
+         font-style: italic;
+      }
+   }
+   .list-group-item{
+      .session-notice{
+         display: none;
+      }
+      &.not-in-session{
+         .session-notice{
+            display: none;
+         }
+      }
+      &.in-session{
+         .session-notice{
+            display: block;
+            color: $brand-danger;
+         }
+      }
+   }
+   .list-group-progress{
+      transition: all 0.2s ease;
+   }
 }

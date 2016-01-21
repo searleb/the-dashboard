@@ -1,11 +1,28 @@
 Template.meetingRooms.onCreated(function(){
    // onCreated we call for all the rooms details and set it into Session
+   var roomsComplete;
    function getRooms() {
       var robinFeed = Meteor.call('getRobinRooms', function (err, data) {
          if (err) {
             Session.set('meetingRooms', err);
          } else {
             Session.set('meetingRooms', data);
+            // this is garbage
+            //    roomsComplete = data;
+            //    console.log(roomsComplete);
+            //    var rooms = data;
+            //    _.each(rooms, function (room) {
+            //       var id = room.space.id;
+            //       Meteor.call('whatsFree', id, function (err, data) {
+            //          if (err) {
+            //             console.log(err);
+            //          } else {
+            //             roomsComplete.whatsFree = data;
+            //             console.log(roomsComplete);
+            //          }
+            //       });
+            //    });
+            //    Session.set('meetingRooms', roomsComplete);
          }
       });
    }
@@ -15,7 +32,7 @@ Template.meetingRooms.onCreated(function(){
       if (tabIsFocused) {
          getRooms();
       }
-   }, (1000 * 60) * 5);
+   }, 1000 * 30);
 
    getRooms();
 });
@@ -79,7 +96,7 @@ Template.meetingRooms.onRendered(function () {
       if (tabIsFocused) {
          updateBooking();
       }
-   }, 1000 * 2);
+   }, 1000 * 5);
    updateBooking();
 
 });
@@ -97,12 +114,11 @@ Template.meetingRooms.helpers({
    isInSession: function (id) {
       return Session.get('is-session-class' + id);
    },
-   whatsFree: function () {
-      var robinFeed = Meteor.call('whatsFree', function (err, data) {
-         Session.set('whatsFree', data);
-      });
-      var test = Session.get('whatsFree');
-      console.log(test);
-      return Session.get('whatsFree');
+   isTomorrow: function (id) {
+      return Session.get('is-session-class' + id);
    }
+   // whatsFree: function(id) {
+   //    console.log(id, Session.get('whatsFree' + id));
+   //    return Session.get('whatsFree');
+   // }
 });
