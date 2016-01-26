@@ -1,9 +1,12 @@
+//Google fonts
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
 // @import "toolkit-light.min.scss";
 @import "toolkit-inverse.min.scss";
 @import "variables";
 @import "variables-inverse";
 @import "the-dashboard";
-@import "sidebar";
+@import "typography";
 
 // can't use varibles in @import statements :(
 @import "../modules/calendar/calendar";
@@ -17,4 +20,8 @@
 @import "../modules/login/login";
 @import "../modules/meeting-rooms/meeting-rooms";
 @import "../modules/settings-modal/settings-modal";
+<<<<<<< HEAD
+=======
+@import "../modules/sidebar/sidebar";
+>>>>>>> master
 @import "../modules/banter/banter";
