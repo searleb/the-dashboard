@@ -1,3 +1,7 @@
+Meteor.publish("episodes", function () {
+  return Episodes.find();
+});
+
 Audio.allow({
    insert: function(){
       return true;

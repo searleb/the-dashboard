@@ -2,15 +2,21 @@
    <div id="friendly-banter">
 
       <div class="banter-container container-fluid">
+
+
          <div class="wrapper row">
             <div class="alpha col-md-12">
                <div class="info-outer">
+                 <div class="logo">
+                   <img src="diamond.svg">
+                 </div>
                   <h1>The Friendly Banter</h1>
                   <p>
                      An internal conversation on the happenings of Mentally Friendly.
                   </p>
 
-                  {{> episodeUpload}}
+                  <button type="button" class="btn btn-primary-outline" id="upload-ep">Add new episode</button>
+
 
                </div>
                <div class="scroll-area">
@@ -26,21 +32,9 @@
 
       {{> playAudio}}
 
+      {{> episodeUpload}}
    </div>
 </template>
-
-
-<template name="episodeUpload">
-   <form>
-      <span class="btn btn-default btn-file">
-         Browse <input type="file" id="file">
-         <input name="title" id="title" type="text" value="" placeholder="Name of Episode" class="form-control"/>
-         <input name="info" id="info" type="text" value="" placeholder="Description of Episode" class="form-control"/>
-         <input type="submit" class="btn btn-default">
-      </span>
-   </form>
-</template>
-
 
 <template name="playAudio">
    <div class="player-wrapper">
@@ -51,7 +45,7 @@
                <h3 class="episode-title">Digital Eskimos</h3>
             </div>
             <div class="audio-wrapper">
-               <audio id="player" src="" preload="auto" controls></audio>
+               <audio id="player" src="" preload="none" controls></audio>
             </div>
          </div>
       </div>
@@ -61,10 +55,10 @@
 
 <template name="episodeItem">
    <li>
-      <span class="episode-number">{{{_id}}}</span>
+      <span class="episode-number">Episode {{number}}</span>
       <h3 class="episode-title">{{title}}</h3>
       <button type="submit" class="btn btn-default btn-play" data-url="{{url}}">
-         <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Play
+         <i class="fa fa-play"></i><span>Play</span>
       </button>
       <div class="collapse" id="episode-info">
          <div class="info-inner">

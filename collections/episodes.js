@@ -14,3 +14,14 @@ Audio = new FS.Collection('audio', {
 });
 
 Episodes = new Meteor.Collection('episodes');
+
+Episodes.allow({
+  insert: function() {
+    return true;
+  }
+});
+
+
+if (Meteor.isClient) {
+  Meteor.subscribe("episodes");
+}
