@@ -41,8 +41,8 @@
       <div class="player">
          <div class="player-inner clearfix">
             <div class="player-info">
-               <span class="episode-number">Episode Three</span>
-               <h3 class="episode-title">Digital Eskimos</h3>
+               <span class="episode-number"></span>
+               <h3 class="episode-title"></h3>
             </div>
             <div class="audio-wrapper">
                <audio id="player" src="" preload="none" controls></audio>
@@ -57,7 +57,7 @@
    <li>
       <span class="episode-number">Episode {{number}}</span>
       <h3 class="episode-title">{{title}}</h3>
-      <button type="submit" class="btn btn-default btn-play" data-url="{{url}}">
+      <button type="submit" class="btn btn-default btn-play" data-url="{{url}}" data-number="{{number}}" data-title="{{title}}">
          <i class="fa fa-play"></i><span>Play</span>
       </button>
       <div class="collapse" id="episode-info">

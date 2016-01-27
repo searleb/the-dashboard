@@ -8,27 +8,32 @@ Template.episodeItem.events({
    'click .btn-play': function (e) {
      e.preventDefault();
 
-     var url = $('.btn-play').data("url");
+     var url = $(e.currentTarget).data("url");
+     var title = $(e.currentTarget).data("title");
+     var number = $(e.currentTarget).data("number");
      var audio;
 
-     if (!$('.btn-play').hasClass('playing')) {
+     if (!$(e.currentTarget).hasClass('playing')) {
 
        $('#player').audioPlayer();
        $("#player").attr("src", url);
+       $(".player-info span.episode-number").html("Episode" + '&nbsp;' + number);
+       $(".player-info h3.episode-title").html(title);
        audio = $("#player")[0];
 
-       $('.btn-play').addClass('playing');
-       $('.btn-play').find('span').html('Pause');
-       $('.btn-play').find('i').toggleClass('fa-play').toggleClass('fa-pause');
+
+       $(e.currentTarget).addClass('playing');
+       $(e.currentTarget).find('span').html('Pause');
+       $(e.currentTarget).find('i').toggleClass('fa-play').toggleClass('fa-pause');
        $('.player-wrapper').addClass('open');
        $('.audioplayer').addClass('audioplayer-playing');
        audio.play();
 
      } else {
        audio = $("#player")[0];
-       $('.btn-play').removeClass('playing');
-       $('.btn-play').find('span').html('Play');
-       $('.btn-play').find('i').toggleClass('fa-pause').toggleClass('fa-play');
+       $(e.currentTarget).removeClass('playing');
+       $(e.currentTarget).find('span').html('Play');
+       $(e.currentTarget).find('i').toggleClass('fa-pause').toggleClass('fa-play');
        $('.audioplayer').removeClass('audioplayer-playing');
        audio.pause();
       }
