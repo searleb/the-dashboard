@@ -1,5 +1,6 @@
-//Google fonts
+// google fonts
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 
 // @import "toolkit-light.min.scss";
 @import "toolkit-inverse.min.scss";
@@ -20,8 +21,6 @@
 @import "../modules/login/login";
 @import "../modules/meeting-rooms/meeting-rooms";
 @import "../modules/settings-modal/settings-modal";
-<<<<<<< HEAD
-=======
 @import "../modules/sidebar/sidebar";
->>>>>>> master
 @import "../modules/banter/banter";
+@import "../modules/loading/loading";

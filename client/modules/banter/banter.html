@@ -1,69 +1,75 @@
 <template name="friendlyBanter">
-  <div class="banter-container container-fluid">
-    <div class="wrapper row">
-      <div class="alpha col-md-12">
-        <div class="info-outer">
-          <h1>The Friendly Banter</h1>
-          <p>
-            An internal conversation on the happenings of Mentally Friendly.
-          </p>
+   <div id="friendly-banter">
 
-          {{> episodeUpload}}
+      <div class="banter-container container-fluid">
+         <div class="wrapper row">
+            <div class="alpha col-md-12">
+               <div class="info-outer">
+                  <h1>The Friendly Banter</h1>
+                  <p>
+                     An internal conversation on the happenings of Mentally Friendly.
+                  </p>
 
-        </div>
-        <div class="scroll-area">
-          <ul class="col-md-6">
-            {{#each episode}}
-              {{> episodeItem}}
-            {{/each}}
-          </ul>
-        </div>
+                  {{> episodeUpload}}
+
+               </div>
+               <div class="scroll-area">
+                  <ul class="col-md-6">
+                     {{#each episode}}
+                     {{> episodeItem}}
+                     {{/each}}
+                  </ul>
+               </div>
+            </div>
+         </div>
       </div>
-    </div>
-  </div>
 
-  {{> playAudio}}
+      {{> playAudio}}
 
+   </div>
 </template>
+
 
 <template name="episodeUpload">
-  <form>
-    <span class="btn btn-default btn-file">
-        Browse <input type="file" id="file">
-        <input name="title" id="title" type="text" value="" placeholder="Name of Episode" class="form-control"/>
-        <input name="info" id="info" type="text" value="" placeholder="Description of Episode" class="form-control"/>
-        <input type="submit" class="btn btn-default">
-    </span>
-  </form>
+   <form>
+      <span class="btn btn-default btn-file">
+         Browse <input type="file" id="file">
+         <input name="title" id="title" type="text" value="" placeholder="Name of Episode" class="form-control"/>
+         <input name="info" id="info" type="text" value="" placeholder="Description of Episode" class="form-control"/>
+         <input type="submit" class="btn btn-default">
+      </span>
+   </form>
 </template>
+
 
 <template name="playAudio">
-<div class="player-wrapper">
-  <div class="player">
-    <div class="player-inner clearfix">
-      <div class="player-info">
-        <span class="episode-number">Episode Three</span>
-        <h3 class="episode-title">Digital Eskimos</h3>
+   <div class="player-wrapper">
+      <div class="player">
+         <div class="player-inner clearfix">
+            <div class="player-info">
+               <span class="episode-number">Episode Three</span>
+               <h3 class="episode-title">Digital Eskimos</h3>
+            </div>
+            <div class="audio-wrapper">
+               <audio id="player" src="" preload="auto" controls></audio>
+            </div>
+         </div>
       </div>
-      <div class="audio-wrapper">
-        <audio id="player" src="" preload="auto" controls></audio>
-      </div>
-    </div>
-  </div>
-</div>
+   </div>
 </template>
 
+
 <template name="episodeItem">
-  <li>
-    <span class="episode-number">{{{_id}}}</span>
-    <h3 class="episode-title">{{title}}</h3>
-    <button type="submit" class="btn btn-default btn-play" data-url="{{url}}">
-      <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Play
-    </button>
-    <div class="collapse" id="episode-info">
-      <div class="info-inner">
-        {{info}}
+   <li>
+      <span class="episode-number">{{{_id}}}</span>
+      <h3 class="episode-title">{{title}}</h3>
+      <button type="submit" class="btn btn-default btn-play" data-url="{{url}}">
+         <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Play
+      </button>
+      <div class="collapse" id="episode-info">
+         <div class="info-inner">
+            {{info}}
+         </div>
       </div>
-    </div>
-  </li>
+   </li>
 </template>
