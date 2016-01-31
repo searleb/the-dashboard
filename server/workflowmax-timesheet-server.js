@@ -63,8 +63,7 @@ Meteor.startup(function() {
 
                     // each entry under the grouped date
                     _.each(el, function(el, index) {
-                        var hours = Math.round(el.minutes / 60);
-                        runningTotal += parseInt(hours);
+                        runningTotal += parseInt(el.minutes);
                     });
 
                     // format the date into day
@@ -72,7 +71,7 @@ Meteor.startup(function() {
 
                     // push the hours and day in to returnArray
                     returnArray.push({
-                        hours: runningTotal,
+                        hours: runningTotal / 60,
                         day: formattedDate
                     });
                 });
