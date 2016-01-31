@@ -3,7 +3,8 @@
         list-style: none;
         li{
             display: inline-block;
-            margin: 0px 5px;
+            margin: 5px 5px;
+            min-width: 72px;
             span{
                 display: block;
                 text-align: center;
@@ -11,12 +12,12 @@
                     margin-bottom: 5px;
                 }
                 &.hours{
-                    height: 44px;
-                    width: 44px;
-                    border-radius: 44px;
+                    height: 50px;
+                    width: 50px;
+                    border-radius: 50px;
                     border: 1px solid #ccc;
-                    font-size: 23px;
-                    line-height: 43px;
+                    font-size: 20px;
+                    line-height: 48px;
                     font-weight: 300;
                     margin: auto;
                     &.not-complete{
