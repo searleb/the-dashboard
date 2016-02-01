@@ -149,7 +149,7 @@ ui@1.0.8
 underscore@1.0.4
 url@1.0.5
 useraccounts:bootstrap@1.12.4
-useraccounts:core@1.12.4
+useraccounts:core@1.13.1
 webapp@1.2.3
 webapp-hashing@1.0.5
 wizonesolutions:underscore-string@1.0.0
