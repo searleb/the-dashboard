@@ -1,5 +1,5 @@
 Template.friendlyBanter.helpers({
-  episode: function () {
+  episodes: function () {
       return Episodes.find({}, {sort: {createdAt : -1}});
     }
 });
