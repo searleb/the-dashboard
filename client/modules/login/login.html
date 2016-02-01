@@ -2,17 +2,20 @@
    <div class="container" id="login">
       <div class="row">
          <div class="col-sm-12">
-            <h1>Home Sweet Home</h1>
-            <small class="animated jello"><em>Version 0.0.0.1</em></small>
-            <div>
-               {{#if currentUser}}
+            <div class="jumbotron">
+               <div class="page-header">
+                  <img src="mf-logo.png" alt="" class="img-responsive img-circle" />
+                  <h1>Home Sweet Home</h1>
+               </div>
+               <div>
+                  {{#if currentUser}}
                   <button id="logout" type="button" name="login-out" class="btn btn-lg btn-primary-outline">Logout</button>
-               {{else}}
+                  {{else}}
                   <button id="login" type="button" name="login-out" class="btn btn-lg btn-primary-outline">Login</button>
-               {{/if}}
+                  {{/if}}
+               </div>
             </div>
-            <p>If this is your first time logging in, please enter your user settings by clicking the <span class="icon icon-cog"></span> from the side bar.</p>
-            <small>Best on boarding eeever <span class="icon icon-emoji-flirt"></span></small>
+            <small class="pull-right"><em>Beta</em></small>
          </div>
       </div>
    </div>
