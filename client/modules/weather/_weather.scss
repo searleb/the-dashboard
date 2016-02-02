@@ -1,12 +1,21 @@
 #weather-template{
-    .studio-wrapper{
-        width: 49%;
-        display: inline-block;
-        vertical-align: top;
-    }
-    i{
-        font-size: 40px;
-        margin-right: 5px;
-        color: $white;
-    }
+   .studio-wrapper{
+      margin-bottom: 10px;
+   }
+   i{
+      margin-right: 2px;
+      color: $white;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;;
+      min-height: 25px;
+      min-width: 25px;
+      display: inline-block;
+      vertical-align: text-bottom;
+      @for $i from 1 through 60{
+         &.sw-#{$i}{
+            background-image: url(weather-icons/sw-#{$i}.svg);
+         }
+      }
+   }
 }

@@ -1,28 +1,91 @@
 <template name="weather">
-    <div id="weather-template" class="module">
-        <div class="studio-status">
-            <h2>Studio's</h2>
-            <div class="studio-wrapper">
-                <!-- Sydney -->
-                <h5>
-                    <a href="https://www.google.com.au/maps/place/Mentally+Friendly+PTY+Ltd./@-33.8894168,151.2012761,17z/data=!3m1!4b1!4m2!3m1!1s0x6b12ae16cd76e481:0xfeab5eb9c31828ed">
-                        Sydney
-                    </a>
-                </h5>
-                <h4 class="time-syd"></h4>
-                <div class="weather-syd"></div>
-            </div>
+   <div id="weather-template" class="module">
+      <div class="studio-status">
+         <h2>Studio's</h2>
 
-            <div class="studio-wrapper">
-                <!-- London -->
-                <h5>
-                    <a href="https://www.google.com.au/maps/place/201-203+City+Rd,+London+EC1V+1QH,+UK/@51.5278786,-0.093816,16z/data=!4m2!3m1!1s0x48761ca6fe40cbfd:0xefaf4992de619be4">
-                        London
-                    </a>
-                </h5>
-                <h4 class="time-ldn"></h4>
-                <div class="weather-ldn"></div>
-            </div>
-        </div>
-    </div>
+
+         <div class="studio-wrapper">
+            <!-- Sydney -->
+            <h4>Sydney - {{sydTime.time}}<small>{{sydTime.ampm}}</small></h4>
+
+            <div class="weather-syd">
+               {{#with sydWeather}}
+               <h2>
+                  {{temp}}<small>{{units}}</small>
+                  <small class="pull-right">
+                     <i class="sw-{{code}}"></i>
+                     {{currently}}
+                  </small>
+               </h2>
+               <!-- <span>
+               <i class="sw-54"></i>
+               {{sunset}}
+            </span>
+            <span>
+            <i class="sw-55"></i>
+            {{sunrise}}
+         </span> -->
+         <span>
+            <i class="sw-53"></i>
+            {{high}}<small>{{units}}</small>
+         </span>
+         <span>
+            <i class="sw-49"></i>
+            {{low}}<small>{{units}}</small>
+         </span>
+         {{/with}}
+
+
+      </div>
+      <address id="syd-address">
+         <small>
+            <a href="https://www.google.com.au/maps/place/Mentally+Friendly+PTY+Ltd./@-33.8894168,151.2012761,17z/data=!3m1!4b1!4m2!3m1!1s0x6b12ae16cd76e481:0xfeab5eb9c31828ed">
+               199 Cleveland St, Redfern NSW 2016, Aus
+            </a>
+         </small>
+      </address>
+   </div>
+
+
+
+   <div class="studio-wrapper">
+      <!-- London -->
+      <h4>London - {{ldnTime.time}}<small>{{ldnTime.ampm}}</small></h4>
+      <div class="weather-ldn">
+         {{#with ldnWeather}}
+         <h2>
+            {{temp}}<small>{{units}}</small>
+            <small class="pull-right">
+               <i class="sw-{{code}}"></i>
+               {{currently}}
+            </small>
+         </h2>
+         <!-- <span>
+         <i class="sw-54"></i>
+         {{sunset}}
+      </span>
+      <span>
+      <i class="sw-55"></i>
+      {{sunrise}}
+   </span> -->
+   <span>
+      <i class="sw-53"></i>
+      {{high}}<small>{{units}}</small>
+   </span>
+   <span>
+      <i class="sw-49"></i>
+      {{low}}<small>{{units}}</small>
+   </span>
+   {{/with}}
+</div>
+<address id="london-address">
+   <small>
+      <a href="https://www.google.com.au/maps/place/201-203+City+Rd,+London+EC1V+1QH,+UK/@51.5278786,-0.093816,16z/data=!4m2!3m1!1s0x48761ca6fe40cbfd:0xefaf4992de619be4">
+         201-203 City Rd, London EC1V 1JN, UK
+      </a>
+   </small>
+</address>
+</div>
+</div>
+</div>
 </template>
