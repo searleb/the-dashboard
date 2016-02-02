@@ -1,18 +1,18 @@
-Meteor.publish("episodes", function () {
-  return Episodes.find();
+Meteor.publish('audio', function () {
+  return Audio.find();
 });
 
 Audio.allow({
-   insert: function(){
+    insert: function () {
       return true;
-   },
-   update: function(){
+    },
+    remove: function () {
       return true;
-   },
-   remove: function(){
+    },
+    read: function () {
       return true;
-   },
-   download: function(){
+    },
+    write: function () {
       return true;
-   }
+    }
 });

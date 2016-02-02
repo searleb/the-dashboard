@@ -1,7 +1,16 @@
-Template.friendlyBanter.helpers({
-  episodes: function () {
-      return Episodes.find({}, {sort: {createdAt : -1}});
-    }
+Template.episodeItem.helpers ({
+  link: function () {
+    return Audio.baseURL + "/md5/" + this.md5;
+  },
+  title: function () {
+    return this.metadata.title;
+  },
+  number: function () {
+    return this.metadata.number;
+  },
+  description: function () {
+    return this.metadata.info;
+  }
 });
 
 Template.episodeItem.events({
