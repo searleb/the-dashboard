@@ -15,9 +15,9 @@
                     height: 50px;
                     width: 50px;
                     border-radius: 50px;
-                    border: 1px solid #ccc;
+                    border: 2px solid #ccc;
                     font-size: 20px;
-                    line-height: 48px;
+                    line-height: 46px;
                     font-weight: 300;
                     margin: auto;
                     &.not-complete{
@@ -26,6 +26,7 @@
                     }
                     &.complete{
                         border-color: $brand-success;
+                        color: $brand-success;
                     }
                 }
             }
