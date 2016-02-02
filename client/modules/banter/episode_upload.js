@@ -1,20 +1,28 @@
-Template.episodeUpload.events({
-   'submit form': function (e) {
-     e.preventDefault();
+Meteor.startup(function() {
 
-     var file = $('#file').get(0).files[0];
-     var fileObj = Audio.insert(file);
-     var title = $('#title').val();
-     var info = $('#info').val();
-     var episodeURL = '/cfs/files/audio/' + fileObj._id;
+ Audio.resumable.on('fileAdded', function (file) {
 
-     console.log('Upload result: ', fileObj);
+   var number = $('#number').val();
+   var title = $('#title').val();
+   var info = $('#info').val();
 
-     Episodes.insert({
+   Audio.insert({
+     _id: file.uniqueIdentifier,
+     filename: file.fileName,
+     contentType: file.file.type,
+     metadata: {
+       number: number,
        title: title,
-       file: fileObj,
-       info: info,
-       url: episodeURL
-     });
-   }
+       info: info
+       }
+     },
+     function (err, _id) {  // Callback to .insert
+       if (err) { return console.error("File creation failed!", err); }
+       // Once the file exists on the server, start uploading
+       Audio.resumable.upload();
+     }
+
+   );
  });
+
+});

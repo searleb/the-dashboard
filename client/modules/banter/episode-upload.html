@@ -1,0 +1,55 @@
+<template name="episodeUpload">
+    <div class="modal" id="upload-modal">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Upload Episode</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form class="upload">
+
+                      <div class="hr-divider">
+                          <h3 class="hr-divider-content hr-divider-heading">
+                              Choose File
+                          </h3>
+                      </div>
+
+                    <a class="inverse small" id="browseButton">+ Add Files</a>
+
+                      <div class="hr-divider">
+                          <h3 class="hr-divider-content hr-divider-heading">
+                              Episode Number
+                          </h3>
+                      </div>
+
+                      <input name="number" id="number" type="text" value="" placeholder="Number in words (i.e One)" class="form-control"/>
+
+                      <div class="hr-divider">
+                          <h3 class="hr-divider-content hr-divider-heading">
+                              Episode Name
+                          </h3>
+                      </div>
+
+                      <input name="title" id="title" type="text" value="" placeholder="Name of episode" class="form-control"/>
+
+                      <div class="hr-divider">
+                          <h3 class="hr-divider-content hr-divider-heading">
+                              Episode Description
+                          </h3>
+                      </div>
+
+                      <input name="info" id="info" type="text" value="" placeholder="Description of episode" class="form-control"/>
+
+                    </form>
+
+                </div>
+                <div class="modal-actions">
+                    <button type="submit" class="btn-link modal-action" data-dismiss="modal">Upload</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</template>
