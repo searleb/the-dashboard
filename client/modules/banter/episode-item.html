@@ -1,0 +1,14 @@
+<template name="episodeItem">
+   <li>
+      <span class="episode-number">Episode {{number}}</span>
+      <h3 class="episode-title">{{title}}</h3>
+      <button type="submit" class="btn btn-default btn-play" data-url="{{link}}" data-number="{{number}}" data-title="{{title}}">
+         <i class="fa fa-play"></i><span>Play</span>
+      </button>
+      <div class="collapse" id="episode-info">
+         <div class="info-inner">
+            {{description}}
+         </div>
+      </div>
+   </li>
+</template>

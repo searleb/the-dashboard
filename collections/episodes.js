@@ -11,8 +11,3 @@ Audio = new FileCollection('audio',
     ]
   }
 );
-
-
-if (Meteor.isClient) {
-  Meteor.subscribe('audio');
-}
