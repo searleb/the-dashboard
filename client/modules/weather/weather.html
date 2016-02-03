@@ -10,6 +10,11 @@
                   <h3 class="temp vertical-align">
                      {{temp}}<small>{{units}}</small>
                   </h3>
+                  <br>
+                  <h6>
+                     <small class="delta-indicator delta-positive">{{high}}</small>
+                     <small class="delta-indicator delta-negative">{{low}}</small>
+                  </h6>
                </div>
 
                <div class="col-xs-4">
@@ -21,8 +26,7 @@
 
                <div class="col-xs-4">
                   <div class="vertical-align text-center">
-                     <i class="sw-{{code}}" alt="{{currently}}"></i>
-                     <br>
+                     <i class="icon-{{code}}" alt="{{currently}}"></i>
                      <small>{{currently}}</small>
                   </div>
                </div>
@@ -50,11 +54,15 @@
       <div class="studio-wrapper">
          {{#with ldnWeather}}
             <div class="row">
-
                <div class="col-xs-4">
                   <h3 class="temp vertical-align">
                      {{temp}}<small>{{units}}</small>
                   </h3>
+                  <br>
+                  <h6>
+                     <small class="delta-indicator delta-positive">{{high}}</small>
+                     <small class="delta-indicator delta-negative">{{low}}</small>
+                  </h6>
                </div>
 
                <div class="col-xs-4">
@@ -66,8 +74,7 @@
 
                <div class="col-xs-4">
                   <div class="vertical-align text-center">
-                     <i class="sw-{{code}}" alt="{{currently}}"></i>
-                     <br>
+                     <i class="icon-{{code}}" alt="{{currently}}"></i>
                      <small>{{currently}}</small>
                   </div>
                </div>
