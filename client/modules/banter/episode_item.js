@@ -1,51 +1,43 @@
 Template.episodeItem.helpers ({
-  link: function () {
-    return Audio.baseURL + "/md5/" + this.md5;
-  },
-  title: function () {
-    return this.metadata.title;
-  },
-  number: function () {
-    return this.metadata.number;
-  },
-  description: function () {
-    return this.metadata.info;
-  }
+   link: function () {
+      return Audio.baseURL + "/md5/" + this.md5;
+   },
+   title: function () {
+      return this.metadata.title;
+   },
+   number: function () {
+      return this.metadata.number;
+   },
+   description: function () {
+      return this.metadata.info;
+   }
 });
 
 Template.episodeItem.events({
    'click .btn-play': function (e) {
-     e.preventDefault();
+      e.preventDefault();
 
-     var url = $(e.currentTarget).data("url");
-     var title = $(e.currentTarget).data("title");
-     var number = $(e.currentTarget).data("number");
-     var audio;
+      var $button = $(e.currentTarget);
+      var url = Audio.baseURL + "/md5/" + this.md5;
+      var title = this.metadata.title;
+      var number = this.metadata.number;
+      var audioPlayer = $("#player")[0];
 
-     if (!$(e.currentTarget).hasClass('playing')) {
-
-       $('#player').audioPlayer();
-       $("#player").attr("src", url);
-       $(".player-info span.episode-number").html("Episode" + '&nbsp;' + number);
-       $(".player-info h3.episode-title").html(title);
-       audio = $("#player")[0];
-
-
-       $(e.currentTarget).addClass('playing');
-       $(e.currentTarget).find('span').html('Pause');
-       $(e.currentTarget).find('i').toggleClass('fa-play').toggleClass('fa-pause');
-       $('.player-wrapper').addClass('open');
-       $('.audioplayer').addClass('audioplayer-playing');
-       audio.play();
-
-     } else {
-       audio = $("#player")[0];
-       $(e.currentTarget).removeClass('playing');
-       $(e.currentTarget).find('span').html('Play');
-       $(e.currentTarget).find('i').toggleClass('fa-pause').toggleClass('fa-play');
-       $('.audioplayer').removeClass('audioplayer-playing');
-       audio.pause();
-      }
-
+      // open the player
+      $('.player-wrapper').addClass('open');
+      // set the audio player source
+      $("#player").attr("src", url);
+      // set the player episode number
+      $(".player-info span.episode-number").html("Episode" + '&nbsp;' + number);
+      // set the player title
+      $(".player-info h3.episode-title").html(title);
+      // mimic the plugin and add playing class
+      $('.audioplayer').addClass('audioplayer-playing');
+      // start the loaded track
+      audioPlayer.play();
+      // remove any other active classes
+      $('.scroll-area li').removeClass('active');
+      // then add active class to playing li item
+      $button.parent('li').addClass('active');
    }
- });
+});

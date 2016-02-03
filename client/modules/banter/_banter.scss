@@ -17,21 +17,17 @@
    }
 
    .banter-container {
-      height: 100vh;
-      margin-left: 2%;
-      padding-right: 2%;
       background-color: #4FB9D7;
+      @media #{$media-sm}{
+         margin-left: 2%;
+         padding-right: 2%;
+      }
    }
 
    .wrapper {
       height: 100%;
    }
-   .alpha {
-      padding-right: 0px;
-      overflow: auto;
-      height: 100%;
-      overflow: hidden;
-   }
+
 
    .logo {
      width: 50px;
@@ -40,13 +36,14 @@
    // Info Copy
 
    .info-outer {
-      position: absolute;
-      z-index: 999;
-      padding-top: 300px;
-      float: left;
-      width: 550px;
-      margin: 0;
-
+      position: relative;
+      margin-top: 50px;
+      @media #{$media-sm}{
+         position: fixed;
+         top: calc(50% - 85px);
+         transform: translateY(-50%);
+         padding-right: 70px;
+      }
       h1 {
         font-family: 'Montserrat';
          font-size: 48px;
@@ -103,18 +100,10 @@ input[readonly] {
    //Podcast Items
 
    .scroll-area {
-      position: relative;
-      height: 100%;
-      overflow-y: scroll;
-      overflow-x: hidden;
-      // padding-top: calc(100% / 4);
-      padding-top: 325px;
-      // padding-left: 120px;
       font-family: 'Montserrat';
-
       ul {
-         float: right;
-         padding-bottom: 100px;
+         margin-bottom: 150px;
+         margin-top: 100px;
       }
    }
 
@@ -122,15 +111,17 @@ input[readonly] {
       font-family: 'Montserrat';
       position: relative;
       list-style: none;
-      width: 80%;
+      width: 100%;
       background: #FFFFFF;
-      float: left;
       box-shadow: 1px 22px 22px 0px rgba(0,0,0,0.12);
       border-radius: 5px;
       margin-bottom: 2em;
       cursor: default;
       padding: 16px;
       transition: .3s all ease-in-out;
+      @media #{$media-md}{
+          width: 80%;
+      }
 
       .btn {
          text-transform: uppercase;
@@ -157,7 +148,7 @@ input[readonly] {
       }
    }
 
-   .scroll-area li:not(:first-child) {
+   .scroll-area li {
       background: transparent;
       box-shadow: none;
       opacity: .6;
@@ -167,11 +158,11 @@ input[readonly] {
       }
    }
 
-   .scroll-area li:not(:first-child) .episode-title {
+   .scroll-area li .episode-title {
       color: #FFFFFF;
    }
 
-   .scroll-area li:hover {
+   .scroll-area li:hover, .scroll-area li.active {
       background: #FFFFFF;
       box-shadow: 1px 22px 22px 0px rgba(0,0,0,0.12);
       transition: .2s all ease-in-out;
@@ -182,7 +173,13 @@ input[readonly] {
       }
    }
 
-   .scroll-area li:hover .episode-title {
+   .scroll-area li.active{
+      h3{
+         color: #0AC0C2;
+      }
+   }
+
+   .scroll-area li:hover .episode-title, .scroll-area li.active {
       color: #0AC0C2;
 
       &:hover {
@@ -445,7 +442,6 @@ input[readonly] {
    }
    .audioplayer-volume
    {
-      display: none;
       width: 2.5em; /* 40 */
       height: 100%;
       border-left: 1px solid #111;
@@ -455,12 +451,12 @@ input[readonly] {
       cursor: pointer;
       z-index: 2;
       top: 0;
-      right: 0;
+      right: -50px;
    }
    .audioplayer-volume:hover,
    .audioplayer-volume:focus
    {
-      background-color: #222;
+      background-color: #ffffff;
    }
    .audioplayer-volume-button
    {
@@ -471,7 +467,7 @@ input[readonly] {
    {
       width: 0.313em; /* 5 */
       height: 0.375em; /* 6 */
-      background-color: #fff;
+      background-color: #0AC0C2;
       display: block;
       position: relative;
       z-index: 1;
@@ -490,7 +486,7 @@ input[readonly] {
       height: 0;
       border: 0.5em solid transparent; /* 8 */
       border-left: none;
-      border-right-color: #fff;
+      border-right-color: #0AC0C2;
       z-index: 2;
       top: 50%;
       right: -0.25em;
@@ -501,7 +497,7 @@ input[readonly] {
       /* "volume" icon by Nicolas Gallagher, http://nicolasgallagher.com/pure-css-gui-icons */
       width: 0.313em; /* 5 */
       height: 0.313em; /* 5 */
-      border: 0.25em double #fff; /* 4 */
+      border: 0.25em double #0AC0C2; /* 4 */
       border-width: 0.25em 0.25em 0 0; /* 4 */
       left: 0.563em; /* 9 */
       top: -0.063em; /* 1 */
@@ -522,13 +518,7 @@ input[readonly] {
       left: 0;
       right: -1px;
       top: -9999px;
-      background: #222;
-      background: -webkit-gradient( linear, left top, left bottom, from( #444 ), to( #222 ) );
-      background: -webkit-linear-gradient( top, #444, #222 );
-      background: -moz-linear-gradient( top, #444, #222 );
-      background: -ms-radial-gradient( top, #444, #222 );
-      background: -o-linear-gradient( top, #444, #222 );
-      background: linear-gradient( top, #444, #222 );
+      background: #ffffff;
       -webkit-border-top-left-radius: 2px;
       -webkit-border-top-right-radius: 2px;
       -moz-border-radius-topleft: 2px;
@@ -549,11 +539,12 @@ input[readonly] {
    {
       width: 40%;
       height: 80%;
-      background-color: #222;
+      background-color: #ffffff;
       cursor: pointer;
       position: relative;
       z-index: 1;
       margin: 30% auto 0;
+      border: 1px solid #0AC0C2;
    }
    .audioplayer-volume-adjust div div
    {
@@ -562,13 +553,13 @@ input[readonly] {
       position: absolute;
       bottom: 0;
       left: 0;
-      background: #007fd1;
-      background: -webkit-gradient( linear, left bottom, left top, from( #007fd1 ), to( #c600ff ) );
-      background: -webkit-linear-gradient( bottom, #007fd1, #c600ff );
-      background: -moz-linear-gradient( bottom, #007fd1, #c600ff );
-      background: -ms-radial-gradient( bottom, #007fd1, #c600ff );
-      background: -o-linear-gradient( bottom, #007fd1, #c600ff );
-      background: linear-gradient( bottom, #007fd1, #c600ff );
+      background: #0AC0C2;
+      // background: -webkit-gradient( linear, left bottom, left top, from( #007fd1 ), to( #c600ff ) );
+      // background: -webkit-linear-gradient( bottom, #007fd1, #c600ff );
+      // background: -moz-linear-gradient( bottom, #007fd1, #c600ff );
+      // background: -ms-radial-gradient( bottom, #007fd1, #c600ff );
+      // background: -o-linear-gradient( bottom, #007fd1, #c600ff );
+      // background: linear-gradient( bottom, #007fd1, #c600ff );
    }
    .audioplayer-novolume .audioplayer-volume
    {
@@ -579,11 +570,11 @@ input[readonly] {
    .audioplayer-pause,
    .audioplayer-volume a
    {
-      -webkit-filter: drop-shadow( 1px 1px 0 #000 );
-      -moz-filter: drop-shadow( 1px 1px 0 #000 );
-      -ms-filter: drop-shadow( 1px 1px 0 #000 );
-      -o-filter: drop-shadow( 1px 1px 0 #000 );
-      filter: drop-shadow( 1px 1px 0 #000 );
+      // -webkit-filter: drop-shadow( 1px 1px 0 #0AC0C2 );
+      // -moz-filter: drop-shadow( 1px 1px 0 #0AC0C2 );
+      // -ms-filter: drop-shadow( 1px 1px 0 #0AC0C2 );
+      // -o-filter: drop-shadow( 1px 1px 0 #0AC0C2 );
+      // filter: drop-shadow( 1px 1px 0 #0AC0C2 );
    }
    .audioplayer-bar,
    .audioplayer-bar div,

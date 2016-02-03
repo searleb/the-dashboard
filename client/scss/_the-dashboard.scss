@@ -25,3 +25,10 @@ ul{
 .module{
    margin-bottom: 60px;
 }
+
+.vertical-align {
+   margin: 0;
+   position: relative;
+   top: 50%;
+   transform: translateY(-50%);
+}

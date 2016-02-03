@@ -27,7 +27,6 @@ Template.weather.onCreated(function(){
          location: 'Sydney, AUS',
          unit: 'c',
          success: function(weather) {
-            console.log(weather);
             var sydWeather = {
                "currently": weather.currently,
                "high": weather.high,
@@ -52,7 +51,6 @@ Template.weather.onCreated(function(){
          location: 'London, UK',
          unit: 'c',
          success: function(weather) {
-            console.log(weather);
             var ldnWeather = {
                "currently": weather.currently,
                "high": weather.high,
