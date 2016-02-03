@@ -3,8 +3,8 @@
       <h2>Studio's</h2>
 
       <!-- Sydney -->
+      {{#with sydWeather}}
       <div class="studio-wrapper">
-         {{#with sydWeather}}
             <div class="row">
                <div class="col-xs-4">
                   <h3 class="temp vertical-align">
@@ -46,13 +46,13 @@
                   </a>
                </small>
             </address>
-         {{/with}}
       </div>
+      {{/with}}
 
 
 
+      {{#with ldnWeather}}
       <div class="studio-wrapper">
-         {{#with ldnWeather}}
             <div class="row">
                <div class="col-xs-4">
                   <h3 class="temp vertical-align">
@@ -94,7 +94,7 @@
                   </a>
                </small>
             </address>
-         {{/with}}
       </div>
+      {{/with}}
    </div>
 </template>
