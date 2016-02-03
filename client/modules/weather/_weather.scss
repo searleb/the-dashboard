@@ -1,20 +1,43 @@
 #weather-template{
    .studio-wrapper{
-      margin-bottom: 10px;
-   }
-   i{
-      margin-right: 2px;
-      color: $white;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: contain;;
-      min-height: 25px;
-      min-width: 25px;
-      display: inline-block;
-      vertical-align: text-bottom;
-      @for $i from 1 through 60{
-         &.sw-#{$i}{
-            background-image: url(weather-icons/sw-#{$i}.svg);
+      text-align: center;
+      margin-bottom: 5px;
+      border-radius: 10px;
+      border: 1px solid $gray-darker;
+      padding: 5px;
+      svg{
+         fill: $white;
+         display: inline-block;
+         margin: auto;
+         vertical-align: middle;
+         width: 100%;
+      }
+      .col-xs-4{
+         padding: 0px;
+         height: 80px;
+      }
+      .vertical-align{
+         margin: 0;
+         position: relative;
+         top: 50%;
+         transform: translateY(-50%);
+      }
+      address{
+         margin-bottom: 5px;
+      }
+      i{
+         color: $white;
+         background-position: center;
+         background-repeat: no-repeat;
+         background-size: contain;;
+         min-height: 25px;
+         min-width: 35px;
+         display: inline-block;
+         vertical-align: text-bottom;
+         @for $i from 1 through 60{
+            &.sw-#{$i}{
+               background-image: url(weather-icons/sw-#{$i}.svg);
+            }
          }
       }
    }

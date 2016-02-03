@@ -3,15 +3,16 @@ Template.weather.onCreated(function(){
    Meteor.setInterval(function(){
       var time = moment();
       // Sydney
-      var timezoneSyd = moment.tz(time, 'Australia/Sydney').format("h:mm");
+      var timezoneSyd = moment.tz(time, 'Australia/Sydney').format("dddd | MMM Do | h:mm");
       var amPmSyd = moment.tz(time, 'Australia/Sydney').format("a");
       var sydTimeObj = {
          'time': timezoneSyd,
          'ampm': amPmSyd
       };
       Session.set("sydTime", sydTimeObj);
+
       // London
-      var timezoneLdn = moment.tz(time, 'Europe/London').format("h:mm");
+      var timezoneLdn = moment.tz(time, 'Europe/London').format("dddd | MMM Do | h:mm");
       var amPmLdn = moment.tz(time, 'Europe/London').format("a");
       var ldnTimeObj = {
          'time': timezoneLdn,
@@ -20,7 +21,7 @@ Template.weather.onCreated(function(){
       Session.set("ldnTime", ldnTimeObj);
    }, 1000);
 
-
+   // look up current Sydney weather
    function getSydWeather() {
       $.simpleWeather({
          location: 'Sydney, AUS',
@@ -35,7 +36,8 @@ Template.weather.onCreated(function(){
                "sunset": weather.sunset,
                "temp": weather.temp,
                "code": weather.code,
-               "units": weather.units.temp
+               "units": weather.units.temp,
+               "text": weather.text
             };
             Session.set("sydWeather", sydWeather);
          },
@@ -44,6 +46,7 @@ Template.weather.onCreated(function(){
          }
       });
    }
+   // look up current London weather
    function getLdnWeather() {
       $.simpleWeather({
          location: 'London, UK',
@@ -58,7 +61,8 @@ Template.weather.onCreated(function(){
                "sunset": weather.sunset,
                "temp": weather.temp,
                "code": weather.code,
-               "units": weather.units.temp
+               "units": weather.units.temp,
+               "text": weather.text
             };
             Session.set("ldnWeather", ldnWeather);
          },
@@ -68,12 +72,13 @@ Template.weather.onCreated(function(){
       });
    }
 
+   // run weather functions and re-run every 20 mins
    getSydWeather();
    getLdnWeather();
    Meteor.setTimeout(function(){
       getSydWeather();
       getLdnWeather();
-   }, (1000 * 60) * 30);
+   }, (1000 * 60) * 20);
 
 
 });
