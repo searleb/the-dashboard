@@ -1,6 +1,6 @@
 Template.friendlyBanter.helpers({
    episodes: function () {
-      return Audio.find({});
+      return Audio.find({}, {sort: {uploadDate: -1}});
    }
 });
 
@@ -66,12 +66,9 @@ Template.friendlyBanter.onRendered(function (argument) {
    //    $('.latest').css("opacity","1");
    // });
    //
-   $('.scroll-area ul li').last().addClass('active');
 
-   Meteor.setTimeout(function(){
-      $("html, body").animate({ scrollTop: $(document).height() }, 1200, 'swing');
-   }, 750);
-
+   //set first list item to active
+   $('.scroll-area ul li').first().addClass('active');
 
    $(document).on({
       mouseenter: function () {

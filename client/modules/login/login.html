@@ -8,10 +8,18 @@
                   <h1>Home Sweet Home</h1>
                </div>
                <div>
-                  {{#if currentUser}}
-                  <button id="logout" type="button" name="login-out" class="btn btn-lg btn-primary-outline">Logout</button>
+                  {{#if loginService}}
+                     {{#if currentUser}}
+                        <button id="logout" type="button" name="login-out" class="btn btn-lg btn-primary-outline">Logout</button>
+                     {{else}}
+                        <button id="login" type="button" name="login-out" class="btn btn-lg btn-primary-outline">Login</button>
+                     {{/if}}
                   {{else}}
-                  <button id="login" type="button" name="login-out" class="btn btn-lg btn-primary-outline">Login</button>
+                     {{> loading}}
+                  {{/if}}
+
+                  {{#if loggingIn }}
+                     <p>Logging in...</p>
                   {{/if}}
                </div>
             </div>

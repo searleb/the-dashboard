@@ -1,5 +1,6 @@
-// restrict signups to only @mentallyfriendly.com email addresses
 Meteor.startup(function () {
+
+   // restrict signups to only @mentallyfriendly.com email addresses
    Accounts.config({
       restrictCreationByEmailDomain: function(email) {
          var domain = email.slice(email.lastIndexOf("@")+1); // or regex
@@ -12,7 +13,20 @@ Meteor.startup(function () {
          }
       }
    });
+
+   // Google login config
+   ServiceConfiguration.configurations.upsert(
+      { service: "google" },
+      {
+         $set: {
+            clientId: G_CLIENT_ID,
+            loginStyle: "popup",
+            secret: G_CLIENT_SECRET
+         }
+      }
+   );
 });
+
 
 Meteor.methods({
    'saveUserOffice': function(office) {

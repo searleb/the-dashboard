@@ -37,13 +37,7 @@
 
    .info-outer {
       position: relative;
-      margin-top: 50px;
-      @media #{$media-sm}{
-         position: fixed;
-         top: calc(50% - 85px);
-         transform: translateY(-50%);
-         padding-right: 70px;
-      }
+      margin-top: 25vh;
       h1 {
         font-family: 'Montserrat';
          font-size: 48px;
@@ -101,6 +95,7 @@ input[readonly] {
 
    .scroll-area {
       font-family: 'Montserrat';
+      margin-top: 25vh;
       ul {
          margin-bottom: 150px;
          margin-top: 100px;
