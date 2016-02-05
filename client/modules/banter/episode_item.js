@@ -25,16 +25,32 @@ Template.episodeItem.events({
 
       // open the player
       $('.player-wrapper').addClass('open');
+
+      // show loading spinner
+      $('.loader').show();
+      // hide audio bar
+      $('.audioplayer').hide();
       // set the audio player source
       $("#player").attr("src", url);
       // set the player episode number
       $(".player-info span.episode-number").html("Episode" + '&nbsp;' + number);
       // set the player title
       $(".player-info h3.episode-title").html(title);
-      // mimic the plugin and add playing class
-      $('.audioplayer').addClass('audioplayer-playing');
-      // start the loaded track
-      audioPlayer.play();
+
+
+
+      // when audio is ready to start playing
+      audioPlayer.oncanplay = function (e) {
+        // hide loading spinner
+        $('.loader').fadeOut();
+        // hide audio bar
+        $('.audioplayer').fadeIn(800);
+        // mimic the plugin and add playing class
+        $('.audioplayer').addClass('audioplayer-playing');
+        // start the loaded track
+        audioPlayer.play();
+      };
+
       // remove any other active classes
       $('.scroll-area li').removeClass('active');
       // then add active class to playing li item

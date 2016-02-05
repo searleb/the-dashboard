@@ -6,7 +6,10 @@ Template.friendlyBanter.helpers({
 
 Template.friendlyBanter.onRendered(function(){
    // init the player
-   $('#player').audioPlayer();
+
+   var player = $('#player');
+   player.audioPlayer();
+
 
    // added upload event watcher
    Audio.resumable.on('fileAdded', function (file) {

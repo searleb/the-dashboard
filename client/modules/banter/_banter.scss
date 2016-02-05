@@ -1,10 +1,17 @@
+.friendly-banter{
+    background-color: $mf-blue;
+    height: 100%;
+}
+
 #friendly-banter{
+
   font-family: 'Montserrat';
+  height: 100%;
 
    ::-webkit-scrollbar {
       height: 12px;
       width: 10px;
-      background: #4FB9D7;
+      background: $mf-blue;
    }
 
    ::-webkit-scrollbar-thumb {
@@ -17,7 +24,7 @@
    }
 
    .banter-container {
-      background-color: #4FB9D7;
+      background-color: $mf-blue;
       @media #{$media-sm}{
          margin-left: 2%;
          padding-right: 2%;
@@ -36,7 +43,7 @@
    // Info Copy
 
    .info-outer {
-      position: relative;
+      position: fixed;
       margin-top: 25vh;
       h1 {
         font-family: 'Montserrat';
@@ -95,7 +102,7 @@ input[readonly] {
 
    .scroll-area {
       font-family: 'Montserrat';
-      margin-top: 25vh;
+      margin-top: 30vh;
       ul {
          margin-bottom: 150px;
          margin-top: 100px;
@@ -170,12 +177,12 @@ input[readonly] {
 
    .scroll-area li.active{
       h3{
-         color: #0AC0C2;
+         color: $mf-green;
       }
    }
 
    .scroll-area li:hover .episode-title, .scroll-area li.active {
-      color: #0AC0C2;
+      color: $mf-green;
 
       &:hover {
          text-decoration: none;
@@ -198,7 +205,7 @@ input[readonly] {
       font-size: 24px;
       font-weight: 400;
       margin-top:6px;
-      color: #0AC0C2;
+      color: $mf-green;
       display: inline-block;
       margin-bottom: 0;
       cursor: pointer;
@@ -225,6 +232,11 @@ input[readonly] {
          padding-top:12px;
          font-size: 16px;
          font-family: 'Montserrat';
+
+         a {
+           font-family: 'Montserrat';
+           color: $mf-blue;
+         }
       }
    }
 
@@ -276,7 +288,7 @@ input[readonly] {
          font-size: 16px;
          font-weight: 400;
          margin-top:6px;
-         color: #0AC0C2;
+         color: $mf-green;
          display: inline-block;
          margin-bottom: 0;
          font-family: 'Montserrat';
@@ -286,6 +298,111 @@ input[readonly] {
    .audio-wrapper {
       float: left;
       width: 85%;
+
+.loader {
+  display: none;
+      transform: translateY(8px);
+}
+
+.loader span{
+width:16px;
+height:16px;
+border-radius:50%;
+display:inline-block;
+position:absolute;
+left:50%;
+margin-left:-10px;
+-webkit-animation:3s infinite linear;
+-moz-animation:3s infinite linear;
+-o-animation:3s infinite linear;
+
+}
+
+
+.loader span:nth-child(1){
+background: $mf-blue;
+-webkit-animation:kiri 1.2s infinite linear;
+-moz-animation:kiri 1.2s infinite linear;
+-o-animation:kiri 1.2s infinite linear;
+
+}
+.loader span:nth-child(2){
+background: darken($mf-green, 10);
+z-index:100;
+}
+.loader span:nth-child(3){
+background: $mf-green;
+-webkit-animation:kanan 1.2s infinite linear;
+-moz-animation:kanan 1.2s infinite linear;
+-o-animation:kanan 1.2s infinite linear;
+}
+
+
+@-webkit-keyframes kanan {
+  0% {-webkit-transform:translateX(20px);
+  }
+
+50%{-webkit-transform:translateX(-20px);
+}
+
+100%{-webkit-transform:translateX(20px);
+z-index:200;
+}
+}
+@-moz-keyframes kanan {
+  0% {-moz-transform:translateX(20px);
+  }
+
+50%{-moz-transform:translateX(-20px);
+}
+
+100%{-moz-transform:translateX(20px);
+z-index:200;
+}
+}
+@-o-keyframes kanan {
+  0% {-o-transform:translateX(20px);
+  }
+
+50%{-o-transform:translateX(-20px);
+}
+
+100%{-o-transform:translateX(20px);
+z-index:200;
+}
+}
+
+
+
+
+@-webkit-keyframes kiri {
+   0% {-webkit-transform:translateX(-20px);
+z-index:200;
+  }
+50%{-webkit-transform:translateX(20px);
+}
+100%{-webkit-transform:translateX(-20px);
+}
+}
+
+@-moz-keyframes kiri {
+   0% {-moz-transform:translateX(-20px);
+z-index:200;
+  }
+50%{-moz-transform:translateX(20px);
+}
+100%{-moz-transform:translateX(-20px);
+}
+}
+@-o-keyframes kiri {
+   0% {-o-transform:translateX(-20px);
+z-index:200;
+  }
+50%{-o-transform:translateX(20px);
+}
+100%{-o-transform:translateX(-20px);
+}
+}
    }
 
    .audioplayer {
@@ -317,7 +434,7 @@ input[readonly] {
       border-radius: 2.5em;
       background: #f4f4f4;
       position: relative;
-      top: 50%;
+      top: 60%;
       transform: translateY(-50%);
    }
    .audioplayer:not(.audioplayer-mini) .audioplayer-playpause
@@ -343,7 +460,7 @@ input[readonly] {
       height: 0;
       border: 0.5em solid transparent; /* 8 */
       border-right: none;
-      border-left-color: #0AC0C2;
+      border-left-color: $mf-green;
       content: '';
       position: absolute;
       top: 50%;
@@ -365,7 +482,7 @@ input[readonly] {
    {
       width: 40%;
       height: 100%;
-      background-color: #0AC0C2;
+      background-color: $mf-green;
       content: '';
       position: absolute;
       top: 0;
@@ -408,7 +525,7 @@ input[readonly] {
       background-color: #ECF0F1;
       cursor: pointer;
       z-index: 1;
-      top: 50%;
+      top: 60%;
       right: 3em;
       left: 3.25em;
       margin-top: -0.438em; /* 7 */
@@ -432,7 +549,7 @@ input[readonly] {
    }
    .audioplayer-bar-played
    {
-      background: #0AC0C2;
+      background: $mf-green;
       z-index: 2;
    }
    .audioplayer-volume
@@ -462,7 +579,7 @@ input[readonly] {
    {
       width: 0.313em; /* 5 */
       height: 0.375em; /* 6 */
-      background-color: #0AC0C2;
+      background-color: $mf-green;
       display: block;
       position: relative;
       z-index: 1;
@@ -481,7 +598,7 @@ input[readonly] {
       height: 0;
       border: 0.5em solid transparent; /* 8 */
       border-left: none;
-      border-right-color: #0AC0C2;
+      border-right-color: $mf-green;
       z-index: 2;
       top: 50%;
       right: -0.25em;
@@ -492,7 +609,7 @@ input[readonly] {
       /* "volume" icon by Nicolas Gallagher, http://nicolasgallagher.com/pure-css-gui-icons */
       width: 0.313em; /* 5 */
       height: 0.313em; /* 5 */
-      border: 0.25em double #0AC0C2; /* 4 */
+      border: 0.25em double $mf-green; /* 4 */
       border-width: 0.25em 0.25em 0 0; /* 4 */
       left: 0.563em; /* 9 */
       top: -0.063em; /* 1 */
@@ -539,7 +656,7 @@ input[readonly] {
       position: relative;
       z-index: 1;
       margin: 30% auto 0;
-      border: 1px solid #0AC0C2;
+      border: 1px solid $mf-green;
    }
    .audioplayer-volume-adjust div div
    {
@@ -548,7 +665,7 @@ input[readonly] {
       position: absolute;
       bottom: 0;
       left: 0;
-      background: #0AC0C2;
+      background: $mf-green;
       // background: -webkit-gradient( linear, left bottom, left top, from( #007fd1 ), to( #c600ff ) );
       // background: -webkit-linear-gradient( bottom, #007fd1, #c600ff );
       // background: -moz-linear-gradient( bottom, #007fd1, #c600ff );
@@ -565,11 +682,11 @@ input[readonly] {
    .audioplayer-pause,
    .audioplayer-volume a
    {
-      // -webkit-filter: drop-shadow( 1px 1px 0 #0AC0C2 );
-      // -moz-filter: drop-shadow( 1px 1px 0 #0AC0C2 );
-      // -ms-filter: drop-shadow( 1px 1px 0 #0AC0C2 );
-      // -o-filter: drop-shadow( 1px 1px 0 #0AC0C2 );
-      // filter: drop-shadow( 1px 1px 0 #0AC0C2 );
+      // -webkit-filter: drop-shadow( 1px 1px 0 $mf-green );
+      // -moz-filter: drop-shadow( 1px 1px 0 $mf-green );
+      // -ms-filter: drop-shadow( 1px 1px 0 $mf-green );
+      // -o-filter: drop-shadow( 1px 1px 0 $mf-green );
+      // filter: drop-shadow( 1px 1px 0 $mf-green );
    }
    .audioplayer-bar,
    .audioplayer-bar div,
