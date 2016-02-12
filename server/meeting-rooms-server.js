@@ -1,6 +1,6 @@
 Meteor.methods({
    getRobinRooms: function(){
-      var robinToken = ROBIN_APP_TOKEN;
+      var robinToken = Meteor.settings.private.robinAppToken;
       var robinURL = 'https://api.robinpowered.com/v1.0/';
 
       // Get all of a location's spaces

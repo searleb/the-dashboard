@@ -1,9 +1,9 @@
 Meteor.startup(function() {
 
    // constants
-   var workflowmaxURL = WORKFLOWMAXURL,
-   apiKey = WFMAPIKEY,
-   accountKey = SYD_ACCOUNT_KEY;
+   var workflowmaxURL = 'https://api.workflowmax.com/',
+   apiKey = Meteor.settings.private.workflowMaxApiKey,
+   accountKey = Meteor.settings.private.workflowMaxSydKey;
 
    function checkIsArray(argument) {
       // if the arg is not at array, return it within an array
