@@ -39,16 +39,6 @@ Template.meetingRooms.onCreated(function(){
 
 
 Template.meetingRooms.onRendered(function () {
-   // add event listener to window to check if window is in focus
-   tabIsFocused = true;
-   window.addEventListener('focus', function() {
-      tabIsFocused = true;
-   },false);
-
-   window.addEventListener('blur', function() {
-      tabIsFocused = false;
-   },false);
-
    // updates progress bar
    function getProgress(start, end, id){
       var now = moment();

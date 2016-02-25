@@ -12,39 +12,42 @@ Template.calendar.onCreated( function () {
       }
    });
 
-   // function notifyMe() {
-   //    console.log('notfiyMe');
-   //    // Let's check if the browser supports notifications
-   //    if (!("Notification" in window)) {
-   //       alert("This browser does not support desktop notification");
-   //    }
-   //
-   //    // Let's check whether notification permissions have already been granted
-   //    else if (Notification.permission === "granted") {
-   //       // If it's okay let's create a notification
-   //       spawnNotification("Hello", "Some Thing");
-   //    }
-   //
-   //    // Otherwise, we need to ask the user for permission
-   //    else if (Notification.permission !== 'denied') {
-   //       Notification.requestPermission(function (permission) {
-   //          // If the user accepts, let's create a notification
-   //          if (permission === "granted") {
-   //             var notification = new Notification("Hi there!");
-   //          }
-   //       });
-   //    }
-   //
-   //    // At last, if the user has denied notifications, and you
-   //    // want to be respectful there is no need to bother them any more.
-   // }
+   function notifyMe(title, message) {
+      console.log('notfiyMe');
+      // Let's check if the browser supports notifications
+      if (!("Notification" in window)) {
+         console.log("This browser does not support desktop notification");
+      }
 
-   // function spawnNotification(theBody, theTitle) {
-   //    var options = {
-   //       body: theBody,
-   //    };
-   //    var n = new Notification(theTitle,options);
-   // }
+      // Let's check whether notification permissions have already been granted
+      else if (Notification.permission === "granted") {
+         // If it's okay let's create a notification
+         spawnNotification(title, message);
+      }
+
+      // Otherwise, we need to ask the user for permission
+      else if (Notification.permission !== 'denied') {
+         Notification.requestPermission(function (permission) {
+            // If the user accepts, let's create a notification
+            if (permission === "granted") {
+               var notification = new Notification("Hi there!");
+            }
+         });
+      }
+
+      // At last, if the user has denied notifications, and you
+      // want to be respectful there is no need to bother them any more.
+   }
+
+   function spawnNotification(theTitle, theBody) {
+      var options = {
+         body: theBody,
+         icon: 'http://hsh.mf.net.au/mf-logo.png'
+      };
+      var n = new Notification(theTitle,options);
+   }
+
+   var notificationsTracker = {};
 
    function getCalendar(argument) {
       var userData = Meteor.user();
@@ -53,27 +56,45 @@ Template.calendar.onCreated( function () {
       url = 'calendar/v3/calendars/' + userData.services.google.email + '/events/?timeMin=' + timeMin.toISOString() + '&timeMax=' + timeMax.toISOString() + '&maxResults=10' + '&orderBy=startTime' + '&singleEvents=true' + '&access_token=' + userData.services.google.accessToken;
       GoogleApi.get(url, {}, function(error, data){
          for (var i in data.items) {
-            // format the start and end times
-            data.items[i].start.formattedTime = moment(data.items[i].start.dateTime).format('hh:mma');
-            data.items[i].end.formattedTime = moment(data.items[i].end.dateTime).format('hh:mma');
+            var item = data.items[i];
 
+            // format the start and end times
+            item.start.formattedTime = moment(item.start.dateTime).format('hh:mma');
+            item.end.formattedTime = moment(item.end.dateTime).format('hh:mma');
             // determine what time the event was
             var now = new moment().format('HHmm');
-            var startTime = moment(data.items[i].start.dateTime).format('HHmm');
-            var endTime = moment(data.items[i].end.dateTime).format('HHmm');
-            if(now >= startTime - 10 && now < endTime) {
-               data.items[i].timeClass = 'current';
-               // notifyMe();
+            var startTime = moment(item.start.dateTime).format('HHmm');
+            var endTime = moment(item.end.dateTime).format('HHmm');
+            var summary = item.summary;
+
+            // if the event start time is in 10 mins, set the current class
+            // and send the web notification
+            if(now >= (startTime - 10) && now < endTime) {
+
+               // set the class
+               item.timeClass = 'current';
+
+               // send the notification if the event is in the future
+               // and has not already been shown
+               if (notificationsTracker.id !== true && startTime - now > 0) {
+                  notifyMe(summary, "Starting in: " + (startTime - now) + " minutes"  );
+                  var id = item.id;
+                  notificationsTracker.id = true;
+               }
             } else if (now > endTime){
-               data.items[i].timeClass = 'past';
+               item.timeClass = 'past';
             } else {
-               data.items[i].timeClass = 'future';
+               item.timeClass = 'future';
             }
          }
          Session.set('googleCalendar', data);
       });
    }
    (function(){
-      Meteor.setInterval(getCalendar, 300000); // 5 minute update cycle
+      Meteor.setInterval(function(){
+         if (tabIsFocused) {
+            getCalendar();
+         }
+      }, 1000 * 60);
    })();
 });
