@@ -1,64 +1,97 @@
-// Docs at http://simpleweatherjs.com
-Template.weather.onRendered(function () {
-    function sydWeather() {
-        var options = {
-            location: 'Sydney, AUS',
-            unit: 'c',
-            success: function(weather) {
-                html = '<i class="sw icon-'+weather.code+'"></i>';
-                html += '<span>'+weather.temp+'&deg;'+weather.units.temp+'</span>';
-                html += '<span class="currently">&nbsp;&amp;&nbsp;'+weather.currently+'</span>';
+Template.weather.onCreated(function(){
+   // get time for each studio
+   Meteor.setInterval(function(){
+      var time = moment();
+      // Sydney
+      var timezoneSyd = moment.tz(time, 'Australia/Sydney').format("dddd | MMM Do | h:mm");
+      var amPmSyd = moment.tz(time, 'Australia/Sydney').format("a");
+      var sydTimeObj = {
+         'time': timezoneSyd,
+         'ampm': amPmSyd
+      };
+      Session.set("sydTime", sydTimeObj);
 
-                $(".weather-syd").html(html);
-            },
-            error: function(error) {
-                $(".weather-syd").html('<p>'+error+'</p>');
-            }
-        };
+      // London
+      var timezoneLdn = moment.tz(time, 'Europe/London').format("dddd | MMM Do | h:mm");
+      var amPmLdn = moment.tz(time, 'Europe/London').format("a");
+      var ldnTimeObj = {
+         'time': timezoneLdn,
+         'ampm': amPmLdn
+      };
+      Session.set("ldnTime", ldnTimeObj);
+   }, 1000);
 
-        Weather.options = options;
-        Weather.load();
-    }
+   // look up current Sydney weather
+   function getSydWeather() {
+      $.simpleWeather({
+         location: 'Sydney, AUS',
+         unit: 'c',
+         success: function(weather) {
+            var sydWeather = {
+               "currently": weather.currently,
+               "high": weather.high,
+               "low": weather.low,
+               "sunrise": weather.sunrise,
+               "sunset": weather.sunset,
+               "temp": weather.temp,
+               "code": weather.code,
+               "units": weather.units.temp,
+               "text": weather.text
+            };
+            Session.set("sydWeather", sydWeather);
+         },
+         error: function(error) {
+            console.log(error);
+         }
+      });
+   }
+   // look up current London weather
+   function getLdnWeather() {
+      $.simpleWeather({
+         location: 'London, UK',
+         unit: 'c',
+         success: function(weather) {
+            var ldnWeather = {
+               "currently": weather.currently,
+               "high": weather.high,
+               "low": weather.low,
+               "sunrise": weather.sunrise,
+               "sunset": weather.sunset,
+               "temp": weather.temp,
+               "code": weather.code,
+               "units": weather.units.temp,
+               "text": weather.text
+            };
+            Session.set("ldnWeather", ldnWeather);
+         },
+         error: function(error) {
+            console.log(error);
+         }
+      });
+   }
 
-    function ldnWeather() {
-        var optionsLDN = {
-            location: 'London, UK',
-            unit: 'c',
-            success: function(weather) {
-                html = '<i class="sw icon-'+weather.code+'"></i>';
-                html += '<span>'+weather.temp+'&deg;'+weather.units.temp+'</span>';
-                html += '<span class="currently">&nbsp;&amp;&nbsp;'+weather.currently+'</span>';
-
-                $(".weather-ldn").html(html);
-            },
-            error: function(error) {
-                $(".weather-ldn").html('<p>'+error+'</p>');
-            }
-        };
-
-        Weather.options = optionsLDN;
-        Weather.load();
-    }
-
-    sydWeather();
-    ldnWeather();
-    Meteor.setInterval(function () {
-        sydWeather();
-        ldnWeather();
-    }, (1000 * 60) * 30);
+   // run weather functions and re-run every 20 mins
+   getSydWeather();
+   getLdnWeather();
+   Meteor.setTimeout(function(){
+      getSydWeather();
+      getLdnWeather();
+   }, (1000 * 60) * 20);
 
 
-    // get time for each studio
-    Meteor.setInterval(function(){
-        var time = moment();
-        // Sydney
-        var timezoneSyd = moment.tz(time, 'Australia/Sydney').format("h:mm");
-        var amPmSyd = moment.tz(time, 'Australia/Sydney').format("a");
-        $('.studio-status .time-syd').html(timezoneSyd + '<small>' + amPmSyd + '</small>');
-        // London
-        var timezoneLdn = moment.tz(time, 'Europe/London').format("h:mm");
-        var amPmLdn = moment.tz(time, 'Europe/London').format("a");
-        $('.studio-status .time-ldn').html(timezoneLdn  + '<small>' + amPmLdn + '</small>');
-    }, 1000);
+});
 
+Template.weather.helpers({
+   sydTime: function(){
+      return Session.get("sydTime");
+   },
+   ldnTime: function() {
+      return Session.get("ldnTime");
+   },
+   sydWeather: function(){
+      return Session.get("sydWeather");
+   },
+   ldnWeather: function(){
+      return Session.get("ldnWeather");
+   }
 });

@@ -16,10 +16,7 @@ standard-minifiers      # JS/CSS minifiers run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
 
-autopublish             # Publish all data to the clients (for prototyping)
-insecure                # Allow all DB writes from clients (for prototyping)
 momentjs:moment
-selaias:meteor-simpleweather
 mrt:moment-timezone
 accounts-google
 accounts-base
@@ -30,5 +27,9 @@ peerlibrary:xml2js
 anonyfox:scrape
 iron:router
 manuelschoebel:wait-on-lib
-accounts-ui-unstyled
 msavin:mongol
+orionjs:core
+fortawesome:fontawesome
+orionjs:bootstrap
+vsivsi:file-collection
+service-configuration

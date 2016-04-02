@@ -1,5 +1,6 @@
 .iconav{
     margin-top: 0px;
+    overflow-x: hidden;
     #login-buttons{
         margin: 10px 0px;
     }
@@ -36,6 +37,12 @@
                         -webkit-font-smoothing: antialiased;
                         -moz-osx-font-smoothing: grayscale;
                     }
+                }
+                &.active.banter{
+                   > a{
+                      background-color: #55BAD6;
+                      color: $body-bg;
+                   }
                 }
             }
         }

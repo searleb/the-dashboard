@@ -19,4 +19,14 @@ if (Meteor.isClient) {
     UI.registerHelper('dateToday', function() {
         return moment().format('DD MMM YY');
     });
+
+    // add global event listener to window to check if window is in focus
+    tabIsFocused = true;
+    window.addEventListener('focus', function() {
+      tabIsFocused = true;
+    },false);
+
+    window.addEventListener('blur', function() {
+      tabIsFocused = false;
+    },false);
 }

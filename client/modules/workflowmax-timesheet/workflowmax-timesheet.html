@@ -1,18 +1,23 @@
 <template name="workflowmaxTimeSheet">
     <div id="workflowmax" class="module">
         <h2>Times</h2>
-        <ul class="list-inline">
-        {{#each loggedHours}}
-            <li>
-                <span class="day">
-                    {{this.day}}
-                </span>
-                <span class="hours {{this.class}}">
-                    {{this.hours}}
-                </span>
-            </li>
-        {{/each}}
-        </ul>
+        {{#with loggedHours}}
+           <ul class="list-inline">
+           {{#each loggedHours}}
+               <li>
+                   <span class="day">
+                       <h5>{{day}}</h5>
+                   </span>
+                   <span class="hours {{this.class}}">
+                       {{hours}}
+                   </span>
+               </li>
+           {{/each}}
+           </ul>
+        {{/with}}
+        {{#unless loggedHours}}
+           <p>Loading...</p>
+        {{/unless}}
         <a href="https://my.workflowmax.com/my/timesheet.aspx?" target="_blank">Log time now</a>
     </div>
 </template>

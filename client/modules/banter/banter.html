@@ -1,11 +1,30 @@
 <template name="friendlyBanter">
-    <div id="banter">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <h1>Friendly Banter</h1>
-                </div>
+   <div id="friendly-banter">
+      <div class="banter-container container-fluid">
+         <div class="wrapper row">
+            <div class="col-sm-6 info-outer">
+               <div class="logo">
+                  <img src="diamond.svg">
+               </div>
+               <h1>The Friendly Banter</h1>
+               <p>
+                  An internal conversation on the happenings of Mentally Friendly.
+               </p>
+
+               <button type="button" class="btn btn-primary-outline" id="upload-ep">Add new episode</button>
             </div>
-        </div>
-    </div>
+            <div class="col-sm-6 col-sm-offset-6">
+               <div class="scroll-area">
+                  <ul>
+                     {{#each episodes}}
+                        {{> episodeItem}}
+                     {{/each}}
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+      {{> playAudio}}
+      {{> episodeUpload}}
+   </div>
 </template>

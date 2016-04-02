@@ -1,6 +1,6 @@
 Meteor.startup(function() {
-    var workflowmaxURL = WORKFLOWMAXURL,
-        apiKey = WFMAPIKEY,
+    var workflowmaxURL = 'https://api.workflowmax.com/',
+        apiKey = Meteor.settings.private.workflowMaxApiKey,
         accountKey;
 
     Meteor.methods({
@@ -11,10 +11,10 @@ Meteor.startup(function() {
             var userOffice = userData.profile.office;
             switch (userOffice) {
                 case 'sydney':
-                    accountKey = SYD_ACCOUNT_KEY;
+                    accountKey = Meteor.settings.private.workflowMaxSydKey;
                     break;
                 case 'london':
-                    accountKey = LDN_ACCOUNT_KEY;
+                    accountKey = Meteor.settings.private.workflowMaxLdnKey;
                     break;
                 default:
                     console.log("Please select an office from settings");
@@ -63,8 +63,7 @@ Meteor.startup(function() {
 
                     // each entry under the grouped date
                     _.each(el, function(el, index) {
-                        var hours = Math.round(el.minutes / 60);
-                        runningTotal += parseInt(hours);
+                        runningTotal += parseInt(el.minutes);
                     });
 
                     // format the date into day
@@ -72,7 +71,7 @@ Meteor.startup(function() {
 
                     // push the hours and day in to returnArray
                     returnArray.push({
-                        hours: runningTotal,
+                        hours: runningTotal / 60,
                         day: formattedDate
                     });
                 });

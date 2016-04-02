@@ -1,0 +1,15 @@
+<template name="episodeItem">
+   <li>
+      <span class="episode-number">Episode {{number}}</span>
+      <h3 class="episode-title">{{title}}</h3>
+      <button type="button" class="btn btn-default btn-play">
+         <i class="fa fa-music"></i><span>Listen</span>
+      </button>
+      <div class="collapse" id="episode-info">
+         <div class="info-inner">
+            {{description}}
+            <a href="{{link}}?download=true" target="_blank">Download Episode</a>
+         </div>
+      </div>
+   </li>
+</template>
