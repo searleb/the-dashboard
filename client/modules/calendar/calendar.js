@@ -53,7 +53,11 @@ Template.calendar.onCreated( function () {
       var userData = Meteor.user();
       var timeMin = new moment().set('hour', 0).set('minute', 0).set('second', 0),
       timeMax = new moment().add(1,'days').set('hour', 0).set('minute', 0).set('second', 0),
-      url = 'calendar/v3/calendars/' + userData.services.google.email + '/events/?timeMin=' + timeMin.toISOString() + '&timeMax=' + timeMax.toISOString() + '&maxResults=10' + '&orderBy=startTime' + '&singleEvents=true' + '&access_token=' + userData.services.google.accessToken;
+      userEmail = userData.services.google.email;
+      if (!userEmail) {
+          throw new Meteor.Error( 666, 'No email! Urgh!' );
+      }
+      url = 'calendar/v3/calendars/' + userEmail + '/events/?timeMin=' + timeMin.toISOString() + '&timeMax=' + timeMax.toISOString() + '&maxResults=10' + '&orderBy=startTime' + '&singleEvents=true' + '&access_token=' + userData.services.google.accessToken;
       GoogleApi.get(url, {}, function(error, data){
          for (var i in data.items) {
             var item = data.items[i];
@@ -95,6 +99,6 @@ Template.calendar.onCreated( function () {
          if (tabIsFocused) {
             getCalendar();
          }
-      }, 1000 * 60);
+      }, 1000 * 5);
    })();
 });
