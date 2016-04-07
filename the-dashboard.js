@@ -20,6 +20,12 @@ if (Meteor.isClient) {
         return moment().format('DD MMM YY');
     });
 
+    UI.registerHelper('minutesToHours', function(time){
+       if (time) {
+          return time / 60;
+       }
+    });
+
     // add global event listener to window to check if window is in focus
     tabIsFocused = true;
     window.addEventListener('focus', function() {
