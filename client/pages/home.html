@@ -1,20 +1,24 @@
 <template name="home">
-    <div class="container">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                {{> search }}
+            </div>
+        </div>
         <div class="row">
             <!-- Keep three columns so modules push only their column up and down when they re-size -->
             <div class="col-sm-12 col-md-4">
                 {{> calendar }}
-                {{> mediumFeed}}
+                {{> workflowmaxTimeSheet}}
             </div>
 
             <div class="col-sm-12 col-md-4">
-                {{> workflowmaxTimeSheet}}
-                {{> search }}
+                {{> tools}}
             </div>
 
             <div class="col-sm-12 col-md-4">
                 {{> weather}}
-                {{> tools}}
+                {{> mediumFeed}}
                 <!-- {{> favourites}} -->
             </div>
         </div>

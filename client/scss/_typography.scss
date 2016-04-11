@@ -5,6 +5,15 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'maisonneue';
+    src: url('../fonts/maisonneue-book.woff');
+}
+
 *{
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'maisonneue', sans-serif;
+}
+
+h2 {
+	color: $mf-green;
 }

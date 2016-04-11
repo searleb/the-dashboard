@@ -1,17 +1,39 @@
 <template name="search">
-    <div class="module">
+    <div class="row">
+        <div class="col-sm-6" id="search-wiki">
+<!--             <h4>
+                <a href="https://sites.google.com/a/mentallyfriendly.com/new-mf-wiki/?pli=1" target="_blank">Wiki</a>
+            </h4> -->
+            <div class="content">
+                <div class="flextable">
+                    <form role="search" class="search-wiki" action=".">
+                        <div class="flextable-item flextable-primary">
+                            <div class="search-box">
+                                <input type="search" name="search" placeholder="Search Wiki" class="form-control">
+                            </div>
+                        </div>
+                        <div class="flextable-item">
+                            <div class="btn-group">
+                                <button type="submit" class="btn btn-primary-outline">
+                                    <span class="icon icon-magnifying-glass"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
-        <div id="search-drive">
-            <h2>Search</h2>
-            <h4>
+        <div class="col-sm-6" id="search-drive">
+<!--             <h4>
                 <a href="https://drive.google.com" target="_blank">Drive</a>
-            </h4>
+            </h4> -->
             <div class="content">
                 <div class="flextable">
                     <form role="search" class="search-drive" action=".">
                         <div class="flextable-item flextable-primary">
                             <div class="search-box">
-                                <input type="search" name="search" placeholder="Search Drive" class="form-control">
+                                <input type="search" name="search" placeholder="Search Google Drive" class="form-control">
                             </div>
                         </div>
                         <div class="flextable-item">
@@ -43,30 +65,6 @@
                             LDN Drive
                         </a>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="search-wiki">
-            <h4>
-                <a href="https://sites.google.com/a/mentallyfriendly.com/new-mf-wiki/?pli=1" target="_blank">Wiki</a>
-            </h4>
-            <div class="content">
-                <div class="flextable">
-                    <form role="search" class="search-wiki" action=".">
-                        <div class="flextable-item flextable-primary">
-                            <div class="search-box">
-                                <input type="search" name="search" placeholder="Search Wiki" class="form-control">
-                            </div>
-                        </div>
-                        <div class="flextable-item">
-                            <div class="btn-group">
-                                <button type="submit" class="btn btn-primary-outline">
-                                    <span class="icon icon-magnifying-glass"></span>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>

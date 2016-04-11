@@ -1,34 +1,24 @@
-// container padding to make space for sidebar
-.container{
-   padding-left: 15px;
-   @media #{$media-sm}{
-      padding-left: 85px;
-   }
-   &.no-sidebar{
-      @media #{$media-sm}{
-         padding-left: 15px;
-      }
-   }
+body {
+	background: #F2F5F7;
 }
+
 .container-fluid{
-   padding-left: 20px;
-   @media #{$media-sm}{
-      padding-left: 95px;
-   }
+	padding: 0 30px;
 }
 
 ul{
-   padding-left: 0px;
-   list-style: none;
+	padding-left: 0px;
+	list-style: none;
 }
 
 .module{
-   margin-bottom: 60px;
+	background: #fff;
+	margin-bottom: 60px;
 }
 
 .vertical-align {
-   margin: 0;
-   position: relative;
-   top: 50%;
-   transform: translateY(-50%);
+	margin: 0;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
 }
