@@ -1,27 +1,32 @@
 <template name="calendar">
     <div id="calendar-template" class="module">
-        <h2>Today <small>{{dateToday}}</small></h2>
-        <h5>
-            <a href="//calendar.google.com" target="_blank">Calendar</a>
-        </h5>
+        <div class="title">
+            <h4>Today <small>{{dateToday}}</small></h4>
+            <span><a class="btn btn-sm" href="//calendar.google.com" target="_blank">Calendar</a></span>
+        </div>
+
         {{#if gCalendar.items}}
-        <ul class="list-group">
-            {{#each gCalendar.items }}
-            <li class="list-group-item {{this.timeClass}}">
-                <a href="{{this.htmlLink}}" target="_blank">
-                    <span class="label label-default pull-right">{{this.start.formattedTime}} - {{this.end.formattedTime}}</span>
-                    <h5>
-                        {{this.summary}}
-                        <small>{{this.location}}</small>
-                    </h5>
-                </a>
-            </li>
-            {{/each}}
-        </ul>
+
+            <ul class="list-group">
+                {{#each gCalendar.items }}
+                <li class="list-group-item {{this.timeClass}}">
+                    <a href="{{this.htmlLink}}" target="_blank">
+                        <span class="label label-default pull-right">{{this.start.formattedTime}} - {{this.end.formattedTime}}</span>
+                        <h5>
+                            {{this.summary}}
+                            <small>{{this.location}}</small>
+                        </h5>
+                    </a>
+                </li>
+                {{/each}}
+            </ul>
+
         {{else}}
-        <p>
-            No events today
-        </p>
+
+            <p>
+                No events today
+            </p>
+
         {{/if}}
     </div>
 </template>

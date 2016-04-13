@@ -1,49 +1,44 @@
 #calendar-template{
-    h5{
-        margin: 0px;
-        small{
-            display: block;
-        }
-    }
+    flex: 1;
 
     li{
-        background-color: $body-bg;
-        a{
-            &:hover, &focus{
-                text-decoration: none;
-            }
+        border: none;
+
+        .label-default {
+            background-color: rgba(0,0,0,0.3);
         }
-        &.past{
-            a{
-                h5, small{
-                    color: $gray-dark;
-                }
-                span{
-                    background-color: $gray-dark;
-                }
-            }
+
+        h5 {
+            margin: 0;
         }
-        &.current{
-            border-color: $brand-danger;
+
+        &.past {
+            border: 1px solid rgba(0,0,0,0.2);
+        }
+
+        &.current {
             z-index: 2;
-            transform: scale(1.075);
+            transform: scale(1.025);
+            background-color: $mf-green;
             border-radius: 4px;
-            a{
-                color: $brand-danger;
-                font-weight: 500;
-            }
-            .label-default{
-                background-color: $brand-danger;
+            
+            a {
+                color: $white;
+                font-family: maisonneue bold;
             }
         }
-        &.future{
+
+        &.future {
             z-index: 1;
-            transform: scale(1.035);
-            a{
-                color: $brand-primary
-            }
-            .label-default{
-                background-color: $brand-primary;
+            background-color: lighten($mf-green, 50%);
+            border: 1px solid $mf-green;
+            
+            a {
+                color: $mf-black;
+
+                &:hover {
+                    color: $mf-green;
+                }
             }
         }
     }

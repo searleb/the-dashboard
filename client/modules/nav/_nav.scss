@@ -1,72 +1,78 @@
-
-li{
-  &.new-tab{
-    &:before{
-      content: "\EA96";
-      position: absolute;
-      top: 4px;
-      right: 4px;
-      display: inline-block;
-      font-family: "toolkit-entypo";
-      speak: none;
-      font-size: 70%;
-      font-style: normal;
-      font-weight: normal;
-      font-variant: normal;
-      text-transform: none;
-      line-height: 1;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-  }
-  &.active.banter{
-    > a{
-      background-color: #55BAD6;
-      color: $body-bg;
-    }
-  }
-}
-
-
-
-
 .hsh-nav {
+  display: inline-block;
+  width: 100%;
   padding: 0 30px;
-  color: #1B1B1B;
+  color: $mf-black;
   background: #fff;
-  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
-  // width: 100%;
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.6);
   margin-bottom: 30px;
 
-  .icon {
-    color: #000;
-  }
-
-  li:not(.profile-pic) {
+  li {
+    display: inline-block;
+    float: left;
     margin: 20px 0;
+    line-height: 0 !important;
   }
-
-}
-
-.settings,
-.login-out,
-.profile-pic {
-  float: right !important;
-}
-
-.profile-pic{
-  margin: 15px 0;
 
   a {
-    padding: 0 !important;
+    display: inline-block;
+    color: inherit;
+    line-height: 35px;
+    padding: 0 15px;
 
     &:hover {
-      border-radius: 100px;
+      color: $mf-green;
+      text-decoration: none;
     }
   }
 
-  img {
-    width: 45px;
-    border: 1px solid rgba(0,0,0,0.2);
+  .icon {
+    color: $mf-black;
+    margin-right: 10px;
+  }
+
+  .mf-logo {
+    margin: 20px 30px 20px 0 !important;
+
+    a {
+      padding: 0 !important;
+      font-size: 0 !important;
+      line-height: 0 !important;
+
+      &:hover {
+        background-color: rgba(0,0,0,0) !important;
+      }
+
+      &:hover .diamond {
+        fill: $mf-green;
+      }
+    }
+
+    .diamond {
+      fill: $mf-black;
+    }
+  }
+
+  .settings,
+  .login-out,
+  .profile-pic {
+    float: right !important;
+  }
+
+  .profile-pic{
+    padding-left: 5px;
+
+    a {
+      padding: 0 !important;
+
+      &:hover {
+        border-radius: 100px;
+      }
+    }
+
+    img {
+      width: 35px;
+      border: 1px solid rgba(0,0,0,0.2);
+    }
   }
 }

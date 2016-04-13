@@ -1,32 +1,54 @@
 #workflowmax{
+    flex: 1;
+
     ul{
         list-style: none;
-        li{
-            display: inline-block;
-            margin: 5px 5px;
-            min-width: 72px;
-            span{
-                display: block;
-                text-align: center;
-                &.day{
-                    margin-bottom: 5px;
-                }
-                &.hours{
-                    height: 50px;
-                    width: 50px;
-                    border-radius: 50px;
-                    border: 2px solid #ccc;
-                    font-size: 20px;
-                    line-height: 46px;
-                    font-weight: 300;
-                    margin: auto;
-                    &.not-complete{
-                        border-color: $brand-danger;
-                        color: $brand-danger;
+        margin-bottom: 0;
+
+        li:first-child {
+            h5 {
+                margin-top: 0;
+            }
+        }
+
+        li {
+            h5 {
+                margin-top: 20px;
+            }
+
+            .bar-graph {
+                position: relative;
+                height: 30px;
+
+                span{
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+
+                    &.empty {
+                        display: block;
+                        height: 30px;
+                        background: lighten($mf-green, 50%);
+                        border: 1px solid $mf-green;
+                        width: 100%;
+                        border-radius: 4px;
                     }
-                    &.complete{
-                        border-color: $brand-success;
-                        color: $brand-success;
+
+                    &.hours{
+                        display: block;
+                        height: 30px;
+                        background: lighten($mf-green, 10%);
+                        border: 1px solid $mf-green;
+                        font-weight: 300;
+                        max-width: 100%;
+                        border-radius: 4px;
+
+                        &.not-complete{
+                            border-radius: 4px 0px 0px 4px;
+                        }
+                        &.complete{
+                            border-color: $mf-green;
+                        }
                     }
                 }
             }

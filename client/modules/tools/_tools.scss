@@ -1,11 +1,15 @@
 #tools{
+    flex: 1;
+
     button{
         &.active{
-            color: #111;
-            background-color: #dcdcdc;
-            border-color: #bdbdbd;
+            color: $white;
+            background-color: $mf-green;
+            border-color: $mf-green;
+            box-shadow: none;
         }
     }
+
     .list-container{
         ul{
             display: none;

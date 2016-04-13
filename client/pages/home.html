@@ -1,26 +1,23 @@
 <template name="home">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12">
-                {{> search }}
-            </div>
+        <div class="flex-row">
+            <div class="column">{{> weather }}</div>
+
+            <div class="column">{{> search }}</div>
         </div>
-        <div class="row">
-            <!-- Keep three columns so modules push only their column up and down when they re-size -->
-            <div class="col-sm-12 col-md-4">
-                {{> calendar }}
-                {{> workflowmaxTimeSheet}}
-            </div>
+    </div>
+    <div class="container-fluid">
+        <div class="flex-row">
+            <div class="column">{{> calendar }}</div>
 
-            <div class="col-sm-12 col-md-4">
-                {{> tools}}
-            </div>
+            <div class="column">{{> workflowmaxTimeSheet }}</div>
 
-            <div class="col-sm-12 col-md-4">
-                {{> weather}}
-                {{> mediumFeed}}
-                <!-- {{> favourites}} -->
-            </div>
+            <div class="column">{{> tools }}</div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="flex-row">
+            <div class="column">{{> mediumFeed }}</div>
         </div>
     </div>
 </template>

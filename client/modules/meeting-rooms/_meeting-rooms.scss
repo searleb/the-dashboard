@@ -4,14 +4,8 @@
       height: 45px;
       display: inline-block;
    }
-   .col-20{
-      float: left;
-      width: 100%;
-      display: inline-block;
-      padding: 5px;
-      @media #{$media-lg}{
-         width: 20%;
-      }
+   .column{ 
+      border-radius: 0;
       h1{
          background-position: bottom;
          background-repeat: no-repeat;
