@@ -4,51 +4,62 @@
     ul{
         list-style: none;
         margin-bottom: 0;
-
-        li:first-child {
-            h5 {
-                margin-top: 0;
-            }
-        }
+        width: 100%;
 
         li {
+            width: 100%;
+            overflow: hidden;
+            border: 1px solid $mf-green;
+            background: lighten($mf-green, 50%);
+
+            &:first-child {
+                    border-radius: 4px 4px 0 0;
+            }
+
+            &:last-child {
+                    border-radius: 0 0 4px 4px;
+            }
+
+            + li {
+                border-top: 0;
+            }
+
             h5 {
-                margin-top: 20px;
+                margin: 0;
+                padding: 10px 15px;
             }
 
             .bar-graph {
                 position: relative;
-                height: 30px;
+                width: 100%;
+                display: flex;
+
+                align-items: center;
 
                 span{
-                    position: absolute;
-                    top: 0px;
-                    left: 0px;
-
-                    &.empty {
-                        display: block;
-                        height: 30px;
-                        background: lighten($mf-green, 50%);
-                        border: 1px solid $mf-green;
-                        width: 100%;
-                        border-radius: 4px;
-                    }
-
                     &.hours{
+                        z-index: 2;
+                        position: absolute;
+                        top: 0px;
+                        left: 0px;
                         display: block;
-                        height: 30px;
+                        height: 100%;
                         background: lighten($mf-green, 10%);
-                        border: 1px solid $mf-green;
+                        
                         font-weight: 300;
                         max-width: 100%;
-                        border-radius: 4px;
 
                         &.not-complete{
-                            border-radius: 4px 0px 0px 4px;
+                            border-radius: 0;
                         }
                         &.complete{
                             border-color: $mf-green;
                         }
+                    }
+
+                    &.day {
+                        z-index: 3;
+                        flex: 1;
                     }
                 }
             }

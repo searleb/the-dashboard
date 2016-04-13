@@ -4,10 +4,6 @@
     li{
         border: none;
 
-        .label-default {
-            background-color: rgba(0,0,0,0.3);
-        }
-
         h5 {
             margin: 0;
         }
@@ -19,13 +15,8 @@
         &.current {
             z-index: 2;
             transform: scale(1.025);
-            background-color: $mf-green;
-            border-radius: 4px;
-            
-            a {
-                color: $white;
-                font-family: maisonneue bold;
-            }
+            background: lighten($mf-green, 10%);
+            border: 1px solid $mf-green;
         }
 
         &.future {

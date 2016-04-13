@@ -9,12 +9,11 @@
           <ul>
             {{#each loggedHours}}
               <li>
-                <span class="day">
-                  <h5>{{day}} <small>{{hours}} hours</small></h5>
-                </span>
                 <div class="bar-graph">
-                  <span class="empty"></span>
                   <span class="hours {{this.class}}" style="width: calc({{hours}}*12.5%)"></span>
+                  <span class="day">
+                    <h5>{{day}}<span class="label label-default pull-right">{{hours}} hours</span></h5>
+                  </span>
                 </div>
               </li>
             {{/each}}

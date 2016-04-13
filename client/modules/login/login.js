@@ -1,5 +1,5 @@
 Template.login.events({
-   'click #login': function(){
+   'click #login-btn': function(){
       Meteor.loginWithGoogle({
          requestPermissions:
          ['https://www.googleapis.com/auth/calendar', 'email', 'openid'],
@@ -15,9 +15,6 @@ Template.login.events({
             alert("Sorry " + err.message.toLowerCase());
          }
       });
-   },
-   'click #logout': function(){
-      Accounts.logout();
    }
 });
 

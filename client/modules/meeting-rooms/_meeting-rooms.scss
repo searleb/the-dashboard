@@ -64,7 +64,7 @@
 
       &.in-session {
          border: 1px solid $mf-green;
-         background: transparent;
+         background: lighten($mf-green, 50%);
 
          .session-notice {
             display: block;

@@ -1,47 +1,50 @@
 <template name="meetingRooms">
    <div id="meeting-rooms" class="container-fluid">
       <h3>Meeting Rooms</h3>
-      <div class="meeting-row module">
-         {{#unless room}}
-            {{> loading}}
-         {{/unless}}
-         
-         {{#each room}}
-         <div class="meeting-column">
-            {{#with space}}
-               <div class="title">
-                  <h4>{{name}}</h4>
-                  <a class="btn btn-sm" href="https://dashboard.robinpowered.com/mfsyd/locations/1548/spaces/{{id}}/details" target="_blank">Book me</a>
-               </div>
-            {{/with}}
 
-            {{#if bookings}}
-               <ul class="list-group" >
-                  {{#each bookings}}
-                  <li class="list-group-item {{isInSession id}}"> 
-                     <span class="list-group-progress" style="width: {{progressPercent id}}%;"></span>
-                     <div class="item-content">
-                        <div class="session-notice">
-                           <span class="icon icon-clock"></span>
-                           <small>Session in progress.</small>
+      {{#unless room}}
+         {{> loading}}
+      {{/unless}}
+
+      {{#if room}}
+         <div class="meeting-row module">
+            {{#each room}}
+            <div class="meeting-column">
+               {{#with space}}
+                  <div class="title">
+                     <h4>{{name}}</h4>
+                     <a class="btn btn-sm" href="https://dashboard.robinpowered.com/mfsyd/locations/1548/spaces/{{id}}/details" target="_blank">Book me</a>
+                  </div>
+               {{/with}}
+
+               {{#if bookings}}
+                  <ul class="list-group" >
+                     {{#each bookings}}
+                     <li class="list-group-item {{isInSession id}}"> 
+                        <span class="list-group-progress" style="width: {{progressPercent id}}%;"></span>
+                        <div class="item-content">
+                           <div class="session-notice">
+                              <span class="icon icon-clock"></span>
+                              <small>Session in progress.</small>
+                           </div>
+                           <h5>{{formatTime started_at 'h:mma'}} - {{formatTime ended_at 'h:mma'}} {{formatTime started_at 'Do MMM'}}</h5>
+                           <h4>{{title}}</h4>
+
+                           {{#each invitees}}
+                              {{#if display_name}}
+                              <small class="invitee">{{display_name}}</small>
+                              {{/if}}
+                           {{/each}}
                         </div>
-                        <h5>{{formatTime started_at 'h:mma'}} - {{formatTime ended_at 'h:mma'}} {{formatTime started_at 'Do MMM'}}</h5>
-                        <h4>{{title}}</h4>
-
-                        {{#each invitees}}
-                           {{#if display_name}}
-                           <small class="invitee">{{display_name}}</small>
-                           {{/if}}
-                        {{/each}}
-                     </div>
-                  </li>
-                  {{/each}}
-               </ul>
-            {{else}}
-               <h3>No Bookings</h3>
-            {{/if}}
+                     </li>
+                     {{/each}}
+                  </ul>
+               {{else}}
+                  <h3>No Bookings</h3>
+               {{/if}}
+            </div>
+            {{/each}}
          </div>
-         {{/each}}
-      </div>
+      {{/if}}
    </div>
 </template>

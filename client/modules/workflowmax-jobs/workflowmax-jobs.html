@@ -2,37 +2,37 @@
    <div id="workflowmax-jobs" class="container-fluid">
       <h3>Current Jobs List</h3>
 
-      <div class="module">
-         <div class="">
-            {{#if jobList}}
-               <table id="current-jobs-table" class="tablesorter table table-hover table-condensed">
-                  <thead>
+      {{#unless jobList}}
+         {{> loading}}
+      {{/unless}}
+
+      {{#if jobList}}
+         <div class="module">
+            <table id="current-jobs-table" class="tablesorter table table-hover table-condensed">
+               <thead>
+                  <tr>
+                     <th>Client</th>
+                     <th>Project Name</th>
+                     <th>Project Number</th>
+                     <th>Est. Cost</th>
+                     <th>Cost to Client</th>
+                     <th>Status</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  {{#each jobList}}
                      <tr>
-                        <th>Client</th>
-                        <th>Project Name</th>
-                        <th>Project Number</th>
-                        <th>Est. Cost</th>
-                        <th>Cost to Client</th>
-                        <th>Status</th>
+                        <td><a href="/workflowmax-jobs/{{id}}" data-id="{{id}}">{{client.name}}</a></td>
+                        <td><a href="/workflowmax-jobs/{{id}}" data-id="{{id}}">{{name}}</a></td>
+                        <td><a href="/workflowmax-jobs/{{id}}" data-id="{{id}}">{{id}}</a></td>
+                        <td><a href="/workflowmax-jobs/{{id}}" data-id="{{id}}">{{jobInvoices}}</a></td>
+                        <td><a href="/workflowmax-jobs/{{id}}" data-id="{{id}}"></a></td>
+                        <td><a href="/workflowmax-jobs/{{id}}" data-id="{{id}}">{{state}}</a></td>
                      </tr>
-                  </thead>
-                  <tbody>
-                     {{#each jobList}}
-                        <tr>
-                           <td><a href="/workflowmax-jobs/{{id}}" data-id="{{id}}">{{client.name}}</a></td>
-                           <td><a href="/workflowmax-jobs/{{id}}" data-id="{{id}}">{{name}}</a></td>
-                           <td><a href="/workflowmax-jobs/{{id}}" data-id="{{id}}">{{id}}</a></td>
-                           <td><a href="/workflowmax-jobs/{{id}}" data-id="{{id}}">{{jobInvoices}}</a></td>
-                           <td><a href="/workflowmax-jobs/{{id}}" data-id="{{id}}"></a></td>
-                           <td><a href="/workflowmax-jobs/{{id}}" data-id="{{id}}">{{state}}</a></td>
-                        </tr>
-                     {{/each}}
-                  </tbody>
-               </table>
-            {{else}}
-               {{> loading}}
-            {{/if}}
+                  {{/each}}
+               </tbody>
+            </table>
          </div>
-      </div>
+      {{/if}}
    </div>
 </template>
