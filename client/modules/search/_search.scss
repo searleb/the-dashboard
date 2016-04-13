@@ -20,7 +20,16 @@
 
 	.search-box {
 		flex: 1;
-		margin-right: 10px;
+		
+		input {
+			border-radius: 4px 0 0 4px;
+			border-right: none;
+			box-shadow: none;
+		}
+	}
+
+	.btn {
+		border-radius: 0 4px 4px 0;
 	}
 
 	.mag-glass:before {

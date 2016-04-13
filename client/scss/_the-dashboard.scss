@@ -68,6 +68,7 @@ a:not(.hsh-nav li a) {
 .btn {
 	background: lighten($mf-green, 50%);
 	border: 1px solid $mf-green;
+	padding: 7px 12px 6px 12px;
 	
 	&:hover {
 		color: $white !important;
