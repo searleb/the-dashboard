@@ -1,37 +1,93 @@
 #meeting-rooms{
-   img{
-      width: 45px;
-      height: 45px;
-      display: inline-block;
+   h3 {
+      margin: 0 0 30px 0;
    }
-   .column{ 
-      border-radius: 0;
-      h1{
+
+   .meeting-row {
+      display: flex;
+      flex: 1;
+      flex-flow: row wrap;
+   }
+
+   .meeting-column {
+      margin: 0 10px;
+      display: flex;
+      flex: 1;
+
+      flex-flow: row wrap;
+
+      align-self: flex-start;
+
+      ul {
+         flex: 1 100%;
+         align-self: flex-start;
+         margin-bottom: 0;
+      }
+
+      h1 {
          background-position: bottom;
          background-repeat: no-repeat;
          background-size: cover;
       }
-      h5{
+
+      h5 {
          font-style: italic;
       }
    }
-   .list-group-item{
-      .session-notice{
+
+   .meeting-column:first-child {
+      margin-left: 0;
+   }
+
+   .meeting-column:last-child {
+      margin-right: 0;
+   }
+
+   .list-group-item {
+      position: relative;
+      overflow: hidden;
+
+      .item-content {
+         position: relative;
+         z-index: 2;
+      }
+
+      .session-notice {
          display: none;
       }
-      &.not-in-session{
-         .session-notice{
+
+      &.not-in-session {
+         .session-notice {
             display: none;
          }
       }
-      &.in-session{
-         .session-notice{
+
+      &.in-session {
+         border: 1px solid $mf-green;
+         background: transparent;
+
+         .session-notice {
             display: block;
             color: $brand-danger;
          }
+
+         + .not-in-session {
+            border-top-color: $mf-green;
+         }
+      }
+
+      .invitee:not(:last-child):after {
+         content: ',';
       }
    }
-   .list-group-progress{
+
+   .list-group-progress {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: lighten($mf-green, 10%);
+      height: 100%;
+      z-index: 1;
       transition: all 0.2s ease;
    }
 }

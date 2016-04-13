@@ -1,13 +1,13 @@
 <template name="meetingRooms">
    <div id="meeting-rooms" class="container-fluid">
-      <div class="module">
       <h3>Meeting Rooms</h3>
-      {{#unless room}}
-         {{> loading}}
-      {{/unless}}
-      <div class="flex-row">
+      <div class="meeting-row module">
+         {{#unless room}}
+            {{> loading}}
+         {{/unless}}
+         
          {{#each room}}
-         <div class="column">
+         <div class="meeting-column">
             {{#with space}}
                <div class="title">
                   <h4>{{name}}</h4>
@@ -16,23 +16,24 @@
             {{/with}}
 
             {{#if bookings}}
-               <ul class="list-group">
+               <ul class="list-group" >
                   {{#each bookings}}
-                  <li class="list-group-item {{isInSession id}}">
-                     <div class="session-notice">
-                        <span class="icon icon-clock"></span>
-                        <small>Session in progress.</small>
-                     </div>
-                     <h5>{{formatTime started_at 'h:mma'}} - {{formatTime ended_at 'h:mma'}} {{formatTime started_at 'Do MMM'}}</h5>
-                     <h4>{{title}}</h4>
-
-                     {{#each invitees}}
-                        {{#if display_name}}
-                        <small><span class="icon icon-dot-single"></span> {{display_name}}</small>
-                        {{/if}}
-                     {{/each}}
-
+                  <li class="list-group-item {{isInSession id}}"> 
                      <span class="list-group-progress" style="width: {{progressPercent id}}%;"></span>
+                     <div class="item-content">
+                        <div class="session-notice">
+                           <span class="icon icon-clock"></span>
+                           <small>Session in progress.</small>
+                        </div>
+                        <h5>{{formatTime started_at 'h:mma'}} - {{formatTime ended_at 'h:mma'}} {{formatTime started_at 'Do MMM'}}</h5>
+                        <h4>{{title}}</h4>
+
+                        {{#each invitees}}
+                           {{#if display_name}}
+                           <small class="invitee">{{display_name}}</small>
+                           {{/if}}
+                        {{/each}}
+                     </div>
                   </li>
                   {{/each}}
                </ul>
@@ -41,7 +42,6 @@
             {{/if}}
          </div>
          {{/each}}
-      </div>
       </div>
    </div>
 </template>

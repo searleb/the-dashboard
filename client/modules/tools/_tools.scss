@@ -15,7 +15,13 @@
             display: none;
             li{
                 margin: 5px 0px;
+
+                img {
+                    margin-right: 5px;
+                }
+
                 .type{
+                    color: lighten($mf-black, 50%);
                     float: right;
                 }
             }
