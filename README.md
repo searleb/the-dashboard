@@ -14,7 +14,7 @@
 
 
 ### SCSS
-*client/scss*
+`client/scss`
 Varibles and global styles live here. Please add any varibles here so they available across the entire project.
 To add your new `_example.scss` to the project you will need to import it via `client/scss/main.scss`
 
