@@ -3,6 +3,7 @@
 ### Set up
 - [Install Meteor](https://www.meteor.com/install)
 - Pull the repo
+- Open the MF 1Password and find `Home Sweet Home - Settings.json`, download and add this file to the root folder.
 - cd in the-dashboard and run `Meteor --settings settings.json` - must be port :3000 which is default as goggle auth callback is set to localhost:3000
 
 
