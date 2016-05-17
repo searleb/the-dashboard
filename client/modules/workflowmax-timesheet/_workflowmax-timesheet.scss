@@ -1,35 +1,35 @@
-#workflowmax{
-    ul{
-        list-style: none;
-        li{
-            display: inline-block;
-            margin: 5px 5px;
-            min-width: 72px;
-            span{
-                display: block;
-                text-align: center;
-                &.day{
-                    margin-bottom: 5px;
-                }
-                &.hours{
-                    height: 50px;
-                    width: 50px;
-                    border-radius: 50px;
-                    border: 2px solid #ccc;
-                    font-size: 20px;
-                    line-height: 46px;
-                    font-weight: 300;
-                    margin: auto;
-                    &.not-complete{
-                        border-color: $brand-danger;
-                        color: $brand-danger;
-                    }
-                    &.complete{
-                        border-color: $brand-success;
-                        color: $brand-success;
-                    }
-                }
-            }
-        }
-    }
-}
+// #workflowmax{
+//     ul{
+//         list-style: none;
+//         li{
+//             display: inline-block;
+//             margin: 5px 5px;
+//             min-width: 72px;
+//             span{
+//                 display: block;
+//                 text-align: center;
+//                 &.day{
+//                     margin-bottom: 5px;
+//                 }
+//                 &.hours{
+//                     height: 50px;
+//                     width: 50px;
+//                     border-radius: 50px;
+//                     border: 2px solid #ccc;
+//                     font-size: 20px;
+//                     line-height: 46px;
+//                     font-weight: 300;
+//                     margin: auto;
+//                     &.not-complete{
+//                         border-color: $brand-danger;
+//                         color: $brand-danger;
+//                     }
+//                     &.complete{
+//                         border-color: $brand-success;
+//                         color: $brand-success;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }

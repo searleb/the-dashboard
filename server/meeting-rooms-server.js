@@ -24,7 +24,7 @@ Meteor.methods({
 
       function getSpaceEvents(id) {
          // get events between today and tomorrow
-         var tomorrow = moment().add(1, 'day').toISOString();
+         var tomorrow = moment().toISOString();
          var today = moment().toISOString();
          var spaceDetails = HTTP.get(robinURL + 'spaces/' + id + '/events?before=' + tomorrow + '&after=' + today, {
             headers: {
