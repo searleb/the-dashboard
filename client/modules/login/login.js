@@ -15,7 +15,10 @@ Template.login.events({
             alert("Sorry " + err.message.toLowerCase());
          }
       });
-   }
+   },
+   'click #logout': function(){		
+     Accounts.logout();
+  }
 });
 
 Template.login.helpers({
