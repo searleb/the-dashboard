@@ -1,34 +1,87 @@
-// container padding to make space for sidebar
-.container{
-   padding-left: 15px;
-   @media #{$media-sm}{
-      padding-left: 85px;
-   }
-   &.no-sidebar{
-      @media #{$media-sm}{
-         padding-left: 15px;
-      }
-   }
-}
-.container-fluid{
-   padding-left: 20px;
-   @media #{$media-sm}{
-      padding-left: 95px;
-   }
+body {
+	background: #F2F5F7;
 }
 
 ul{
-   padding-left: 0px;
-   list-style: none;
+	padding-left: 0px;
+	list-style: none;
+}
+
+.container-fluid{
+	padding: 0 30px;
+}
+
+.flex-row {
+	display: flex;
+	width: 100%;
+}
+
+.column {
+	margin: 0 15px;
+	display: flex;
+	flex-flow: row wrap;
+	flex: 1;
+}
+
+.column:first-child {
+	margin-left: 0;
+}
+
+.column:last-child {
+	margin-right: 0;
 }
 
 .module{
-   margin-bottom: 60px;
+	background: #fff;
+	margin-bottom: 30px;
+	padding: 20px;
+	border-radius: 4px;
+
+    .title {
+        display: flex;
+        flex: 1 100%;
+
+        align-items: center;
+
+        margin-bottom: 20px;
+        
+        h4 {
+            flex: 1;
+            margin: 0;
+            font-family: maisonneue bold;
+        }
+    }
 }
 
-.vertical-align {
-   margin: 0;
-   position: relative;
-   top: 50%;
-   transform: translateY(-50%);
+a:not(.hsh-nav li a) {
+	color: $mf-black;
+	// border-bottom: 1px solid $mf-black;
+
+	&:hover,
+	&:focus {
+		color: $mf-green;
+		text-decoration: none;
+		// border-bottom: 1px solid $mf-green;
+	}
+}
+
+.btn {
+	background: lighten($mf-green, 50%);
+	border: 1px solid $mf-green;
+	padding: 7px 12px 6px 12px;
+	
+	&:hover {
+		color: $white !important;
+		background-color: $mf-green;
+		border: 1px solid $mf-green;
+	}
+}
+
+.form-control:focus {
+	border: 1px solid $mf-green;
+	box-shadow: none;
+}
+
+.label-default {
+    background-color: rgba(0,0,0,0.3);
 }

@@ -1,50 +1,62 @@
 #calendar-template{
-    h5{
-        margin: 0px;
-        small{
-            display: block;
-        }
-    }
+    flex: 1;
+   
+    ul{
+        list-style: none;
+        margin-bottom: 0;
+        width: 100%;
 
-    li{
-        background-color: $body-bg;
-        a{
-            &:hover, &focus{
-                text-decoration: none;
+        li {
+            width: 100%;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.2);
+
+            &:first-child {
+                    border-radius: 4px 4px 0 0;
             }
-        }
-        &.past{
-            a{
-                h5, small{
-                    color: $gray-dark;
+
+            &:last-child {
+                    border-radius: 0 0 4px 4px;
+            }
+
+            &:hover:not(.current) {
+                background: lighten($mf-green, 50%);
+            }
+
+            + li {
+                border-top: 0 !important;
+            }
+
+            a {
+                display: block;
+                width: 100%;
+                padding: 10px 15px;
+            }
+
+            &.past {
+                border: 1px solid rgba(0,0,0,0.2);
+            }
+
+            &.current {
+                z-index: 2;
+                transform: scale(1.025);
+                background: lighten($mf-green, 10%);
+                border: 1px solid $mf-green;
+
+                a {
+                    &:hover {
+                        color: $white;
+                    }
                 }
-                span{
-                    background-color: $gray-dark;
-                }
             }
-        }
-        &.current{
-            border-color: $brand-danger;
-            z-index: 2;
-            transform: scale(1.075);
-            border-radius: 4px;
-            a{
-                color: $brand-danger;
-                font-weight: 500;
+
+            &.future {
+                z-index: 1;
+                background-color: lighten($mf-green, 50%);
+                border: 1px solid $mf-green;
             }
-            .label-default{
-                background-color: $brand-danger;
-            }
-        }
-        &.future{
-            z-index: 1;
-            transform: scale(1.035);
-            a{
-                color: $brand-primary
-            }
-            .label-default{
-                background-color: $brand-primary;
-            }
+
+
         }
     }
 }
