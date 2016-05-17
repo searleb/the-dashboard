@@ -1,20 +1,27 @@
 <template name="workflowmaxTimeSheet">
-   <div id="workflowmax" class="module">
-      <h2>Times</h2>
+    <div id="workflowmax" class="module">
+        <div class="title">
+          <h4>Timesheet</h4>
+          <a class="btn btn-sm" href="https://my.workflowmax.com/my/timesheet.aspx?" target="_blank">Log time now</a>
+        </div>
 
-      {{#with loggedHours}}
-      <ul class="list-group">
-         {{#each loggedHours}}
-         <li class="list-group-item">
-            {{day}}<span class="pull-right">{{hours}}</span>
-            <span class="list-group-progress" style="width: {{hours}}%;"></span>
-         </li>
-         {{/each}}
-      </ul>
-      {{/with}}
-      {{#unless loggedHours}}
-      <p>Loading...</p>
-      {{/unless}}
-      <a href="https://my.workflowmax.com/my/timesheet.aspx?" target="_blank">Log time now</a>
-   </div>
+        {{#with loggedHours}}
+          <ul>
+            {{#each loggedHours}}
+              <li>
+                <div class="bar-graph">
+                  <span class="hours {{this.class}}" style="width: calc({{hours}}*12.5%)"></span>
+                  <span class="day">
+                    <h5>{{day}}<span class="label label-default pull-right">{{hours}} hours</span></h5>
+                  </span>
+                </div>
+              </li>
+            {{/each}}
+          </ul>
+        {{/with}}
+
+        {{#unless loggedHours}}
+           <p>Loading...</p>
+        {{/unless}}
+    </div>
 </template>

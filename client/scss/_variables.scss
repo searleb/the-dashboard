@@ -1,29 +1,44 @@
 // colors
-$gray-base:              #000;
-$gray-dark:              #222;
-$gray-darker:            #111;
-$gray:                   #555;
-$gray-light:             #aaa;
-$gray-lighter:           #f5f5f5;
+// $gray-base:			#000;
+// $gray-dark:			#222;
+// $gray-darker:		#111;
+// $gray:				#555;
+// $gray-light:		#aaa;
+// $gray-lighter:		#f5f5f5;
 
 // mf colors
+$mf-black:			#1B1B1B;
+$mf-green:			#0FDBC1;
+$mf-blue:			#4FB9D7;
+// $mf-navy:			#131F32;
 
-$mf-blue: #4FB9D7;
-$mf-green: #0AC0C2;
-$mf-navy: #131F32;
 // special light gray for flourishes like hr's
-$gray-subtle:            #eee;
-
-$brand-primary:          #1CA8DD;
-$brand-success:          #1BC98E;
-$brand-info:             #9F86FF;
-$brand-warning:          #E4D836;
-$brand-danger:           #E64759;
-
-$white:                  #FFFFFF;
+$gray-subtle:		#eee;
+$brand-primary:		#1CA8DD;
+$brand-success:		#1BC98E;
+$brand-info:		#9F86FF;
+$brand-warning:		#E4D836;
+$brand-danger:		#E64759;
+$white:				#FFFFFF;
 
 // media queries: http://getbootstrap.com/css/#grid-media-queries
-$media-xs: '(max-width:767px)';
-$media-sm: '(min-width:768px)';
-$media-md: '(min-width:992px)';
-$media-lg: '(min-width:1200px)';
+$media-xs:			'(max-width:767px)';
+$media-sm:			'(min-width:768px)';
+$media-md:			'(min-width:992px)';
+$media-lg:			'(min-width:1200px)';
+
+// Gray scale
+$gray-base:			#252830;
+$gray-darker:		lighten($gray-base, 13.5%);
+$gray-dark:			lighten($gray-base, 20%);
+$gray:				lighten($gray-base, 33.5%);
+$gray-light:		lighten($gray-base, 66.7%);
+$gray-lighter:		lighten($gray-base, 93.5%);
+
+// reset gray subtle
+$gray-subtle:		$gray-light;
+
+// Scaffolding
+$body-bg:			$gray-base;
+$text-color:		$gray-light;
+$btn-default-color:	$gray-dark;

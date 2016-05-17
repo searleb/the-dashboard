@@ -1,0 +1,83 @@
+<template name="nav">
+   <ul class="hsh-nav">
+      <li class="mf-logo">
+         <a href="/" title="Home Sweet Home">
+            <svg width="25" height="35" viewBox="0 0 44 35" xmlns="http://www.w3.org/2000/svg" class="diamond">
+                 <path d="M6.308 3.017l4.37 1.932-8.03 2.54 3.66-4.473zM41.256 7.49l-8.032-2.54 4.372-1.933 3.66 4.474zm-9.447 6.99l9.074-3.907-16.836 20.18 7.76-16.274zM2.62 8.922L11.92 5.98v6.945L2.62 8.923zm9.474 5.556l7.762 16.272L3.02 10.572l9.074 3.907zm.25-10.28L8.482 2.494l5.573-.9-1.708 2.608zm1.256.562l1.903-2.904 4.306 5.708-6.21-2.804zm16.703 0l-6.21 2.804L28.4 1.858l1.903 2.904zm1.255-.56L29.85 1.593l5.573.9L31.558 4.2zm.427 1.78l9.297 2.94-9.297 4.003V5.98zM23.532 9.31l7.095-3.204v6.752L23.532 9.31zm-.9 1.068l7.775 3.887L22.63 30.57V10.378zm-1.36 0V30.57l-7.775-16.305 7.776-3.887zm-7.996-4.272L20.37 9.31l-7.094 3.548V6.106zm30.617 2.79c.008-.15-.005-.192-.017-.235-.038-.134-.074-.197-.12-.255L38.32 1.758c-.105-.128-.254-.214-.418-.24L28.548.007c-.248-.04-.5.06-.65.262l-5.946 7.882L16.006.27c-.15-.2-.402-.302-.65-.26L6 1.516c-.16.027-.31.113-.416.24l-5.43 6.64c-.052.066-.088.13-.113.2-.024.108-.038.15-.04.196.016.148.02.192.034.234.054.122.075.16.102.198L21.43 34.76c.08.073.105.097.134.117.114.06.133.077.157.086.063.016.097.02.13.026.136.01.17.004.202 0 .112-.024.122-.023.13-.027.097-.05.128-.065.157-.086.096-.086.117-.098.133-.117l21.274-25.5c.048-.072.07-.11.088-.153.048-.122.053-.166.058-.21z" fill-rule="evenodd"></path>
+            </svg>
+         </a>
+      </li>
+      <li class="meeting-rooms">
+         <a href="/meeting-rooms" title="Meeting Rooms">Meeting Rooms</a>
+      </li>
+      <li class="wfm">
+         <a href="/workflowmax-jobs" title="Current Jobs">Current Jobs</a>
+      </li>
+      <li class="banter">
+         <a href="/friendly-banter" title="Friendly Banter">Friendly Banter</a>
+      </li>
+      
+
+      <!-- External Links -->
+
+<!--       <li>
+         <a href="https://mentally-friendly.float.com/my-schedule" target="_blank" title="Float">
+            <span class="icon icon-list"></span>Float
+         </a>
+      </li>
+      <li>
+         <a href="https://my.workflowmax.com" target="_blank" title="Workflow Max">
+            <span class="icon icon-stopwatch"></span>Workflow Max
+         </a>
+      </li>
+      <li>
+         <a href="https://github.com/MentallyFriendly" target="_blank" title="Github">
+            <span class="icon icon-github"></span>Github
+         </a>
+      </li>
+      <li>
+         <a href="https://login.xero.com/" target="_blank" title="Xero">
+            <span class="icon icon-credit"></span>Xero
+         </a>
+      </li>
+      <li>
+         <a href="https://docs.google.com/a/mentallyfriendly.com/forms/d/1-Y4_T_E0gc8y4ehC3L0RaF6yxmC4bA4mjabxkbgkbwk/viewform" target="_blank" title="Suggestion Box">
+            <span class="icon icon-typing"></span>Suggestion Box
+         </a>
+      </li>
+      <li>
+         <a href="https://docs.google.com/spreadsheets/d/1wwVxQAejQlX6FgPchzwC7b9TpmKDZXL6vAthjRIJyuw/edit#gid=1673363062" target="_blank" title="OKR Tracking">
+            <span class="icon icon-area-graph"></span>OKR Tracking
+         </a>
+      </li>
+      <li>
+         <a href="https://mentallyfriendly.workable.com/" target="_blank" title="Hiring!">
+            <span class="icon icon-thumbs-up"></span>Hiring!
+         </a>
+      </li>
+      <li>
+         <a href="https://docs.google.com/a/mentallyfriendly.com/forms/d/1-VYw0mIIv1pgDTQBkgJJXzRtEcpqn1iRWPmFrqN8zWY/viewform" target="_blank" title="Praises">
+            <span class="icon icon-heart"></span>Praises
+         </a>
+      </li>
+      <li>
+         <a href="https://github.com/searleb/the-dashboard#boards?repos=46270831" target="_blank" title="Bugs &amp; Suggestions">Bugs &amp; Suggestions</a>
+      </li> -->
+
+
+      <!-- Right Side -->
+
+      <li class="profile-pic">
+         <a href="https://myaccount.google.com" target="_blank" title="Google Account">
+            <img src="{{userData.services.google.picture}}" alt="{{userData.profile.name}}" class="img-responsive img-circle" />
+         </a>
+      </li>
+      <li class="login-out">
+         <a id="login-out" title="Logout">Logout</a>
+      </li>
+      <li class="settings">
+         <a href="#" id="user-settings" title="Settings">Settings</a>
+      </li>
+   </ul>
+   {{> settingsModal}}
+</template>

@@ -5,6 +5,20 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'maisonneue';
+    src: url('../fonts/maisonneue-book.woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'maisonneue bold';
+    src: url('../fonts/maisonneue-bold.woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 *{
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'maisonneue', sans-serif;
 }
