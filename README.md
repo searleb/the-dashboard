@@ -3,7 +3,7 @@
 ### Set up
 - [Install Meteor](https://www.meteor.com/install)
 - Pull the repo
-- cd to root and run `Meteor` - must be port :3000 which is default as goggle auth callback is set to localhost:3000
+- cd to root and run `meteor --settings settings.json` - must be port :3000 which is default as goggle auth callback is set to localhost:3000
 
 
 
