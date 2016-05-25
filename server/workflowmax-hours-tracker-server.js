@@ -1,14 +1,14 @@
 Meteor.startup(function() {
-   var workflowmaxURL = 'https://api.workflowmax.com/',
-   apiKey = Meteor.settings.private.workflowMaxApiKey,
-   accountKey;
+   const workflowmaxURL = 'https://api.workflowmax.com/',
+   apiKey = Meteor.settings.private.workflowMaxApiKey;
+   let accountKey;
 
    Meteor.methods({
       getHours: function() {
-         var userID;
+         let userID;
          // Get current user data
-         var userData = Meteor.user();
-         var userOffice = userData.profile.office;
+         const userData = Meteor.user();
+         const userOffice = userData.profile.office;
          switch (userOffice) {
             case 'sydney':
             accountKey = Meteor.settings.private.workflowMaxSydKey;
@@ -24,11 +24,22 @@ Meteor.startup(function() {
          var returnArray = [];
 
          // set dates for range of times requested
-         var today = moment().format('YYYYMMDD');
-         var lastMonth = moment().subtract(1, 'month').format('YYYYMMDD');
+         const today = moment().format('YYYYMMDD');
+         const lastMonth = moment().subtract(1, 'month').format('YYYYMMDD');
+
+         var datesArray = [];
+         var now = moment();
+         var pastDate = moment().subtract(1, 'month');
+         while (pastDate < now) {
+            var obj = {};
+            obj.date = pastDate.format('YYYYMMDD');
+            obj.hours = 0;
+            datesArray.push(obj);
+            pastDate = moment(pastDate).add(1, 'day');
+         }
 
          // Get hours list
-         var hoursLogged = HTTP.get(workflowmaxURL + 'time.api/list?apiKey=' + apiKey + '&accountKey=' + accountKey + '&from=' + lastMonth + '&to=' + today);
+         let hoursLogged = HTTP.get(workflowmaxURL + 'time.api/list?apiKey=' + apiKey + '&accountKey=' + accountKey + '&from=' + lastMonth + '&to=' + today);
 
          // Convert XML to JS with xml2js
          hoursLogged = xml2js.parseString(hoursLogged.content, {
@@ -36,87 +47,109 @@ Meteor.startup(function() {
             explicitArray: false,
             valueProcessors: [xml2js.processors.parseNumbers]
          }, function(err, data) {
-            var json = data.response.times.time;
+            const json = data.response.times.time;
 
             // Sort the response by date
-            var sorted = _.sortBy(json, function(i){
+            const sorted = _.sortBy(json, function(i){
                return i.date;
             });
+
             // Group the sorted array into arrays by staff id
-            var grouped = _.groupBy(sorted, function(i){
+            const grouped = _.groupBy(sorted, function(i){
                return i.staff.id;
             });
 
 
-            // List of userIDs
-            var userIDs = {};
-            _.each(grouped, function(el, id){
+            // Each group is the user with all time entries
+            _.each(grouped, function(user, id){
 
-               // Set the object key to the users ID
-               userIDs[id] = [];
+               // New object for each user
+               let userObj = {
+                  name: '',
+                  id: '',
+                  hours: []
+               };
 
-               // Add the users minutes into an array against their ID
-               var lastEntryDate = 0;
-               var lastEntryMinutes = 0;
+               // Set the user object id and name
+               userObj.id = id;
+               userObj.name = user[0].staff.name;
 
-               _.each(el, function(el, i) {
-                  var currentDate = moment(el.date).format('YYYYMMDD');
-                  var currentMinutes = el.minutes;
-                  // If the previous entry date is == to current el then add the minutes together
-                  if (lastEntryDate == currentDate) {
-                     el.minutes += lastEntryMinutes;
-                  } else {
-                     userIDs[id].push(el.minutes / 60 + " date " + moment(el.date).format('YYYY-MM-DD'));
+               // // Variables for tracking the last entries date and minutes
+               let lastEntryDate = "";
+               let lastEntryMinutes = 0;
+
+               // Each array of hours in the group
+               _.each(user, function(entry, i) {
+
+                  // entry example
+                  //{ id: 80664243,
+                  //    job: { id: 'BDA1605', name: 'amplify.me - Production' },
+                  //    task: { id: 45120384, name: 'Product Manager' },
+                  //    staff: { id: 353467, name: 'Jo Pforr' },
+                  //    date: '2016-05-20T00:00:00',
+                  //    minutes: 480,
+                  //    note: 'Roadmap',
+                  //    billable: 'true'
+                  // }
+
+                  let entryDate = entry.date;
+                  let entryMinutes = entry.minutes;
+
+                  // If the last entry date is NOT equal to the current entry,
+                  // then add current entry to the hours array
+                  if(lastEntryDate != entryDate){
+                     let hoursObj = {};
+                     hoursObj.date = moment(entryDate).format('YYYYMMDD');
+                     hoursObj.hours = ( entryMinutes / 60 );
+                     userObj.hours.push(hoursObj);
                   }
-                  lastEntryDate = currentDate;
-                  lastEntryMinutes = currentMinutes;
+
+                  // If the last entry date IS equal to the current entry,
+                  // remove the last entry from the user hours array,
+                  // add the last and current together,
+                  // then push back to the user hours array
+                  if (lastEntryDate == entryDate) {
+                     userObj.hours.splice(-1,1);
+                     let hoursObj = {};
+                     let pastHours = (lastEntryMinutes / 60);
+                     hoursObj.date = moment(entryDate).format('YYYYMMDD');
+                     hoursObj.hours = ( pastHours + (entryMinutes / 60) );
+                     userObj.hours.push(hoursObj);
+                  }
+
+                  // Set the last entry variables to the current entry for the next loop
+                  lastEntryDate = entry.date;
+                  lastEntryMinutes = entry.minutes;
+
                });
+
+               mergeByProperty(userObj.hours, datesArray, 'date');
+               returnArray.push(userObj);
             });
 
-
-            returnArray.push(userIDs);
          });
 
-
-
-         // // call WorkflowMax API
-         // var request = HTTP.get(workflowmaxURL + 'time.api/staff/' + userID + '?apiKey=' + apiKey + '&accountKey=' + accountKey + '&from=' + start + '&to=' + now);
-         //
-         // // this will be returned to the client as hours and day
-         // var returnArray = [];
-         //
-         // // convert xml to js
-         // xml2js.parseString(request.content, {
-         //     normalizeTags: true,
-         //     explicitArray: false
-         // }, function(err, data) {
-         //
-         //     // group the returned objects by date
-         //     var groupedByDate = _.groupBy(data.response.times.time, 'date');
-         //
-         //     // loop each group
-         //     _.each(groupedByDate, function(el, index) {
-         //         // track minutes logged here
-         //         var runningTotal = 0;
-         //
-         //         // each entry under the grouped date
-         //         _.each(el, function(el, index) {
-         //             runningTotal += parseInt(el.minutes);
-         //         });
-         //
-         //         // format the date into day
-         //         var formattedDate = moment(index).format('ddd Do').toString();
-         //
-         //         // push the hours and day in to returnArray
-         //         returnArray.push({
-         //             hours: runningTotal / 60,
-         //             day: formattedDate
-         //         });
-         //     });
-         // });
-
-         // return returnArray to the client
          return returnArray;
       }
    });
+
+   /***************************************************/
+   /** Merge 2 arrays of objects using underscore.js **/
+   /***************************************************/
+
+   //arr2 will be merged into arr1, arr1 will be extended as needed.
+
+   function mergeByProperty(arr1, arr2, prop) {
+      _.each(arr2, function(arr2obj, i) {
+
+         var arr1obj = _.find(arr1, function(arr1obj) {
+            return arr1obj[prop] === arr2obj[prop];
+         });
+
+         //If the object already exist extend it with the new values from arr2, otherwise just add the new object to arr1
+         if (arr1obj === undefined) {
+            arr1.splice(i, 0, arr2obj );
+         }
+      });
+   }
 });
