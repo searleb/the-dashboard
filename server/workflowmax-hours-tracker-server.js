@@ -34,6 +34,7 @@ Meteor.startup(function() {
             var obj = {};
             obj.date = pastDate.format('YYYYMMDD');
             obj.hours = 0;
+            obj.class = 'danger';
             datesArray.push(obj);
             pastDate = moment(pastDate).add(1, 'day');
          }
@@ -100,7 +101,18 @@ Meteor.startup(function() {
                   if(lastEntryDate != entryDate){
                      let hoursObj = {};
                      hoursObj.date = moment(entryDate).format('YYYYMMDD');
-                     hoursObj.hours = ( entryMinutes / 60 );
+                     hoursObj.hours = round( entryMinutes / 60, 2);
+                     if (hoursObj.hours > 7) {
+                        hoursObj.class = 'success';
+                     }
+                     if (hoursObj.hours < 8 && hoursObj.hours > 3) {
+                        hoursObj.class = 'warning';
+                     }
+                     if (hoursObj.hours <= 3) {
+                        hoursObj.class = 'danger';
+                     }
+
+
                      userObj.hours.push(hoursObj);
                   }
 
@@ -111,9 +123,19 @@ Meteor.startup(function() {
                   if (lastEntryDate == entryDate) {
                      userObj.hours.splice(-1,1);
                      let hoursObj = {};
-                     let pastHours = (lastEntryMinutes / 60);
+                     // let pastHours = lastEntryMinutes / 60;
                      hoursObj.date = moment(entryDate).format('YYYYMMDD');
-                     hoursObj.hours = ( pastHours + (entryMinutes / 60) );
+                     hoursObj.hours = round( (lastEntryMinutes + entryMinutes) / 60, 2);
+                     if (hoursObj.hours >= 8) {
+                        hoursObj.class = 'success';
+                     }
+                     if (hoursObj.hours < 8 && hoursObj.hours > 3) {
+                        hoursObj.class = 'warning';
+                     }
+                     if (hoursObj.hours <= 3) {
+                        hoursObj.class = 'danger';
+                     }
+
                      userObj.hours.push(hoursObj);
                   }
 
@@ -151,5 +173,10 @@ Meteor.startup(function() {
             arr1.splice(i, 0, arr2obj );
          }
       });
+   }
+
+   function round(value, precision) {
+      var multiplier = Math.pow(10, precision || 0);
+      return Math.round(value * multiplier) / multiplier;
    }
 });

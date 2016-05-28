@@ -8,7 +8,7 @@ Tracker.autorun(function(){
 
 Template.hoursTracker.helpers({
    loggedHours: function() {
-      var hours = Session.get('allTrackedHours');
+      var hours =  Session.get('allTrackedHours');
       console.log(hours);
       return hours;
    }
