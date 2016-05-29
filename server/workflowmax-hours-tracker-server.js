@@ -150,8 +150,19 @@ Meteor.startup(function() {
             });
 
          });
-
+         returnArray = _.sortBy(returnArray, 'name');
          return returnArray;
+      },
+      getTrackedDates: function(){
+         console.log('getTrackedDates');
+         var datesArray = [];
+         var now = moment();
+         var pastDate = moment().subtract(1, 'month');
+         while (pastDate < now) {
+            datesArray.push( pastDate.format('D/M') );
+            pastDate = moment(pastDate).add(1, 'day');
+         }
+         return datesArray;
       }
    });
 
