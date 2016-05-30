@@ -12,12 +12,10 @@ Tracker.autorun(function(){
 Template.hoursTracker.helpers({
    loggedHours: function() {
       var hours =  Session.get('allTrackedHours');
-      console.log(hours);
       return hours;
    },
    dates: function() {
       var dates =  Session.get('allTrackedDates');
-      console.log(dates);
       return dates;
    }
 });

@@ -102,6 +102,7 @@ Meteor.startup(function() {
                      let hoursObj = {};
                      hoursObj.date = moment(entryDate).format('YYYYMMDD');
                      hoursObj.hours = round( entryMinutes / 60, 2);
+
                      if (hoursObj.hours > 7) {
                         hoursObj.class = 'success';
                      }
@@ -112,6 +113,7 @@ Meteor.startup(function() {
                         hoursObj.class = 'danger';
                      }
 
+                     lastEntryMinutes = entry.minutes;
 
                      userObj.hours.push(hoursObj);
                   }
@@ -121,11 +123,14 @@ Meteor.startup(function() {
                   // add the last and current together,
                   // then push back to the user hours array
                   if (lastEntryDate == entryDate) {
+                     let runningTotal = _.last(userObj.hours);
+
                      userObj.hours.splice(-1,1);
                      let hoursObj = {};
                      // let pastHours = lastEntryMinutes / 60;
                      hoursObj.date = moment(entryDate).format('YYYYMMDD');
                      hoursObj.hours = round( (lastEntryMinutes + entryMinutes) / 60, 2);
+
                      if (hoursObj.hours >= 8) {
                         hoursObj.class = 'success';
                      }
@@ -136,12 +141,13 @@ Meteor.startup(function() {
                         hoursObj.class = 'danger';
                      }
 
+                     lastEntryMinutes += entry.minutes;
+
                      userObj.hours.push(hoursObj);
                   }
 
                   // Set the last entry variables to the current entry for the next loop
                   lastEntryDate = entry.date;
-                  lastEntryMinutes = entry.minutes;
 
                });
 
@@ -154,7 +160,6 @@ Meteor.startup(function() {
          return returnArray;
       },
       getTrackedDates: function(){
-         console.log('getTrackedDates');
          var datesArray = [];
          var now = moment();
          var pastDate = moment().subtract(1, 'month');
