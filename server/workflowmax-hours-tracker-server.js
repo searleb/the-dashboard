@@ -30,7 +30,7 @@ Meteor.startup(function() {
          var datesArray = [];
          var now = moment();
          var pastDate = moment().subtract(1, 'month');
-         while (pastDate < now) {
+         while (pastDate <= now) {
             var obj = {};
             obj.date = pastDate.format('YYYY-MM-DD');
             obj.hours = 0;
@@ -145,7 +145,7 @@ Meteor.startup(function() {
          var datesArray = [];
          var now = moment();
          var pastDate = moment().subtract(1, 'month');
-         while (pastDate < now) {
+         while (pastDate <= now) {
             datesArray.push( pastDate.format('D/M') );
             pastDate = moment(pastDate).add(1, 'day');
          }
