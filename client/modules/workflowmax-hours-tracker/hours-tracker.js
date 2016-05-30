@@ -11,11 +11,11 @@ Tracker.autorun(function(){
 
 Template.hoursTracker.helpers({
    loggedHours: function() {
-      var hours =  Session.get('allTrackedHours');
+      var hours = Session.get('allTrackedHours');
       return hours;
    },
    dates: function() {
-      var dates =  Session.get('allTrackedDates');
+      var dates = Session.get('allTrackedDates');
       return dates;
    }
 });

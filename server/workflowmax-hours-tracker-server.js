@@ -32,9 +32,8 @@ Meteor.startup(function() {
          var pastDate = moment().subtract(1, 'month');
          while (pastDate < now) {
             var obj = {};
-            obj.date = pastDate.format('YYYYMMDD');
+            obj.date = pastDate.format('YYYY-MM-DD');
             obj.hours = 0;
-            obj.class = 'danger';
             datesArray.push(obj);
             pastDate = moment(pastDate).add(1, 'day');
          }
@@ -100,18 +99,8 @@ Meteor.startup(function() {
                   // then add current entry to the hours array
                   if(lastEntryDate != entryDate){
                      let hoursObj = {};
-                     hoursObj.date = moment(entryDate).format('YYYYMMDD');
+                     hoursObj.date = moment(entryDate).format('YYYY-MM-DD');
                      hoursObj.hours = round( entryMinutes / 60, 2);
-
-                     if (hoursObj.hours > 7) {
-                        hoursObj.class = 'success';
-                     }
-                     if (hoursObj.hours < 8 && hoursObj.hours > 3) {
-                        hoursObj.class = 'warning';
-                     }
-                     if (hoursObj.hours <= 3) {
-                        hoursObj.class = 'danger';
-                     }
 
                      lastEntryMinutes = entry.minutes;
 
@@ -123,23 +112,11 @@ Meteor.startup(function() {
                   // add the last and current together,
                   // then push back to the user hours array
                   if (lastEntryDate == entryDate) {
-                     let runningTotal = _.last(userObj.hours);
-
                      userObj.hours.splice(-1,1);
                      let hoursObj = {};
                      // let pastHours = lastEntryMinutes / 60;
-                     hoursObj.date = moment(entryDate).format('YYYYMMDD');
+                     hoursObj.date = moment(entryDate).format('YYYY-MM-DD');
                      hoursObj.hours = round( (lastEntryMinutes + entryMinutes) / 60, 2);
-
-                     if (hoursObj.hours >= 8) {
-                        hoursObj.class = 'success';
-                     }
-                     if (hoursObj.hours < 8 && hoursObj.hours > 3) {
-                        hoursObj.class = 'warning';
-                     }
-                     if (hoursObj.hours <= 3) {
-                        hoursObj.class = 'danger';
-                     }
 
                      lastEntryMinutes += entry.minutes;
 
@@ -152,6 +129,11 @@ Meteor.startup(function() {
                });
 
                mergeByProperty(userObj.hours, datesArray, 'date');
+
+               _.each(userObj.hours, function(entry, i) {
+                  entry.class = addClass(entry.hours, entry.date);
+               });
+
                returnArray.push(userObj);
             });
 
@@ -194,5 +176,26 @@ Meteor.startup(function() {
    function round(value, precision) {
       var multiplier = Math.pow(10, precision || 0);
       return Math.round(value * multiplier) / multiplier;
+   }
+
+   function addClass(hour, date){
+      date = moment(date).format('d');
+      let className = '';
+
+      if (date == '6' || date == '0') {
+         className = 'info';
+      } else {
+         if (hour >= 8) {
+            className = 'success';
+         }
+         if (hour < 8 && hour > 3) {
+            className = 'warning';
+         }
+         if (hour <= 3) {
+            className = 'danger';
+         }
+      }
+
+      return className;
    }
 });
