@@ -1,5 +1,9 @@
 <template name="hoursTracker">
    <div class="container-fluid hours-tracker">
+      {{#unless loggedHours}}
+      {{> loading}}
+      {{/unless}}
+      {{#if loggedHours}}
       <div class="row">
          <div class="col-sm-12">
             <div class="table-responsive">
@@ -35,5 +39,6 @@
             </div>
          </div>
       </div>
+      {{/if}}
    </div>
 </template>
