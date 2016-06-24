@@ -1,22 +1,22 @@
 <template name="home">
-    <div class="container-fluid">
-        <div class="flex-row">       
-            <div class="column">{{> search }}</div>
-        </div>
-        <div class="flex-row">
-            <div class="column">{{> weather }}</div>
-        </div>
-        <div class="flex-row">
-            <div class="column">{{> calendar }}</div>
+   <div class="container-fluid">
+      <div class="row">
 
-            <div class="column">{{> workflowmaxTimeSheet }}</div>
-
-            <div class="column">{{> tools }}</div>
-        </div>
-    </div>
-    <!-- <div class="container-fluid">
-        <div class="flex-row">
-            <div class="column">{{> mediumFeed }}</div>
-        </div>
-    </div> -->
+         <div class="col-sm-12">
+            {{> search }}
+         </div>
+         <div class="col-sm-6">
+            {{> weather }}
+         </div>
+         <div class="col-sm-6">
+            {{> calendar }}
+         </div>
+         <div class="col-sm-6">
+            {{> workflowmaxTimeSheet }}
+         </div>
+         <div class="col-sm-6">
+            {{> tools }}
+         </div>
+      </div>
+   </div>
 </template>
