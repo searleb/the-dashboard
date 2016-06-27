@@ -1,5 +1,11 @@
 .hours-tracker{
    table, th{
       text-align: center;
+      border: 0px;
+   }
+   .table{
+      th, td{
+         border: 0px;
+      }
    }
 }

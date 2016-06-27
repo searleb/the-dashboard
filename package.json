@@ -1,0 +1,24 @@
+{
+  "name": "the-dashboard",
+  "version": "1.0.0",
+  "description": "MF Dashboard",
+  "main": "the-dashboard.js",
+  "dependencies": {
+    "bootstrap": "^4.0.0-alpha.2",
+    "meteor-node-stubs": "^0.2.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/searleb/the-dashboard.git"
+  },
+  "author": "Bill Searle @bill_searle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/searleb/the-dashboard/issues"
+  },
+  "homepage": "https://github.com/searleb/the-dashboard#readme"
+}

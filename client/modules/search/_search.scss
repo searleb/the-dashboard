@@ -1,86 +1,10 @@
-#search {
-	flex: 1;
+#search-drive{
+   margin-bottom: 1em;
+}
 
-	.search-box,
-	.btn-group {
-		display: inline-block;
-
-		button {
-			display: inherit;
-		}
-	}
-
-	.search-wiki,
-	.search-drive {
-		display: flex;
-		flex: 1 100%;
-		margin-bottom: 10px;
-
-	}
-
-	.search-box {
-		flex: 1;
-		
-		input {
-			border-radius: 4px 0 0 4px;
-			border-right: none;
-			box-shadow: none;
-		}
-	}
-
-	.btn {
-		border-radius: 0 4px 4px 0;
-	}
-
-	.mag-glass:before {
-		content: '🔍';
-	}
-	
-	.btn:hover {
-		.mag-glass:before {
-			content: '🍆';
-		}
-	}
-
-	.links {
-		margin-bottom: 0;
-
-		li {
-			display: inline-block;
-			margin-right: 10px;
-		}
-
-		a {
-			color: $mf-black;
-		}
-
-		.recent:before {
-			content: '⏲';
-		}
-
-		.au:before {
-			content: '🇦🇺';
-		}
-
-		.gb:before {
-			content: '🇬🇧';
-		}
-
-		a:hover  {
-			color: $mf-green;
-			text-decoration: none;
-
-			.recent:before {
-				content: '🙃';
-			}
-
-			.au:before {
-				content: '🐨';
-			}
-
-			.gb:before {
-				content: '💷';
-			}
-		}
-	}
+#search-drive, #search-wiki{
+   input{
+      width: calc(100% - 83px);
+      border-width: 2px; 
+   }
 }

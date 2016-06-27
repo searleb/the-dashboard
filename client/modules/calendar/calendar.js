@@ -1,6 +1,7 @@
 
 Template.calendar.helpers({
    gCalendar: function(){
+      Packery.layout();
       return Session.get('googleCalendar');
    }
 });
@@ -76,7 +77,7 @@ Template.calendar.onCreated( function () {
             if(now >= (startTime - 10) && now < endTime) {
 
                // set the class
-               item.timeClass = 'current';
+               item.timeClass = 'list-group-item-danger';
 
                // send the notification if the event is in the future
                // and has not already been shown
