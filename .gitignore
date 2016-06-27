@@ -3,3 +3,5 @@ server/00-constants.js
 home-sweet-home.tar.gz/the-dashboard.tar.gz
 
 settings.json
+
+node_modules
