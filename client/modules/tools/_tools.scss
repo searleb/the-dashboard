@@ -1,58 +1,58 @@
 #tools{
-    flex: 1;
+   button{
+      background-color: $mf-navy;
+      border-color: $mf-navy;
+      &.active{
+         background-color: $mf-green;
+         border-color: $mf-green;
+         box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.2);
+         transform: translateY(-2px);
+      }
+   }
 
-    button{
-        &.active{
-            color: $white;
-            background-color: $mf-green;
-            border-color: $mf-green;
-            box-shadow: none;
-        }
-    }
+   .list-container{
+      ul{
+         display: none;
+         list-style: none;
+         margin-bottom: 0;
+         width: 100%;
 
-    .list-container{
-        ul{
-            display: none;
-            list-style: none;
-            margin-bottom: 0;
+         li {
             width: 100%;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.2);
 
-            li {
-                width: 100%;
-                overflow: hidden;
-                border: 1px solid rgba(0,0,0,0.2);
-
-                &:first-child {
-                        border-radius: 4px 4px 0 0;
-                }
-
-                &:last-child {
-                        border-radius: 0 0 4px 4px;
-                }
-
-                &:hover {
-                    background: lighten($mf-green, 50%);
-                }
-
-                + li {
-                    border-top: 0;
-                }
-
-                a {
-                    display: block;
-                    width: 100%;
-                    padding: 7px 15px;
-                }
-
-                img {
-                    margin-right: 5px;
-                }
-
-                .type{
-                    color: lighten($mf-black, 50%);
-                    float: right;
-                }
+            &:first-child {
+               border-radius: 4px 4px 0 0;
             }
-        }
-    }
+
+            &:last-child {
+               border-radius: 0 0 4px 4px;
+            }
+
+            &:hover {
+               background: lighten($mf-green, 50%);
+            }
+
+            + li {
+               border-top: 0;
+            }
+
+            a {
+               display: block;
+               width: 100%;
+               padding: 7px 15px;
+            }
+
+            img {
+               margin-right: 5px;
+            }
+
+            .type{
+               color: lighten($mf-black, 50%);
+               float: right;
+            }
+         }
+      }
+   }
 }

@@ -183,16 +183,16 @@ Meteor.startup(function() {
       let className = '';
 
       if (date == '6' || date == '0') {
-         className = 'info';
+         className = 'table-info';
       } else {
          if (hour >= 8) {
-            className = 'success';
+            className = 'table-success';
          }
          if (hour < 8 && hour > 3) {
-            className = 'warning';
+            className = 'table-warning';
          }
          if (hour <= 3) {
-            className = 'danger';
+            className = 'table-danger';
          }
       }
 

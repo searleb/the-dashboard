@@ -7,6 +7,7 @@
       display: flex;
       flex: 1;
       flex-flow: row wrap;
+      width: 100%;
    }
 
    .meeting-column {
@@ -32,6 +33,10 @@
 
       h5 {
          font-style: italic;
+      }
+      .btn{
+         background-color: $mf-blue;
+         border-color: $mf-blue;
       }
    }
 
@@ -62,9 +67,14 @@
          }
       }
 
+      &.tomorrow{
+         opacity: 0.3;
+         transition: opacity 0.5s ease;
+      }
+
       &.in-session {
-         border: 1px solid $mf-green;
-         background: lighten($mf-green, 50%);
+         border: 1px solid $mf-blue;
+         background: lighten($mf-blue, 50%);
 
          .session-notice {
             display: block;
@@ -72,7 +82,7 @@
          }
 
          + .not-in-session {
-            border-top-color: $mf-green;
+            border-top-color: $mf-blue;
          }
       }
 
@@ -85,7 +95,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      background-color: lighten($mf-green, 10%);
+      background-color: $mf-blue;
       height: 100%;
       z-index: 1;
       transition: all 0.2s ease;

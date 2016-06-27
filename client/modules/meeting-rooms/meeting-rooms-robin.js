@@ -67,6 +67,20 @@ Template.meetingRooms.onRendered(function () {
       }
    }
 
+   // checks if booking is in session
+   function getIsTomorrow(start, end, id) {
+      var now = moment();
+      var tomorrow = moment().add(1, 'day');
+      var starting = moment(start);
+      var ending = moment(end);
+      var className;
+      if (starting <= tomorrow) {
+         Session.set('is-tomorrow-class' + id, 'tomorrow');
+      } else {
+         Session.set('is-tomorrow-class' + id, 'today');
+      }
+   }
+
    // loop each rooms bookings and update the progress bar and check is in session
    function updateBooking() {
       var rooms = Session.get('meetingRooms');
@@ -78,6 +92,7 @@ Template.meetingRooms.onRendered(function () {
 
             getProgress(start, end, id);
             getIsSession(start, end, id);
+            getIsTomorrow(start, end, id);
          });
       });
    }
@@ -105,7 +120,7 @@ Template.meetingRooms.helpers({
       return Session.get('is-session-class' + id);
    },
    isTomorrow: function (id) {
-      return Session.get('is-session-class' + id);
+      return Session.get('is-tomorrow-class' + id);
    }
    // whatsFree: function(id) {
    //    console.log(id, Session.get('whatsFree' + id));
