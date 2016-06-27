@@ -1,0 +1,10 @@
+#search-drive{
+   margin-bottom: 1em;
+}
+
+#search-drive, #search-wiki{
+   input{
+      width: calc(100% - 83px);
+      border-width: 2px; 
+   }
+}

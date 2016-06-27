@@ -1,7 +1,7 @@
 <template name="calendar">
    <div id="calendar-template" class="module width-50">
       <div class="title">
-         <h4>Today <small>{{dateToday}}</small></h4>
+         <h4>Whats Next <span class="pull-xs-right">{{dateToday}}</span></h4>
          <nav class="nav-inline">
             <a href="//calendar.google.com" class="nav-item" title="Google Calendar" target="_blank">My Calendar</a>
          </nav>
@@ -9,21 +9,21 @@
 
       {{#if gCalendar.items}}
 
-      <ul>
+      <div class="list-group">
          {{#each gCalendar.items }}
-         <li class="{{this.timeClass}}">
-            <a href="{{this.htmlLink}}" target="_blank">
-               <span class="label label-default pull-right">{{this.start.formattedTime}} - {{this.end.formattedTime}}</span>
-               {{this.summary}} <small>{{this.location}}</small>
-            </a>
-         </li>
+         <a href="{{this.htmlLink}}" target="_blank" class="{{this.timeClass}} list-group-item">
+            <span class="label label-default label-pill pull-xs-right">{{this.start.formattedTime}} - {{this.end.formattedTime}}</span>
+            <h6 class="list-group-item-heading">
+               {{this.summary}}
+            </h6>
+            <small>{{this.location}}</small>
+         </a>
          {{/each}}
-      </ul>
+      </div>
 
       {{else}}
-
       <p>
-         No events today
+         Relax, your calendar looks empty for the rest of the day.
       </p>
 
       {{/if}}

@@ -1,5 +1,27 @@
 if (Meteor.isClient) {
 
+   Packery = {
+      init: function() {
+         $('.home-wrapper').packery({
+            // options
+            itemSelector: '.module',
+            gutter: 15,
+            stamp: '.stamp',
+            percentPosition: true
+         });
+         this.layout();
+      },
+      layout: function(){
+         var $grid = $('.home-wrapper').packery({
+            itemSelector: '.module'
+         });
+         Meteor.setTimeout(function(){
+            $grid.packery('layout');
+         }, 100);
+      },
+
+   };
+
    // helper to convert objects to arrays for use in blaze templates
    UI.registerHelper("arrayify", function(obj){
       result = [];

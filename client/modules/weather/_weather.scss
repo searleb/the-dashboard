@@ -1,8 +1,20 @@
 #weather-template {
    flex: 1;
-   height: auto;
    padding: 20px;
    background-color: #ffffff;
+   height: 215px;
+   @include media-breakpoint-up(md){
+      height: 134px;
+   };
+   .divider{
+      display: none;
+      position: absolute;
+      border-left: 1px solid rgba($mf-navy, 0.15);
+      height: calc(100% - 40px);
+      @include media-breakpoint-up(md){
+         display: block;
+      };
+   }
    .studio {
       display: flex;
       flex: 1;
