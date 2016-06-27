@@ -1,26 +1,34 @@
 if (Meteor.isClient) {
 
    Packery = {
+      options: {
+         // options
+         itemSelector: '.module',
+         gutter: 15,
+         stamp: '.stamp',
+         percentPosition: true
+      },
       init: function() {
-         $('.home-wrapper').packery({
-            // options
-            itemSelector: '.module',
-            gutter: 15,
-            stamp: '.stamp',
-            percentPosition: true
-         });
-         this.layout();
+         console.log('init');
+         Meteor.setTimeout(function(){
+            $('.home-wrapper').packery(this.options);
+         }, 100);
+         // this.layout()
       },
       layout: function(){
-         var $grid = $('.home-wrapper').packery({
-            itemSelector: '.module'
-         });
+         console.log('layout');
+         var $grid = $('.home-wrapper').packery(this.options);
          Meteor.setTimeout(function(){
             $grid.packery('layout');
          }, 100);
       },
-
+      destroy: function(){
+         console.log('destroy');
+         var $grid = $('.home-wrapper').packery(this.options);
+         $grid.packery('destroy');
+      }
    };
+
 
    // helper to convert objects to arrays for use in blaze templates
    UI.registerHelper("arrayify", function(obj){
