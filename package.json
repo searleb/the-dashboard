@@ -4,7 +4,8 @@
   "description": "MF Dashboard",
   "main": "the-dashboard.js",
   "dependencies": {
-    "bootstrap": "^4.0.0-alpha.2"
+    "bootstrap": "^4.0.0-alpha.2",
+    "meteor-node-stubs": "^0.2.3"
   },
   "devDependencies": {},
   "scripts": {

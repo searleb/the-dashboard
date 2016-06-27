@@ -1,22 +1,24 @@
 <template name="home">
-   <div class="container-fluid">
+   <div class="home-wrapper container-fluid">
       <div class="row">
-
          <div class="col-sm-12">
-            {{> search }}
-         </div>
-         <div class="col-sm-6">
             {{> weather }}
          </div>
-         <div class="col-sm-6">
-            {{> calendar }}
-         </div>
-         <div class="col-sm-6">
-            {{> workflowmaxTimeSheet }}
-         </div>
-         <div class="col-sm-6">
-            {{> tools }}
-         </div>
+         {{> calendar }}
+
+         <!-- <div class="col-sm-12"> -->
+         <!-- </div> -->
+         <!-- <div class="col-sm-12 col-md-6 col-lg-4"> -->
+         <!-- </div> -->
+         <!-- <div class="col-sm-12 col-md-4"> -->
+         {{> search }}
+         {{> workflowmaxTimeSheet }}
+         <!-- </div> -->
+         <!-- <div class="col-sm-12 col-md-6 col-lg-4"> -->
+         {{> tools }}
+         <!-- </div> -->
+         <!-- <div class="col-sm-12 col-md-6 col-lg-4"> -->
+         <!-- </div> -->
       </div>
    </div>
 </template>
