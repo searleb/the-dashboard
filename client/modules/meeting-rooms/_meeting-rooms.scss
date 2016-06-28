@@ -68,13 +68,14 @@
       }
 
       &.tomorrow{
-         opacity: 0.3;
+         opacity: 0.5;
+         background-color: $mf-grey;
          transition: opacity 0.5s ease;
       }
 
       &.in-session {
          border: 1px solid $mf-blue;
-         background: lighten($mf-blue, 50%);
+         background: lighten($mf-blue, 20%);
 
          .session-notice {
             display: block;
@@ -98,6 +99,6 @@
       background-color: $mf-blue;
       height: 100%;
       z-index: 1;
-      transition: all 0.2s ease;
+      transition: all 0.5s ease;
    }
 }
