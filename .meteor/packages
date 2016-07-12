@@ -35,3 +35,4 @@ service-configuration
 standard-minifier-css
 standard-minifier-js
 dburles:packery
+aldeed:simple-schema

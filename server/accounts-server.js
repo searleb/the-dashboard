@@ -52,3 +52,16 @@ Meteor.publish("userData", function () {
       this.ready();
    }
 });
+
+Meteor.publish('userList', function (){
+   if (this.userId) {
+      return Meteor.users.find({},
+         { fields: {
+            'profile': 1,
+            'services.google.picture': 1,
+         }
+      });
+   } else {
+      this.ready();
+   }
+});

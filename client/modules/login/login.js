@@ -10,13 +10,15 @@ Template.login.events({
             google: true
          }
       }, function(err) {
-         console.log(err);
-         if (err.error == 403) {
-            alert("Sorry " + err.message.toLowerCase());
+         if (err) {
+            console.error(err);
+            if (err.error == 403) {
+               alert("Sorry " + err.message.toLowerCase());
+            }            
          }
       });
    },
-   'click #logout': function(){		
+   'click #logout': function(){
      Accounts.logout();
   }
 });

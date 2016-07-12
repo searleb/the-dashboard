@@ -1,0 +1,49 @@
+<template name="okrsUser">
+   <h1>Okrs User</h1>
+   <a href="/okrs/company">Company</a>
+   <a href="/okrs/teams">Teams</a>
+   <a href="/okrs/user/:id">User</a>
+   <pre>
+      {{#each tests}}
+         {{_id}}
+         {{name}}
+      {{/each}}
+   </pre>
+
+   <hr>
+   <!-- <div class="container-fluid">
+      <div class="row">
+         <ul class="list-group">
+            <li class="list-group-item">
+               <div class="col-sm-8">
+                  1st OKR {{Title}}
+               </div>
+               <div class="col-sm-2">
+                  Progress {{progress}}
+               </div>
+               <div class="col-sm-2">
+                  objective total {{total}}
+               </div>
+            </li>
+            <li class="list-group-item">
+            </li>
+            <li class="list-group-item">
+            </li>
+         </ul>
+         <div>
+            <div class="form-group">
+               <label for=""></label>
+               <input type="text" class="form-control" id="" placeholder="">
+               <p class="help-block">Help text here.</p>
+            </div>
+         </div>
+      </div>
+   </div> -->
+
+
+   <form class="new-task">
+      <input type="text" name="text" placeholder="Type to add new tasks" />
+   </form>
+
+
+</template>
