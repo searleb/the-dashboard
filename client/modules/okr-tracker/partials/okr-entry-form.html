@@ -1,0 +1,36 @@
+<template name="okrEntryForm">
+   <form class="okr-entry-form" id="{{this.id}}">
+      <div class="table-responsive">
+         <table class="table">
+            <thead>
+               <tr>
+                  <th>
+                     <input type="text" name="title" class="form-control" placeholder="OKR Title" value="{{this.title}}"/>
+                  </th>
+                  <th class="progress-header">
+                     Progress %
+                  </th>
+                  <th class="total-header">
+                     Total: 100%
+                  </th>
+               </tr>
+            </thead>
+            <tbody>
+               {{#each objective in this.objectives}}
+               <tr>
+                  <fieldset data-objective-id="{{objective.id}}">
+                     <td>
+                        <textarea name="description" class="form-control" placeholder="OKR Title" value="{{objective.description}}"></textarea>
+                     </td>
+                     <td>
+                        <input type="number" name="progress" class="form-control" placeholder="OKR Progress" value="{{objective.progress}}"/>
+                     </td>
+                  </fieldset>
+               </tr>
+               {{/each}}
+            </tbody>
+         </table>
+      </div>
+      <button type="submit">Save</button>
+   </form>
+</template>
