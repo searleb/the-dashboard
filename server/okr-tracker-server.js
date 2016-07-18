@@ -1,4 +1,5 @@
 Meteor.startup(function(){
+
    /**
    * Fetch all users
    * @return {Object}
@@ -13,6 +14,7 @@ Meteor.startup(function(){
    * @param  {Object, Integer} function(user, i) takes user object and index of loop
    * @return {function}  Meteor.call("okrs.starter")
    */
+
    _.each(users, function(user, i){
 
       const match = Okrs.find({"_id" : user._id}).fetch();

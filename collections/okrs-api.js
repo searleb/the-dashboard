@@ -1,4 +1,16 @@
 Okrs = new Mongo.Collection("okrs");
+Okrs.allow({
+   insert: function(){
+      return true;
+   },
+   update: function(){
+      return true;
+   },
+   remove: function(){
+      return true;
+   }
+});
+
 
 if (Meteor.isServer){
    Meteor.publish("okrs", function okrsPublication(userId){
@@ -10,7 +22,7 @@ if (Meteor.isServer){
 
 Meteor.methods({
    /**
-   *
+   * Called on form submit
    */
    'okrs.upsert'(newOkr) {
       console.log("NewOkr: ", newOkr);
@@ -18,7 +30,7 @@ Meteor.methods({
       const newOkrId = newOkr.id;
 
       const found = Okrs.update(
-         { "_id": Meteor.userId(), "okrs.id": newOkrId },
+         { "okrs.id": newOkrId },
          { $set: { "okrs.$": newOkr } }
       );
 
@@ -32,23 +44,24 @@ Meteor.methods({
    /**
    *
    */
-   'okrs.addNewOkr'(){
-      console.log("method");
+   'okrs.addNewOkr'(userId){
+      console.warn(userId._id);
+      const newOkr = {
+         "id": new Mongo.ObjectID()._str,
+         "title": '',
+         "objectives":[
+            {
+               "id": new Mongo.ObjectID()._str,
+               "description": "",
+               "progress": 0,
+            },
+         ]
+      };
 
       Okrs.update(
-         {"_id": Meteor.userId()},
+         { "_id": userId._id },
          { $push:
-            { okrs:
-               {
-                  id: new Mongo.ObjectID()._str,
-                  title: "",
-                  objectives:{
-                     complete: false,
-                     description: "",
-                     progress: 0,
-                  }
-               }
-            }
+            { "okrs": newOkr }
          }
       );
 

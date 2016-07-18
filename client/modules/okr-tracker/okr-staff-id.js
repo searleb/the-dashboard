@@ -1,6 +1,7 @@
-Template.okrsStaffId.onCreated(function(){
-   Meteor.subscribe('okrs');
-});
+// Template.okrsStaffId.onCreated(function(){
+//    Meteor.subscribe('okrs');
+// });
+
 
 Template.okrsStaffId.events({
    'submit .okr-entry-form'(event) {
@@ -28,6 +29,7 @@ Template.okrsStaffId.events({
       });
 
       Meteor.call("okrs.upsert", okr, function(error, result){
+
          if(error){
             console.log("error", error);
          }
@@ -54,8 +56,8 @@ Template.okrsStaffId.events({
       console.log("click event");
       console.log(event);
       // var id = event.target.dataset.id;
-
-      Meteor.call("okrs.addNewOkr", {}, function(error, result){
+      const _id = Router.current().params.id;
+      Meteor.call("okrs.addNewOkr", { _id }, function(error, result){
          if(error){
             console.log("error", error);
          }
@@ -69,6 +71,9 @@ Template.okrsStaffId.events({
 Template.okrsStaffId.helpers({
    staffList() {
       const id = Router.current().params.id;
+      console.log(
+         Okrs.find({"_id": id}).fetch()
+      );
       return Okrs.find({"_id": id}).fetch();
    }
 });
