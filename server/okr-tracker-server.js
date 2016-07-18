@@ -33,29 +33,8 @@ Meteor.startup(function(){
                         "description": "",
                         "progress": 0,
                      },
-                     // {
-                     //    "_id": new Mongo.ObjectID()._str,
-                     //    "description": "One Two",
-                     //    "progress": 80,
-                     // }
                   ]
                },
-               // {
-               //    "_id": new Mongo.ObjectID()._str,
-               //    "title": 'Do this other OKR thing',
-               //    "objectives":[
-               //       {
-               //          "_id": new Mongo.ObjectID()._str,
-               //          "description": "One Two",
-               //          "progress": 10,
-               //       },
-               //       {
-               //          "_id": new Mongo.ObjectID()._str,
-               //          "description": "One Two",
-               //          "progress": 60,
-               //       }
-               //    ]
-               // },
             ],
          };
 

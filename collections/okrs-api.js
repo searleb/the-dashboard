@@ -11,29 +11,77 @@ if (Meteor.isServer){
 }
 
 Meteor.methods({
+   /**
+   *
+   */
    'okrs.upsert'(newOkr) {
       console.log("NewOkr: ", newOkr);
 
-      // Make sure the user is logged in before inserting a okrs
-      if (! this.userId) {
-         throw new Meteor.Error('not-authorized');
-      }
-      /**
-      * Find the user
-      * Find the OKR
-      * Find the OKR objective
-      */
-      // var user = Okrs.find({_id: Meteor.userId()});
-      var newOkrId = newOkr.id;
+      const newOkrId = newOkr.id;
 
-      var found = Okrs.update(
-         { "okrs.id": newOkrId },
+      const found = Okrs.update(
+         { "_id": Meteor.userId(), "okrs.id": newOkrId },
          { $set: { "okrs.$": newOkr } }
       );
 
-      console.log("FOUND", found);
+      console.warn("FOUND", found);
 
    },
+
+
+
+
+   /**
+   *
+   */
+   'okrs.addNewOkr'(){
+      console.log("method");
+            
+      Okrs.update(
+         {"_id": Meteor.userId()},
+         { $push:
+            {okrs:
+               {
+                  id: new Mongo.ObjectID()._str,
+                  title: "",
+                  objectives:{
+                     complete: false,
+                     description: "",
+                     progress: 0,
+                  }
+               }
+            }
+         }
+      );
+
+   },
+
+
+
+
+   /**
+   *
+   */
+   'okrs.addObjective'(OkrId){
+      console.log("method");
+
+      var newObjective = {
+         id: new Mongo.ObjectID()._str,
+         description: "",
+         progress: 0,
+         complete: false
+      };
+
+      var insert = Okrs.update(
+         { "okrs.id": OkrId },
+         { $push: { "okrs.$.objectives": newObjective } }
+      );
+      console.log(insert);
+
+   },
+
+
+
    'okrs.starter'(newRecord) {
       Okrs.insert(newRecord);
    }

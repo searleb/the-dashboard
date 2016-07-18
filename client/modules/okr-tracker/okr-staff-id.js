@@ -37,6 +37,34 @@ Template.okrsStaffId.events({
          }
       });
    },
+   'click .add-new-objective'(event){
+      console.log("click event");
+      console.log(event);
+      var id = event.target.dataset.id;
+
+      Meteor.call("okrs.addObjective", id, function(error, result){
+         if(error){
+            console.log("error", error);
+         }
+         if(result){
+
+         }
+      });
+   },
+   'click .add-new-okr'(event){
+      console.log("click event");
+      console.log(event);
+      // var id = event.target.dataset.id;
+
+      Meteor.call("okrs.addNewOkr", {}, function(error, result){
+         if(error){
+            console.log("error", error);
+         }
+         if(result){
+
+         }
+      });
+   }
 });
 
 Template.okrsStaffId.helpers({
