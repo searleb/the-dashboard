@@ -12,7 +12,6 @@ Template.okrsStaffId.events({
          objectives: []
       };
 
-
       _.each(event.target, function(target, i) {
 
          if (target.type == "fieldset") {

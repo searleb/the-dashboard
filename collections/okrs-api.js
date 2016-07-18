@@ -4,8 +4,6 @@ if (Meteor.isServer){
    Meteor.publish("okrs", function okrsPublication(userId){
       if (userId) {
          return Okrs.find({"_id": userId});
-      } else {
-         return Okrs.find();
       }
    });
 }
@@ -36,11 +34,11 @@ Meteor.methods({
    */
    'okrs.addNewOkr'(){
       console.log("method");
-            
+
       Okrs.update(
          {"_id": Meteor.userId()},
          { $push:
-            {okrs:
+            { okrs:
                {
                   id: new Mongo.ObjectID()._str,
                   title: "",
