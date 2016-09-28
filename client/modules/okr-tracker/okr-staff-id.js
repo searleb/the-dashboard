@@ -38,6 +38,8 @@ Template.okrsStaffId.events({
          }
       });
    },
+
+
    'click .add-new-objective'(event){
       console.log("click event");
       console.log(event);
@@ -52,6 +54,8 @@ Template.okrsStaffId.events({
          }
       });
    },
+
+
    'click .add-new-okr'(event){
       console.log("click event");
       console.log(event);
@@ -65,15 +69,27 @@ Template.okrsStaffId.events({
 
          }
       });
+   },
+
+   'click .remove-objective'(event){
+      console.log(event);
+
+      var objectiveId = event.target.parentElement.dataset.objectiveId;
+      var userId = Router.current().params.id;
+      Meteor.call("okrs.removeObjective", objectiveId, userId , function(error, result){
+         if(error){
+            console.log("error", error);
+         }
+         if(result){
+
+         }
+      });
    }
 });
 
 Template.okrsStaffId.helpers({
    staffList() {
       const id = Router.current().params.id;
-      console.log(
-         Okrs.find({"_id": id}).fetch()
-      );
       return Okrs.find({"_id": id}).fetch();
    }
 });

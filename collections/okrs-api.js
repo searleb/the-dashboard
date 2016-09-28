@@ -92,6 +92,40 @@ Meteor.methods({
    },
 
 
+   'okrs.removeObjective'(objectiveId, userId){
+      console.log(objectiveId, userId);
+
+      var who = Okrs.find({ "_id": userId });
+      console.log("who", who.fetch());
+
+
+      var remove = Okrs.update(
+         { "_id": userId },
+         { $pull: { "okrs": {"objectives": { $elemMatch: { "id": objectiveId} } } } }
+      );
+
+      console.log("remove: ", remove);
+
+   },
+
+
+   'okrs.removeOkr'(objectiveId, userId){
+      console.log(objectiveId, userId);
+
+      var who = Okrs.find({ "_id": userId });
+      console.log("who", who.fetch());
+
+
+      var remove = Okrs.update(
+         { "_id": userId },
+         { $pull: { "okrs": {"objectives": { $elemMatch: { "id": objectiveId} } } } }
+      );
+
+      console.log("remove: ", remove);
+
+   },
+
+
 
    'okrs.starter'(newRecord) {
       Okrs.insert(newRecord);

@@ -2,7 +2,6 @@ if (Meteor.isClient) {
 
    Packery = {
       options: {
-         // options
          itemSelector: '.module',
          gutter: 15,
          stamp: '.stamp',
