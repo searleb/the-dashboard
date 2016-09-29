@@ -4,6 +4,7 @@
   "description": "MF Dashboard",
   "main": "the-dashboard.js",
   "dependencies": {
+    "bcrypt": "^0.8.7",
     "bootstrap": "^4.0.0-alpha.4",
     "meteor-node-stubs": "^0.2.3"
   },
