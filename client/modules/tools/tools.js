@@ -12,6 +12,7 @@ Template.tools.onRendered(function () {
     var userRole = Session.get("userRole");
     activeTheButton(userRole);
     showSelectedList(userRole);
+    Packery.layout();
 });
 
 Template.tools.onCreated( function(){
@@ -67,6 +68,7 @@ Template.tools.events({
         var id = $(e.target).attr('name');
         showSelectedList(id);
         activeTheButton(id);
+        Packery.layout();
     }
 });
 

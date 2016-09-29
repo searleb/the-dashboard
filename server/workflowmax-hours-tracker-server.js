@@ -4,11 +4,18 @@ Meteor.startup(function() {
    let accountKey;
 
    Meteor.methods({
-      getHours: function() {
+      getHours: function(office) {
          let userID;
+         let userOffice;
+
          // Get current user data
          const userData = Meteor.user();
-         const userOffice = userData.profile.office;
+         if (office) {
+             userOffice = office;
+         } else {
+             userOffice = userData.profile.office;
+         }
+
          switch (userOffice) {
             case 'sydney':
             accountKey = Meteor.settings.private.workflowMaxSydKey;
@@ -17,7 +24,7 @@ Meteor.startup(function() {
             accountKey = Meteor.settings.private.workflowMaxLdnKey;
             break;
             default:
-            console.log("Please select an office from settings");
+            console.warn("Please select an office from settings");
             return false;
          }
 
@@ -183,16 +190,16 @@ Meteor.startup(function() {
       let className = '';
 
       if (date == '6' || date == '0') {
-         className = 'info';
+         className = 'table-info';
       } else {
          if (hour >= 8) {
-            className = 'success';
+            className = 'table-success';
          }
          if (hour < 8 && hour > 3) {
-            className = 'warning';
+            className = 'table-warning';
          }
          if (hour <= 3) {
-            className = 'danger';
+            className = 'table-danger';
          }
       }
 

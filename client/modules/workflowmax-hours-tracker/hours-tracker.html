@@ -1,39 +1,48 @@
 <template name="hoursTracker">
    <div class="container-fluid hours-tracker">
-      <div class="row">
-         <div class="col-sm-12">
-            <div class="table-responsive">
-               <table class="table table-striped table-hover">
-                  <thead>
-                     <th>
-                        Name / Date
-                     </th>
-                     {{#each date in dates}}
-                     <th>
-                        {{date}}
-                     </th>
-                     {{/each}}
-                  </thead>
-                  <tbody>
-
-                     {{#each user in loggedHours}}
-                     <tr>
-                        <td>
-                           {{user.name}}
-                        </td>
-                        {{#each entry in user.hours}}
-                        <td class="{{entry.class}}">
-                           {{entry.hours}}
-                        </td>
-                        {{/each}}
-
-                     </tr>
-                     {{/each}}
-
-                  </tbody>
-               </table>
-            </div>
-         </div>
+      {{#unless loggedHours}}
+      {{> loading}}
+      {{/unless}}
+      {{#if loggedHours}}
+      <div class="btn-group" data-toggle="buttons">
+         <label class="btn btn-default syd">
+            <input type="radio" name="options" id="toggle-sydney" autocomplete="off"> Sydney
+         </label>
+         <label class="btn btn-default ldn">
+            <input type="radio" name="options" id="toggle-london" autocomplete="off"> London
+         </label>
       </div>
+      <div class="table-responsive">
+         <table class="table table-striped table-hover">
+            <thead>
+               <th>
+                  Name / Date
+               </th>
+               {{#each date in dates}}
+               <th>
+                  {{date}}
+               </th>
+               {{/each}}
+            </thead>
+            <tbody>
+
+               {{#each user in loggedHours}}
+               <tr>
+                  <td>
+                     {{user.name}}
+                  </td>
+                  {{#each entry in user.hours}}
+                  <td class="{{entry.class}}">
+                     {{entry.hours}}
+                  </td>
+                  {{/each}}
+
+               </tr>
+               {{/each}}
+
+            </tbody>
+         </table>
+      </div>
+      {{/if}}
    </div>
 </template>

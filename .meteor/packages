@@ -32,6 +32,7 @@ fortawesome:fontawesome
 orionjs:bootstrap
 vsivsi:file-collection
 service-configuration
-twbs:bootstrap
 standard-minifier-css
 standard-minifier-js
+dburles:packery
+aldeed:simple-schema

@@ -1,8 +1,12 @@
 // Imports
-// @import "bootstrap";
+
 @import "variables";
-@import "the-dashboard";
 @import "typography";
+@import "_bs-4-variables.scss";
+@import '{}/node_modules/bootstrap/scss/bootstrap.scss';
+@import "the-dashboard";
+
+
 
 // can't use varibles in @import statements :(
 @import "../modules/calendar/calendar";
@@ -13,6 +17,7 @@
 @import "../modules/user/user";
 @import "../modules/weather/weather";
 @import "../modules/favourites/favourites";
+
 @import "../modules/login/login";
 @import "../modules/meeting-rooms/meeting-rooms";
 @import "../modules/settings-modal/settings-modal";
@@ -20,3 +25,4 @@
 @import "../modules/loading/loading";
 @import "../modules/nav/nav";
 @import "../modules/search/search";
+@import "../modules/okr-tracker/okr-tracker";

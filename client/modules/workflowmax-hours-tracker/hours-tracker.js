@@ -19,3 +19,22 @@ Template.hoursTracker.helpers({
       return dates;
    }
 });
+
+Template.hoursTracker.events({
+   "click .syd"(e){
+      Meteor.call('getHours', 'sydney', function (err, data) {
+         Session.set('allTrackedHours', data);
+      });
+      Meteor.call('getTrackedDates', function (err, data) {
+         Session.set('allTrackedDates', data);
+      });
+   },
+   "click .ldn"(e){
+      Meteor.call('getHours', 'london', function (err, data) {
+         Session.set('allTrackedHours', data);
+      });
+      Meteor.call('getTrackedDates', function (err, data) {
+         Session.set('allTrackedDates', data);
+      });
+   },
+});

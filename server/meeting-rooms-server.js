@@ -24,7 +24,7 @@ Meteor.methods({
 
       function getSpaceEvents(id) {
          // get events between today and tomorrow
-         var tomorrow = moment().toISOString();
+         var tomorrow = moment().add(1, 'day').toISOString();
          var today = moment().toISOString();
          var spaceDetails = HTTP.get(robinURL + 'spaces/' + id + '/events?before=' + tomorrow + '&after=' + today, {
             headers: {
@@ -33,10 +33,13 @@ Meteor.methods({
          });
          // sort the data by start date
          var data = spaceDetails.data.data;
+         _.each(data, function(el, index){
+            data[index].started_at = moment(el.started_at).format();
+            data[index].ended_at = moment(el.ended_at).format();
+         });
          var sorted = _.sortBy(data, 'started_at');
          return sorted;
       }
-
       return returnArray;
 
    },
