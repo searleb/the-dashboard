@@ -39,7 +39,6 @@ Meteor.startup(function(){
             ],
          };
 
-
          Meteor.call("okrs.starter", starter, function(error, result) {
             if(error){
                console.error("error", error);

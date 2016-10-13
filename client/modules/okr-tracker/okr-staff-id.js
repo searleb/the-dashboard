@@ -1,13 +1,14 @@
-// Template.okrsStaffId.onCreated(function(){
-//    Meteor.subscribe('okrs');
-// });
-
-
 Template.okrsStaffId.events({
+   /**
+   * On submit of an OKR form,
+   * create a new okr object,
+   * loop over all the fieldsets which contain an objective,
+   * push each objective in to the okr object,
+   * pass in the new okr to the api to be saved to Mongo
+   */
    'submit .okr-entry-form'(event) {
       event.preventDefault();
 
-      console.log(event);
       const okr = {
          _id: event.target.id,
          title: event.target[0].value,
@@ -27,81 +28,69 @@ Template.okrsStaffId.events({
       });
 
       Meteor.call("okrs.upsert", okr, function(error, result){
-
          if(error){
             console.error("error", error);
-         }
-         if(result){
-            console.log(result);
          }
       });
    },
 
-
+   /**
+   * Add new objective
+   */
    'click .add-new-objective'(event){
-      console.log("click event - new objective");
-      console.log(event);
-      var id = event.target.dataset.id;
+      const id = event.target.dataset.id;
 
       Meteor.call("okrs.addObjective", id, function(error, result){
          if(error){
             console.error("error", error);
          }
-         if(result){
-            console.log(result);
-         }
       });
    },
 
-
+   /**
+   * Add new OKR
+   */
    'click .add-new-okr'(event){
-      console.log("click event");
-      console.log(event);
-      // var id = event.target.dataset.id;
       const _id = Router.current().params.id;
+
       Meteor.call("okrs.addNewOkr", { _id }, function(error, result){
          if(error){
-            console.log("error", error);
-         }
-         if(result){
-
+            console.error("error", error);
          }
       });
    },
 
+   /**
+   * Delete objective
+   */
+   'click .delete-objective'(event){
+      const objectiveId = event.target.getAttribute('data-objective-id');
 
-   'click .remove-objective'(event){
-      console.log(event);
-
-      var objectiveId = event.target.getAttribute('data-objective-id');
-
-      Meteor.call("okrs.removeObjective", objectiveId, function(error, result){
+      Meteor.call("okrs.deleteObjective", objectiveId, function(error, result){
          if(error){
-            console.log("error", error);
-         }
-         if(result){
-
+            console.error("error", error);
          }
       });
    },
 
+   /**
+   * Delete OKR
+   */
    'click .delete-okr'(event){
-      console.log(event);
-
-      var okrId = event.target.getAttribute('data-okr-id');
+      const okrId = event.target.getAttribute('data-okr-id');
 
       Meteor.call("okrs.deleteOkr", okrId, function(error, result){
          if(error){
-            console.log("error", error);
-         }
-         if(result){
-
+            console.error("error", error);
          }
       });
    }
 });
 
 Template.okrsStaffId.helpers({
+   /**
+   * Returns a list of all staff
+   */
    staffList() {
       const id = Router.current().params.id;
       return Okrs.find({"_id": id}).fetch();

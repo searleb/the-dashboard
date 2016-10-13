@@ -1,4 +1,5 @@
 Okrs = new Mongo.Collection("okrs");
+
 Okrs.allow({
    insert: function(){
       return true;
@@ -25,26 +26,20 @@ Meteor.methods({
    * Called on form submit
    */
    'okrs.upsert'(newOkr) {
-      console.log("NewOkr: ", newOkr);
-
-
-      const found = Okrs.update(
+      const update = Okrs.update(
          { "okrs._id": newOkr._id },
          { $set: { "okrs.$": newOkr } }
       );
 
-      console.warn("FOUND", found);
-
+      if (update === 0) {
+         throw new Meteor.Error(500, "okrs.deleteOkr failed", update)
+      }
    },
 
-
-
-
    /**
-   *
+   * Add new OKR with starter objective
    */
    'okrs.addNewOkr'(userId){
-      console.warn(userId._id);
       const newOkr = {
          "_id": new Mongo.ObjectID().valueOf(),
          "title": '',
@@ -57,80 +52,75 @@ Meteor.methods({
          ]
       };
 
-      Okrs.update(
+      const update = Okrs.update(
          { "_id": userId._id },
          { $push:
             { "okrs": newOkr }
          }
       );
 
+      if (update === 0) {
+         throw new Meteor.Error(500, "okrs.addNewOkr failed", update)
+      }
+
    },
 
-
-
-
    /**
-   *
+   * Add new objective to an OKR
    */
    'okrs.addObjective'(okrId){
-      console.log("method");
-      var newObjective = {
+      const newObjective = {
          _id: new Mongo.ObjectID().valueOf(),
          description: "",
          progress: 0,
-         complete: false
       };
 
-      var insert = Okrs.update(
+      const update = Okrs.update(
          { "okrs._id": okrId },
          { $push: { "okrs.$.objectives": newObjective } }
       );
-      console.log(insert);
 
+      if (update === 0) {
+         throw new Meteor.Error(500, "okrs.addObjective failed", update)
+      }
    },
 
-
-/**
- *
- */
-   'okrs.removeObjective'(objectiveId){
-      // console.log('objectiveId: ', objectiveId);
-
-      var remove = Okrs.update(
+   /**
+   * Delete objective from an OKR
+   */
+   'okrs.deleteObjective'(objectiveId){
+      const update = Okrs.update(
          { 'okrs.objectives._id': objectiveId },
          { $pull: { 'okrs.$.objectives': { '_id': objectiveId } } }
       );
 
-      // console.log("remove: ", remove);
-
+      if (update === 0) {
+         throw new Meteor.Error(500, "okrs.deleteObjective failed", update)
+      }
    },
 
-
-
-
-
+   /**
+   * Delete the whole OKR
+   */
    'okrs.deleteOkr'(okrId){
-      console.log("deleteOkr: ",okrId);
-
-      // var who = Okrs.find({ "_id": userId });
-      // console.log("who", who.fetch());
-
-
-      var remove = Okrs.update(
+      const update = Okrs.update(
          { 'okrs._id': okrId },
          { $pull: {'okrs': {'_id': okrId } } }
       );
 
-      console.log("remove: ", remove);
-
+      if (update === 0) {
+         throw new Meteor.Error(500, "okrs.deleteOkr failed", update)
+      }
    },
 
-
-
-
-
-
+   /**
+   * Inserts a new OKR entry for every new person
+   */
    'okrs.starter'(newRecord) {
-      Okrs.insert(newRecord);
+      const insert = Okrs.insert(newRecord);
+
+      if (insert === 0) {
+         throw new Meteor.Error(500, "okrs.deleteOkr failed", update)
+      }
    }
 });
