@@ -109,11 +109,11 @@ Meteor.methods({
 
 
 
-   'okrs.removeOkr'(okrId){
-      console.log();
+   'okrs.deleteOkr'(okrId){
+      console.log("deleteOkr: ",okrId);
 
-      var who = Okrs.find({ "_id": userId });
-      console.log("who", who.fetch());
+      // var who = Okrs.find({ "_id": userId });
+      // console.log("who", who.fetch());
 
 
       var remove = Okrs.update(

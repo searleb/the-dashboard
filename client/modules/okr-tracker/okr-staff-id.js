@@ -83,6 +83,21 @@ Template.okrsStaffId.events({
 
          }
       });
+   },
+
+   'click .delete-okr'(event){
+      console.log(event);
+
+      var okrId = event.target.getAttribute('data-okr-id');
+
+      Meteor.call("okrs.deleteOkr", okrId, function(error, result){
+         if(error){
+            console.log("error", error);
+         }
+         if(result){
+
+         }
+      });
    }
 });
 

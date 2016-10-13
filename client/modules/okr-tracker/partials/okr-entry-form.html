@@ -25,7 +25,7 @@
                      <td>
                         <input type="number" name="progress" class="form-control" placeholder="OKR Progress" value="{{objective.progress}}"/>
                      </td>
-                     <button type="button" class="remove-objective btn" data-objective-id="{{objective._id}}" data-okr-id="{{_id}}">Delete</button>
+                     <button type="button" class="remove-objective btn" data-objective-id="{{objective._id}}">Delete</button>
                   </tr>
                </fieldset>
                {{/each}}
@@ -33,6 +33,7 @@
          </table>
       </div>
       <button type="button" class="add-new-objective btn" data-id="{{this._id}}">Add Objective</button>
+      <button type="button" class="delete-okr btn btn-danger" data-okr-id="{{this._id}}">Delete OKR</button>
       <button type="submit" class="btn">Save</button>
    </form>
 </template>
