@@ -1,7 +1,7 @@
 <template name="okrEntryForm">
-   <form class="okr-entry-form" id="{{this.id}}">
+   <form class="okr-entry-form" id="{{this._id}}">
       <div class="table-responsive">
-         <table class="table">
+         <table class="table module">
             <thead>
                <tr>
                   <th>
@@ -17,22 +17,22 @@
             </thead>
             <tbody>
                {{#each objective in this.objectives}}
-               <tr>
-                  <fieldset data-objective-id="{{objective.id}}">
+               <fieldset data-objective-id="{{objective._id}}">
+                  <tr>
                      <td>
-                        <textarea name="description" class="form-control" placeholder="OKR Title" value="{{objective.description}}"></textarea>
+                        <textarea name="description" class="form-control" placeholder="Objective" value="{{objective.description}}"></textarea>
                      </td>
                      <td>
                         <input type="number" name="progress" class="form-control" placeholder="OKR Progress" value="{{objective.progress}}"/>
                      </td>
-                     <button type="button" class="remove-objective">Delete</button>
-                  </fieldset>
-               </tr>
+                     <button type="button" class="remove-objective btn" data-objective-id="{{objective._id}}" data-okr-id="{{_id}}">Delete</button>
+                  </tr>
+               </fieldset>
                {{/each}}
             </tbody>
          </table>
       </div>
-      <button type="button" class="add-new-objective" data-id="{{this.id}}">Add Objective</button>
-      <button type="submit">Save</button>
+      <button type="button" class="add-new-objective btn" data-id="{{this._id}}">Add Objective</button>
+      <button type="submit" class="btn">Save</button>
    </form>
 </template>

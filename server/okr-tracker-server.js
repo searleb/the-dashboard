@@ -26,11 +26,11 @@ Meteor.startup(function(){
             "name": user.profile.name,
             "okrs": [
                {
-                  "id": new Mongo.ObjectID()._str,
+                  "_id": new Mongo.ObjectID().valueOf(),
                   "title": '',
                   "objectives":[
                      {
-                        "id": new Mongo.ObjectID()._str,
+                        "_id": new Mongo.ObjectID().valueOf(),
                         "description": "",
                         "progress": 0,
                      },
@@ -38,6 +38,7 @@ Meteor.startup(function(){
                },
             ],
          };
+
 
          Meteor.call("okrs.starter", starter, function(error, result) {
             if(error){

@@ -15,13 +15,13 @@
                <div class="col-sm-12">
                   <h2>{{user.name}}</h2>
                   <small>{{user.team}}</small>
-                  <button type="button" class="add-new-okr" data-id="{{user._id}}">Add Okr</button>
+                  <button type="button" class="add-new-okr btn" data-id="{{user._id}}">Add New OKR</button>
                </div>
             </div>
             {{#each okr in user.okrs}}
                {{> okrEntryForm okr}}
             {{/each}}
-            <button type="button" class="add-new-okr" data-id="{{user._id}}">Add Okr</button>
+            <!-- <button type="button" class="add-new-okr btn" data-id="{{user._id}}">Add Okr</button> -->
          {{/each}}
       </div>
    </div>

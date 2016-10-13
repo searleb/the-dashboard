@@ -7,23 +7,21 @@ Template.okrsStaffId.events({
    'submit .okr-entry-form'(event) {
       event.preventDefault();
 
+      console.log(event);
       const okr = {
-         id: event.target.id,
+         _id: event.target.id,
          title: event.target[0].value,
          objectives: []
       };
 
       _.each(event.target, function(target, i) {
-
          if (target.type == "fieldset") {
-
             const newObjective = {
-               id: target.attributes[0].value || Meteor.ObjectID().str,
-               description: title = target.elements[0].value,
-               progress: title = target.elements[1].value,
+               _id: target.attributes[0].value || new Meteor.ObjectID().valueOf(),
+               description: target.elements[0].value,
+               progress: target.elements[1].value,
             };
             okr.objectives.push(newObjective);
-            console.log(okr);
          }
 
       });
@@ -31,26 +29,26 @@ Template.okrsStaffId.events({
       Meteor.call("okrs.upsert", okr, function(error, result){
 
          if(error){
-            console.log("error", error);
+            console.error("error", error);
          }
          if(result){
-
+            console.log(result);
          }
       });
    },
 
 
    'click .add-new-objective'(event){
-      console.log("click event");
+      console.log("click event - new objective");
       console.log(event);
       var id = event.target.dataset.id;
 
       Meteor.call("okrs.addObjective", id, function(error, result){
          if(error){
-            console.log("error", error);
+            console.error("error", error);
          }
          if(result){
-
+            console.log(result);
          }
       });
    },
@@ -71,12 +69,13 @@ Template.okrsStaffId.events({
       });
    },
 
+
    'click .remove-objective'(event){
       console.log(event);
 
-      var objectiveId = event.target.parentElement.dataset.objectiveId;
-      var userId = Router.current().params.id;
-      Meteor.call("okrs.removeObjective", objectiveId, userId , function(error, result){
+      var objectiveId = event.target.getAttribute('data-objective-id');
+
+      Meteor.call("okrs.removeObjective", objectiveId, function(error, result){
          if(error){
             console.log("error", error);
          }

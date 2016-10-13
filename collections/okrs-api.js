@@ -27,10 +27,9 @@ Meteor.methods({
    'okrs.upsert'(newOkr) {
       console.log("NewOkr: ", newOkr);
 
-      const newOkrId = newOkr.id;
 
       const found = Okrs.update(
-         { "okrs.id": newOkrId },
+         { "okrs._id": newOkr._id },
          { $set: { "okrs.$": newOkr } }
       );
 
@@ -47,11 +46,11 @@ Meteor.methods({
    'okrs.addNewOkr'(userId){
       console.warn(userId._id);
       const newOkr = {
-         "id": new Mongo.ObjectID()._str,
+         "_id": new Mongo.ObjectID().valueOf(),
          "title": '',
          "objectives":[
             {
-               "id": new Mongo.ObjectID()._str,
+               "_id": new Mongo.ObjectID().valueOf(),
                "description": "",
                "progress": 0,
             },
@@ -73,18 +72,17 @@ Meteor.methods({
    /**
    *
    */
-   'okrs.addObjective'(OkrId){
+   'okrs.addObjective'(okrId){
       console.log("method");
-
       var newObjective = {
-         id: new Mongo.ObjectID()._str,
+         _id: new Mongo.ObjectID().valueOf(),
          description: "",
          progress: 0,
          complete: false
       };
 
       var insert = Okrs.update(
-         { "okrs.id": OkrId },
+         { "okrs._id": okrId },
          { $push: { "okrs.$.objectives": newObjective } }
       );
       console.log(insert);
@@ -92,16 +90,35 @@ Meteor.methods({
    },
 
 
-   'okrs.removeObjective'(objectiveId, userId){
-      console.log(objectiveId, userId);
+/**
+ *
+ */
+   'okrs.removeObjective'(objectiveId){
+      // console.log('objectiveId: ', objectiveId);
+
+      var remove = Okrs.update(
+         { 'okrs.objectives._id': objectiveId },
+         { $pull: { 'okrs.$.objectives': { '_id': objectiveId } } }
+      );
+
+      // console.log("remove: ", remove);
+
+   },
+
+
+
+
+
+   'okrs.removeOkr'(okrId){
+      console.log();
 
       var who = Okrs.find({ "_id": userId });
       console.log("who", who.fetch());
 
 
       var remove = Okrs.update(
-         { "_id": userId },
-         { $pull: { "okrs": {"objectives": { $elemMatch: { "id": objectiveId} } } } }
+         { 'okrs._id': okrId },
+         { $pull: {'okrs': {'_id': okrId } } }
       );
 
       console.log("remove: ", remove);
@@ -109,21 +126,7 @@ Meteor.methods({
    },
 
 
-   'okrs.removeOkr'(objectiveId, userId){
-      console.log(objectiveId, userId);
 
-      var who = Okrs.find({ "_id": userId });
-      console.log("who", who.fetch());
-
-
-      var remove = Okrs.update(
-         { "_id": userId },
-         { $pull: { "okrs": {"objectives": { $elemMatch: { "id": objectiveId} } } } }
-      );
-
-      console.log("remove: ", remove);
-
-   },
 
 
 

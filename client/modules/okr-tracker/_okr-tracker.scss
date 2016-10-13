@@ -12,4 +12,27 @@
    .total-header{
       width: 120px;
    }
+   .add-new-okr {
+      background-color: $mf-blue;
+      border-color: $mf-blue;
+   }
+   thead {
+      input {
+         background: transparent;
+         font-size: 28px;
+         border: 0px;
+         border-bottom: 2px solid rgba($mf-black, 0.2);
+      }
+   }
+   tbody {
+      textarea,
+      input {
+         background: transparent;
+         border: 0px;
+      }
+   }
+   input {
+      color: $mf-black;
+   }
+
 }
