@@ -31,8 +31,11 @@ Meteor.methods({
          { $set: { "okrs.$": newOkr } }
       );
 
+      if (update === 1) {
+         return update;
+      }
       if (update === 0) {
-         throw new Meteor.Error(500, "okrs.deleteOkr failed", update)
+         throw new Meteor.Error(500, "okrs.deleteOkr failed", update);
       }
    },
 

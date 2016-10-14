@@ -1,39 +1,23 @@
 <template name="okrEntryForm">
-   <form class="okr-entry-form" id="{{this._id}}">
-      <div class="table-responsive">
-         <table class="table module">
-            <thead>
-               <tr>
-                  <th>
-                     <input type="text" name="title" class="form-control" placeholder="OKR Title" value="{{this.title}}"/>
-                  </th>
-                  <th class="progress-header">
-                     Progress %
-                  </th>
-                  <th class="total-header">
-                     Total: 100%
-                  </th>
-               </tr>
-            </thead>
-            <tbody>
-               {{#each objective in this.objectives}}
-               <fieldset data-objective-id="{{objective._id}}">
-                  <tr>
-                     <td>
-                        <textarea name="description" class="form-control" placeholder="Objective" value="{{objective.description}}"></textarea>
-                     </td>
-                     <td>
-                        <input type="number" name="progress" class="form-control" placeholder="OKR Progress" value="{{objective.progress}}"/>
-                     </td>
-                     <button type="button" class="delete-objective btn btn-danger" data-objective-id="{{objective._id}}">Delete</button>
-                  </tr>
-               </fieldset>
-               {{/each}}
-            </tbody>
-         </table>
-      </div>
-      <button type="button" class="add-new-objective btn" data-id="{{this._id}}">Add Objective</button>
-      <button type="button" class="delete-okr btn btn-danger" data-okr-id="{{this._id}}">Delete OKR</button>
-      <button type="submit" class="btn">Save</button>
-   </form>
+   <li class="module">
+      <form class="okr-entry-form" id="{{this._id}}">
+         <div class="title-wrapper">
+            <input type="text" name="title" class="title" placeholder="OKR Title" value="{{this.title}}"/>
+            <span class="progress-title">Progress: 100%</span>
+            <span class="total-title">Total: 100%</span>
+         </div>
+         {{#each objective in this.objectives}}
+            <fieldset data-objective-id="{{objective._id}}">
+               <textarea name="description" class="objective-desc" placeholder="Objective" value="{{objective.description}}"></textarea>
+               <input type="number" name="progress" class="objective-progress" placeholder="OKR Progress" value="{{objective.progress}}"/>
+               <button type="button" class="delete-objective btn btn-sm btn-danger pull-right" data-objective-id="{{objective._id}}">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+            </fieldset>
+         {{/each}}
+         <button type="submit" class="btn">Save</button>
+         <button type="button" class="add-new-objective btn" data-id="{{this._id}}">Add Objective</button>
+         <button type="button" class="delete-okr btn btn-danger pull-right" data-okr-id="{{this._id}}">Delete OKR</button>
+      </form>
+   </li>
 </template>

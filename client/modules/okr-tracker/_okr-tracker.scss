@@ -1,38 +1,85 @@
 #okrs{
-   img{
-      width: 55px;
+   .okr-entry-form {
    }
-
-   .okr-entry-form{
-      margin-bottom: 40px;
-   }
-   .progress-header{
-      width: 120px;
-   }
-   .total-header{
-      width: 120px;
-   }
-   .add-new-okr {
-      background-color: $mf-blue;
-      border-color: $mf-blue;
-   }
-   thead {
-      input {
-         background: transparent;
-         font-size: 28px;
-         border: 0px;
-         border-bottom: 2px solid rgba($mf-black, 0.2);
+   li {
+      &.success {
+         animation-name: success-flash;
+         animation-duration: 0.5s;
+         animation-iteration-count: 1;
+         animation-timing-function: cubic-bezier(0.51, 1.14, 0.9, 0.59);
+      }
+      &.module {
+         margin: 30px auto;
+         max-width: 1440px
       }
    }
-   tbody {
-      textarea,
-      input {
-         background: transparent;
-         border: 0px;
-      }
+   fieldset {
+      border-bottom: 1px solid rgba($mf-black, 0.1);
+      padding-bottom: 5px;
+      margin-bottom: 5px;
+   }
+   %title-base {
+      background: transparent;
+      border: 0px;
+      display: inline-block;
+      padding: 0.5rem 0.75rem;
+   }
+   .title-wrapper {
+      border-bottom: 2px solid rgba($mf-black, 0.2);
+      margin-bottom: 15px;
+   }
+   .title {
+      @extend %title-base;
+      font-size: 28px;
+      width: calc(68% - 5px);
+      margin-bottom: 0px;
+   }
+   .progress-title {
+      @extend %title-base;
+      width: calc(16% - 5px);
+      font-size: 18px;
+      text-align: right;
+   }
+   .total-title {
+      @extend %title-base;
+      width: calc(16% - 5px);
+      font-size: 18px;
+      text-align: right;
+   }
+   .objective-desc {
+      @extend %title-base;
+      width: calc(68% - 5px);
+      font-size: 18px;
+   }
+   .objective-progress {
+      @extend %title-base;
+      width: calc(16% - 5px);
+      font-size: 18px;
+      vertical-align: top;
+      text-align: right;
+   }
+   textarea,
+   input {
+      background: transparent;
+      border: 0px;
    }
    input {
       color: $mf-black;
    }
+   img{
+      width: 55px;
+   }
+}
 
+
+@keyframes success-flash {
+   0% {
+      background-color: #ffffff;
+   }
+   50% {
+      background-color: rgba($mf-green, 0.09);
+   }
+   100% {
+      background-color: #ffffff;
+   }
 }

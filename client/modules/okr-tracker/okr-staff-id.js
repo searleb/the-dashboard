@@ -31,6 +31,12 @@ Template.okrsStaffId.events({
          if(error){
             console.error("error", error);
          }
+         if (result === 1) {
+            $(event.target).parent().addClass('success');
+            Meteor.setTimeout(() => {
+               $(event.target).parent().removeClass('success');
+            }, 750)
+         }
       });
    },
 
