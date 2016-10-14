@@ -1,28 +1,24 @@
 <template name="okrsStaffId">
    <div id="okrs">
-
-      <a href="/okrs/company">Company</a>
-      <a href="/okrs/teams">Teams</a>
-      <a href="/okrs/staff/">User</a>
-      <div class="container">
-         <div class="row">
-         </div>
-      </div>
-      <hr>
       <div class="container-fluid">
          {{#each user in staffList}}
             <div class="row">
                <div class="col-sm-12">
-                  <h2>{{user.name}}</h2>
-                  <small>{{user.team}}</small>
+                  <h1>{{user.name}}</h1>
+               </div>
+
+               <div class="col-sm-12">
+                  <ul>
+                     {{#each okr in user.okrs}}
+                        {{> okrEntryForm okr}}
+                     {{/each}}
+                  </ul>
+               </div>
+
+               <div class="col-sm-12">
                   <button type="button" class="add-new-okr btn btn-info" data-id="{{user._id}}">Add New OKR</button>
                </div>
             </div>
-            <ul>
-               {{#each okr in user.okrs}}
-                  {{> okrEntryForm okr}}
-               {{/each}}
-            </ul>
          {{/each}}
       </div>
    </div>
