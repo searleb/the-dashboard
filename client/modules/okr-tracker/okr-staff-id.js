@@ -4,7 +4,8 @@ Template.okrsStaffId.events({
    * create a new okr object,
    * loop over all the fieldsets which contain an objective,
    * push each objective in to the okr object,
-   * pass in the new okr to the api to be saved to Mongo
+   * pass in the new okr to the api to be saved to Mongo,
+   * and work out the total completion % by taking the average
    */
    'submit .okr-entry-form'(event) {
       event.preventDefault();
@@ -12,22 +13,32 @@ Template.okrsStaffId.events({
       const okr = {
          _id: event.target.id,
          title: event.target[0].value,
+         totalProgress: 0,
          objectives: []
       };
 
+      let objectiveCount = 0;
+
       _.each(event.target, function(target, i) {
          if (target.type == "fieldset") {
+
+            objectiveCount ++;
+
             const newObjective = {
                _id: target.attributes[0].value || new Meteor.ObjectID().valueOf(),
                description: target.elements[0].value,
-               progress: target.elements[1].value,
+               progress: parseInt(target.elements[1].value),
             };
-            okr.objectives.push(newObjective);
-         }
 
+            okr.objectives.push(newObjective);
+
+            okr.totalProgress += parseInt(newObjective.progress);
+         }
       });
 
-      Meteor.call("okrs.upsert", okr, function(error, result){
+      okr.totalProgress = Math.floor(okr.totalProgress / objectiveCount);
+
+      Meteor.call("okrs.submit", okr, function(error, result){
          if(error){
             console.error("error", error);
          }
@@ -38,6 +49,8 @@ Template.okrsStaffId.events({
             }, 750)
          }
       });
+
+      Meteor.call("okrs.updateOkrsTotal", Router.current().params.id);
    },
 
    /**
@@ -90,7 +103,7 @@ Template.okrsStaffId.events({
             console.error("error", error);
          }
       });
-   }
+   },
 });
 
 Template.okrsStaffId.helpers({

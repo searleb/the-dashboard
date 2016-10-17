@@ -23,9 +23,9 @@ if (Meteor.isServer){
 
 Meteor.methods({
    /**
-   * Called on form submit
+   * Save OKR - called on form submit
    */
-   'okrs.upsert'(newOkr) {
+   'okrs.submit'(newOkr) {
       const update = Okrs.update(
          { "okrs._id": newOkr._id },
          { $set: { "okrs.$": newOkr } }
@@ -35,7 +35,7 @@ Meteor.methods({
          return update;
       }
       if (update === 0) {
-         throw new Meteor.Error(500, "okrs.deleteOkr failed", update);
+         throw new Meteor.Error(500, "okrs.upsert failed", update);
       }
    },
 
@@ -108,7 +108,7 @@ Meteor.methods({
    'okrs.deleteOkr'(okrId){
       const update = Okrs.update(
          { 'okrs._id': okrId },
-         { $pull: {'okrs': {'_id': okrId } } }
+         { $pull: { 'okrs': {'_id': okrId } } }
       );
 
       if (update === 0) {
@@ -125,5 +125,23 @@ Meteor.methods({
       if (insert === 0) {
          throw new Meteor.Error(500, "okrs.deleteOkr failed", update)
       }
+   },
+
+   /**
+    *  Update all OKR totalProgress
+    */
+   'okrs.updateOkrsTotal'(userId) {
+      const totals = Okrs.findOne(
+         { '_id': userId },
+         { 'fields': { 'okrs.totalProgress': 1, '_id': 0 } }
+      );
+
+      let totalPercentage = totals.okrs.reduce((prev, current) => prev.totalProgress + current.totalProgress );
+      totalPercentage = Math.floor(totalPercentage / totals.okrs.length);
+
+      const update = Okrs.update(
+         { '_id': userId },
+         { $set: {'okrsTotalProgress': totalPercentage } }
+      );
    }
 });

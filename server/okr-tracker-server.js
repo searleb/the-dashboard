@@ -28,6 +28,7 @@ Meteor.startup(function(){
                {
                   "_id": new Mongo.ObjectID().valueOf(),
                   "title": '',
+                  "totalProgress": 0,
                   "objectives":[
                      {
                         "_id": new Mongo.ObjectID().valueOf(),
@@ -38,7 +39,7 @@ Meteor.startup(function(){
                },
             ],
          };
-
+         
          Meteor.call("okrs.starter", starter, function(error, result) {
             if(error){
                console.error("error", error);

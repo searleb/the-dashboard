@@ -4,15 +4,13 @@
          <div class="title-wrapper">
             <input type="text" name="title" class="title" placeholder="OKR Title" value="{{this.title}}"/>
             <span class="progress-title">Progress %</span>
-            <span class="total-title">Total: 100%</span>
+            <span class="total-title">Total: {{totalProgress}}%</span>
          </div>
          {{#each objective in this.objectives}}
             <fieldset data-objective-id="{{objective._id}}">
                <textarea name="description" class="objective-desc" placeholder="Objective" value="{{objective.description}}"></textarea>
-               <input type="number" name="progress" class="objective-progress" placeholder="OKR Progress" value="{{objective.progress}}"/>
-               <button type="button" class="delete-objective btn btn-sm btn-danger pull-right" data-objective-id="{{objective._id}}">
-                  <span aria-hidden="true">&times;</span>
-               </button>
+               <input type="number" min="0" max="100" name="progress" class="objective-progress" placeholder="OKR Progress" value="{{objective.progress}}"/>
+               <button type="button" class="delete-objective btn btn-sm btn-danger pull-right" data-objective-id="{{objective._id}}">&times;</button>
             </fieldset>
          {{/each}}
          <button type="submit" class="btn">Save</button>
