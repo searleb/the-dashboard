@@ -30,11 +30,13 @@ Meteor.startup(function(){
                   "_id": new Mongo.ObjectID().valueOf(),
                   "title": '',
                   "totalProgress": 0,
+                  "createdAt": new Date().valueOf(),
                   "objectives":[
                      {
                         "_id": new Mongo.ObjectID().valueOf(),
                         "description": "",
                         "progress": 0,
+                        "createdAt": new Date().valueOf()
                      },
                   ]
                },

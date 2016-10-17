@@ -83,6 +83,10 @@ Template.okrsStaffId.events({
             console.error("error", error);
          }
       });
+
+      Meteor.setTimeout(() => {
+         $('.module .title-wrapper input').last().focus();
+      }, 25)
    },
 
    /**
@@ -110,6 +114,14 @@ Template.okrsStaffId.events({
          }
       });
    },
+
+   /**
+    * Show the delete buttons
+    */
+   'click .toggle-danger'(event){
+      $('.btn-danger, .fa-toggle-off, .fa-toggle-on').toggle();
+
+   }
 });
 
 Template.okrsStaffId.helpers({
