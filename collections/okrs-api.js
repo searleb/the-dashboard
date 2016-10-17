@@ -45,7 +45,8 @@ Meteor.methods({
    'okrs.addNewOkr'(userId){
       const newOkr = {
          "_id": new Mongo.ObjectID().valueOf(),
-         "title": '',
+         "title": "",
+         "totalProgress": 0,
          "objectives":[
             {
                "_id": new Mongo.ObjectID().valueOf(),
@@ -65,7 +66,6 @@ Meteor.methods({
       if (update === 0) {
          throw new Meteor.Error(500, "okrs.addNewOkr failed", update)
       }
-
    },
 
    /**
@@ -136,12 +136,21 @@ Meteor.methods({
          { 'fields': { 'okrs.totalProgress': 1, '_id': 0 } }
       );
 
-      let totalPercentage = totals.okrs.reduce((prev, current) => prev.totalProgress + current.totalProgress );
+      let totalPercentage = 0;
+
+      totals.okrs.forEach((okr) => {
+         totalPercentage += okr.totalProgress;
+      });
+
       totalPercentage = Math.floor(totalPercentage / totals.okrs.length);
 
       const update = Okrs.update(
          { '_id': userId },
          { $set: {'okrsTotalProgress': totalPercentage } }
       );
+
+      if (update === 0 || totals === 0) {
+         throw new Meteor.Error(500, "okrs.updateOkrsTotal failed", update)
+      }
    }
 });

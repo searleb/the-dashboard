@@ -77,6 +77,12 @@ Template.okrsStaffId.events({
             console.error("error", error);
          }
       });
+
+      Meteor.call("okrs.updateOkrsTotal", _id, function(error, result){
+         if(error){
+            console.error("error", error);
+         }
+      });
    },
 
    /**

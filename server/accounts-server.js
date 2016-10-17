@@ -27,7 +27,6 @@ Meteor.startup(function () {
    );
 });
 
-
 Meteor.methods({
    'saveUserOffice': function(office) {
       var user = Meteor.user();
