@@ -85,7 +85,7 @@ Template.okrsStaffId.events({
       });
 
       Meteor.setTimeout(() => {
-         $('.module .title-wrapper input').last().focus();
+         $('.module .title-wrapper input').first().focus();
       }, 25)
    },
 
@@ -120,7 +120,6 @@ Template.okrsStaffId.events({
     */
    'click .toggle-danger'(event){
       $('.btn-danger, .fa-toggle-off, .fa-toggle-on').toggle();
-
    }
 });
 

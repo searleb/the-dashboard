@@ -18,7 +18,6 @@ if (Meteor.isServer){
       if (userId) {
          return Okrs.find(
             { "_id": userId },
-            { "sort": { "_id": -1 } }
          );
       }
    });
@@ -43,29 +42,25 @@ Meteor.methods({
    },
 
    /**
-   * Add new OKR with starter objective
+   * Add new OKR with starter objective to first position in the array
    */
    'okrs.addNewOkr'(userId){
       const newOkr = {
          "_id": new Mongo.ObjectID().valueOf(),
          "title": "",
          "totalProgress": 0,
-         "createdAt": new Date().valueOf(),
          "objectives":[
             {
                "_id": new Mongo.ObjectID().valueOf(),
                "description": "",
                "progress": 0,
-               "createdAt": new Date().valueOf()
             },
          ]
       };
 
       const update = Okrs.update(
          { "_id": userId._id },
-         { $push:
-            { "okrs": newOkr }
-         }
+         { $push: { "okrs": { $each: [newOkr], $position: 0 } } }
       );
 
       if (update === 0) {
@@ -84,7 +79,6 @@ Meteor.methods({
          _id: new Mongo.ObjectID().valueOf(),
          description: "",
          progress: 0,
-         "createdAt": new Date().valueOf()
       };
 
       const update = Okrs.update(
