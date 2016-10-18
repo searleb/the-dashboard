@@ -116,10 +116,16 @@ Template.okrsStaffId.events({
    },
 
    /**
-    * Show the delete buttons
-    */
+   * Show the delete buttons
+   */
    'click .toggle-danger'(event){
-      $('.btn-danger, .fa-toggle-off, .fa-toggle-on').toggle();
+      const state = Session.get('dangerModeClass')
+      if (state == 'danger-on') {
+         Session.set('dangerModeClass', 'danger-off')
+      }
+      if (state == 'danger-off') {
+         Session.set('dangerModeClass', 'danger-on')
+      }
    }
 });
 
@@ -130,5 +136,8 @@ Template.okrsStaffId.helpers({
    staffList() {
       const id = Router.current().params.id;
       return Okrs.find({"_id": id}).fetch();
+   },
+   dangerModeClass() {
+      return Session.get('dangerModeClass');
    }
 });

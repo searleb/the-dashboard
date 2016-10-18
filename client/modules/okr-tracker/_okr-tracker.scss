@@ -69,10 +69,17 @@
    img{
       width: 55px;
    }
+   .toggle-danger.danger-on{
+      background-color: $brand-danger;
+      border-color: $brand-danger;
+   }
    .btn-danger {
       display: none;
       background-color: $brand-danger;
       border-color: $brand-danger;
+      &.danger-on {
+         display: block;
+      }
    }
    .fa-toggle-on {
       display: none;
