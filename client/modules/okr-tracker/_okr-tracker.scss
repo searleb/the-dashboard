@@ -17,6 +17,10 @@
       border-bottom: 1px solid rgba($mf-black, 0.1);
       padding-bottom: 5px;
       margin-bottom: 5px;
+      position: relative;
+      .btn-danger {
+         margin-top: 12px;
+      }
    }
    %title-base {
       background: transparent;
@@ -31,37 +35,59 @@
    .title {
       @extend %title-base;
       font-size: 28px;
-      width: calc(68% - 5px);
+      width: calc(60% - 5px);
       margin-bottom: 0px;
    }
    .progress-title {
       @extend %title-base;
-      width: calc(16% - 5px);
+      width: calc(20% - 5px);
       font-size: 18px;
-      text-align: right;
+      text-align: left;
    }
    .total-title {
       @extend %title-base;
-      width: calc(16% - 5px);
+      width: calc(20% - 5px);
       font-size: 18px;
       text-align: right;
    }
    .objective-desc {
       @extend %title-base;
-      width: calc(68% - 5px);
+      width: calc(60% - 5px);
       font-size: 18px;
    }
    .objective-progress {
       @extend %title-base;
-      width: calc(16% - 5px);
       font-size: 18px;
       vertical-align: top;
       text-align: right;
+      display: inline-block;
+   }
+   .range-wrapper {
+      width: calc(25% - 5px);
+      display: inline-block;
+      vertical-align: top;
+      margin-top: 10px;
+   }
+   .range-value {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+   }
+   input[type="text"],
+   textarea {
+      border-bottom: 2px solid transparent;
+      transform: translateY(1px);
+      &:focus {
+         // outline: none;
+         outline-color: $mf-blue;
+         outline-offset: 1px;
+         outline-width: 2px;
+         border-color: $mf-blue;
+      }
    }
    textarea,
    input {
       background: transparent;
-      border: 0px;
    }
    input {
       color: $mf-black;
@@ -92,9 +118,75 @@
       background-color: #ffffff;
    }
    50% {
-      background-color: rgba($mf-green, 0.09);
+      background-color: rgba($mf-green, 0.04);
    }
    100% {
       background-color: #ffffff;
    }
+}
+
+
+input[type=range] {
+   -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+   width: 100%; /* Specific width is required for Firefox. */
+   background: transparent; /* Otherwise white in Chrome */
+}
+
+input[type=range]::-webkit-slider-thumb {
+   -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+   outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]::-ms-track {
+   width: 100%;
+   cursor: pointer;
+
+   /* Hides the slider so custom styles can be added */
+   background: transparent;
+   border-color: transparent;
+   color: transparent;
+}
+
+/* Special styling for WebKit/Blink */
+input[type=range]::-webkit-slider-thumb {
+   -webkit-appearance: none;
+   height: 22px;
+   width: 22px;
+   border-radius: 22px;
+   box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.3);
+   cursor: pointer;
+   background-color: $mf-blue;
+   margin-top: -8px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+   background-image: url(diamond.svg);
+   background-position: center center;
+   background-repeat: no-repeat;
+   background-size: 75%;
+   transition: all 0.3s ease;
+   &:hover, &:focus {
+      background-color: $mf-green;
+   };
+}
+
+/* All the same stuff for Firefox */
+input[type=range]::-moz-range-thumb {
+
+}
+
+
+input[type=range]::-webkit-slider-runnable-track {
+   width: 100%;
+   height: 8px;
+   cursor: pointer;
+   border-radius: 8px;
+   background-color: #d7dcdf;
+   border-radius: 1.3px;
+   transition: all 0.3s ease;
+}
+
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+   background-color: $mf-blue;
 }

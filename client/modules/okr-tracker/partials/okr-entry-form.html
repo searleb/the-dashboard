@@ -9,7 +9,10 @@
          {{#each objective in this.objectives}}
             <fieldset data-objective-id="{{objective._id}}">
                <textarea name="description" class="objective-desc" placeholder="Objective" value="{{objective.description}}"></textarea>
-               <input type="number" min="0" max="100" name="progress" class="objective-progress" placeholder="OKR Progress" value="{{objective.progress}}"/>
+               <div class="range-wrapper">
+                  <input type="range" min="0" max="100" name="progress" class="objective-progress range-slider__slider " placeholder="OKR Progress" value="{{objective.progress}}"/>
+                  <span class="range-value">{{objective.progress}}%</span>
+               </div>
                <button type="button" class="delete-objective btn btn-sm btn-danger pull-right {{dangerModeClass}}" data-objective-id="{{objective._id}}">&times;</button>
             </fieldset>
          {{/each}}

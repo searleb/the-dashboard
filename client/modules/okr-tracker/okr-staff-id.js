@@ -141,3 +141,7 @@ Template.okrsStaffId.helpers({
       return Session.get('dangerModeClass');
    }
 });
+
+Template.okrsStaffId.onCreated(() => {
+   Session.set('dangerModeClass', 'danger-off')
+})
