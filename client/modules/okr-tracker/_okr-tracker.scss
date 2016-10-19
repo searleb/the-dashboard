@@ -25,6 +25,7 @@
    %title-base {
       background: transparent;
       border: 0px;
+      border-bottom: 2px solid transparent;
       display: inline-block;
       padding: 0.5rem 0.75rem;
    }
@@ -75,13 +76,9 @@
    }
    input[type="text"],
    textarea {
-      border-bottom: 2px solid transparent;
-      transform: translateY(1px);
+      transform: translateY(2px);
       &:focus {
-         // outline: none;
-         outline-color: $mf-blue;
-         outline-offset: 1px;
-         outline-width: 2px;
+         outline: none;
          border-color: $mf-blue;
       }
    }
@@ -166,13 +163,27 @@ input[type=range]::-webkit-slider-thumb {
    background-size: 75%;
    transition: all 0.3s ease;
    &:hover, &:focus {
-      background-color: $mf-green;
+      transform: translateY(-2px);
    };
 }
 
 /* All the same stuff for Firefox */
 input[type=range]::-moz-range-thumb {
-
+   height: 22px;
+   width: 22px;
+   border-radius: 22px;
+   box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.3);
+   cursor: pointer;
+   background-color: $mf-blue;
+   margin-top: -8px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+   background-image: url(diamond.svg);
+   background-position: center center;
+   background-repeat: no-repeat;
+   background-size: 75%;
+   transition: all 0.3s ease;
+   &:hover, &:focus {
+      transform: translateY(-2px);
+   };
 }
 
 
