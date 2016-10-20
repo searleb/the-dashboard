@@ -20,12 +20,8 @@ Template.yearlyTabs.helpers({
 });
 
 Template.yearlyTabs.events({
-   'click a.dropdown-toggle'(e) {
-      console.log(e.target.getAttribute('data-year'));
-      Session.set('okrYear', e.target.getAttribute('data-year'))
-   },
    'click a.dropdown-item'(e) {
-      console.log(e.target.getAttribute('data-quarter'));
+      Session.set('okrYear', $(e.target).parent().prev('a').attr('data-year'))
       Session.set('okrQuarter', e.target.getAttribute('data-quarter'))
    }
 })

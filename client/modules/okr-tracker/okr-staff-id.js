@@ -71,8 +71,10 @@ Template.okrsStaffId.events({
    */
    'click .add-new-okr'(event){
       const _id = Router.current().params.id;
+      const year = Session.get('okrYear');
+      const quarter = Session.get('okrQuarter');
 
-      Meteor.call("okrs.addNewOkr", { _id }, function(error, result){
+      Meteor.call("okrs.addNewOkr", _id, year, quarter , function(error, result){
          if(error){
             console.error("error", error);
          }
@@ -139,6 +141,12 @@ Template.okrsStaffId.helpers({
    },
    dangerModeClass() {
       return Session.get('dangerModeClass');
+   },
+   year() {
+      return Session.get('okrYear');
+   },
+   quarter() {
+      return Session.get('okrQuarter');
    }
 });
 
