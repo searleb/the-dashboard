@@ -131,9 +131,9 @@ Template.okrsStaffId.events({
 
 Template.okrsStaffId.helpers({
    /**
-   * Returns a list of all staff
+   * Returns the current staff member from router params
    */
-   staffList() {
+   staffMember() {
       const id = Router.current().params.id;
       return Okrs.find({"_id": id}).fetch();
    },
