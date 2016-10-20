@@ -1,5 +1,5 @@
 Okrs = new Mongo.Collection("okrs");
-OkrDates = new Mongo.Collection("okrDates");
+OkrYears = new Mongo.Collection("okrYears");
 
 Okrs.allow({
    insert: function(){
@@ -13,7 +13,7 @@ Okrs.allow({
    }
 });
 
-OkrDates.allow({
+OkrYears.allow({
    insert: function(){
       return true;
    },
@@ -34,8 +34,8 @@ if (Meteor.isServer){
          );
       }
    });
-   Meteor.publish('okrDates', () => {
-      return OkrDates.find({})
+   Meteor.publish('okrYears', () => {
+      return OkrYears.find({})
    })
 }
 
@@ -176,28 +176,28 @@ Meteor.methods({
    /**
    * Added
    */
-   'okrDates.addNewYear'(year) {
+   'okrYears.addNewYear'(year) {
       const yearObj = {
          year: year,
          quarters: [1,2,3,4]
       }
-      const date = OkrDates.upsert({}, { $push: { years: yearObj } })
+      const date = OkrYears.upsert({}, { $push: { years: yearObj } })
 
       if (date === 0) {
-         throw new Meteor.Error(500, "okrDates.addNewYear failed", date)
+         throw new Meteor.Error(500, "okrYears.addNewYear failed", date)
       }
    },
 
    /**
    * Returns the last year recorded
    */
-   'okrDates.getLastYear'() {
-      const okrDates = OkrDates.find({}).fetch()
+   'okrYears.getLastYear'() {
+      const okrYears = OkrYears.find({}).fetch()
       let lastRecordedYear = 0
 
-      if (okrDates.length > 0) {
-         const arrayLength = okrDates[0].years.length -1
-         lastRecordedYear = okrDates[0].years[arrayLength].year
+      if (okrYears.length > 0) {
+         const arrayLength = okrYears[0].years.length -1
+         lastRecordedYear = okrYears[0].years[arrayLength].year
       }
 
       return lastRecordedYear;

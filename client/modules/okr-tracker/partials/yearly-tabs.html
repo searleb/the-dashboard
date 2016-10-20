@@ -1,15 +1,16 @@
 <template name="yearlyTabs">
    <div class="col-sm-12">
       <ul class="nav nav-tabs">
+         {{#each item in years}}
          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <a class="nav-link dropdown-toggle" data-year="{{item.year}}" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{item.year}}</a>
             <div class="dropdown-menu">
-               <a class="dropdown-item" href="#">Action</a>
-               <a class="dropdown-item" href="#">Another action</a>
-               <a class="dropdown-item" href="#">Something else here</a>
-               <a class="dropdown-item" href="#">Separated link</a>
+               {{#each quarter in item.quarters}}
+               <a class="dropdown-item" href="#" data-quarter="{{quarter}}">Q{{quarter}}</a>
+               {{/each}}
             </div>
          </li>
+         {{/each}}
       </ul>
    </div>
 </template>
