@@ -4,7 +4,7 @@ Meteor.startup(function () {
    Accounts.config({
       restrictCreationByEmailDomain: function(email) {
          var domain = email.slice(email.lastIndexOf("@")+1); // or regex
-         var allowed = ["mentallyfriendly.com", "branddata.com", "digitaleskimo.net"];
+         var allowed = ["mentallyfriendly.com", "branddata.com", "wearefuturefriendly.com"];
          var oneOfOurs = _.contains(allowed, domain);
          if (oneOfOurs) {
             return true;

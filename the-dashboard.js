@@ -29,8 +29,7 @@ if (Meteor.isClient) {
       }
    };
 
-
-   // helper to convert objects to arrays for use in blaze templates
+      // helper to convert objects to arrays for use in blaze templates
    UI.registerHelper("arrayify", function(obj){
       result = [];
       for (var key in obj){
@@ -46,13 +45,19 @@ if (Meteor.isClient) {
       }
    });
 
-   // format time
+   // format date
    UI.registerHelper('dateToday', function() {
       return moment().format('DD MMM YY');
    });
 
+   // conver minutes to hours
+   UI.registerHelper('minutesToHours', function(time){
+      if (time) {
+         return time / 60;
+      }
+   });
+
    // add global event listener to window to check if window is in focus
-   tabIsFocused = true;
    window.addEventListener('focus', function() {
       tabIsFocused = true;
    },false);
