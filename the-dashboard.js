@@ -1,5 +1,7 @@
 if (Meteor.isClient) {
-
+   // define global tab is focused variable
+   tabIsFocused = true;
+   
    Packery = {
       options: {
          itemSelector: '.module',
