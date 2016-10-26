@@ -14,6 +14,8 @@ Template.okrsStaffId.events({
          _id: event.target.id,
          title: event.target[0].value,
          totalProgress: 0,
+         year: Session.get('okrYear'),
+         quarter: Session.get('okrQuarter'),
          objectives: []
       };
 
@@ -133,11 +135,17 @@ Template.okrsStaffId.events({
 
 Template.okrsStaffId.helpers({
    /**
-   * Returns the current staff member from router params
+   * Returns the current staff member and
+   * filters the OKRS but session state
    */
    staffMember() {
-      const id = Router.current().params.id;
-      return Okrs.find({"_id": id}).fetch();
+      const year = Session.get('okrYear')
+      const quarter = Session.get('okrQuarter')
+      const userDoc = Okrs.find().fetch();
+
+      userDoc[0].okrs = _.where(userDoc[0].okrs, { year: year, quarter: quarter })
+
+      return userDoc
    },
    dangerModeClass() {
       return Session.get('dangerModeClass');
@@ -152,4 +160,6 @@ Template.okrsStaffId.helpers({
 
 Template.okrsStaffId.onCreated(() => {
    Session.set('dangerModeClass', 'danger-off')
+   Session.set('okrYear', moment().year())
+   Session.set('okrQuarter', moment().quarter())
 })

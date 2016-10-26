@@ -1,6 +1,14 @@
 #okrs{
    .okr-entry-form {
    }
+   ul {
+      &.list-group {
+         margin-top: 20px;
+         @media #{$media-sm}{
+            column-count: 2;
+         }
+      }
+   }
    li {
       &.success {
          animation-name: success-flash;

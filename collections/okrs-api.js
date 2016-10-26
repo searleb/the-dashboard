@@ -60,11 +60,13 @@ Meteor.methods({
    /**
    * Add new OKR with starter objective to first position in the array
    */
-   'okrs.addNewOkr'(userId){
+   'okrs.addNewOkr'(userId, year, quarter){
       const newOkr = {
          "_id": new Mongo.ObjectID().valueOf(),
          "title": "",
          "totalProgress": 0,
+         "year": year,
+         "quarter": quarter,
          "objectives":[
             {
                "_id": new Mongo.ObjectID().valueOf(),
@@ -75,7 +77,7 @@ Meteor.methods({
       };
 
       const update = Okrs.update(
-         { "_id": userId._id },
+         { "_id": userId },
          { $push: { "okrs": { $each: [newOkr], $position: 0 } } }
       );
 

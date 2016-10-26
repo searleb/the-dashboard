@@ -13,7 +13,6 @@ Template.yearlyTabs.onCreated(() => {
 
 Template.yearlyTabs.helpers({
    years() {
-      console.log(OkrYears.find().fetch());
       const okrYears = OkrYears.find().fetch()
       return okrYears[0].years;
    },
@@ -21,7 +20,7 @@ Template.yearlyTabs.helpers({
 
 Template.yearlyTabs.events({
    'click a.dropdown-item'(e) {
-      Session.set('okrYear', $(e.target).parent().prev('a').attr('data-year'))
-      Session.set('okrQuarter', e.target.getAttribute('data-quarter'))
+      Session.set('okrYear', parseInt($(e.target).parent().prev('a').attr('data-year')))
+      Session.set('okrQuarter', parseInt(e.target.getAttribute('data-quarter')))
    }
 })
