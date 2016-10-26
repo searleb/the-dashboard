@@ -11,6 +11,7 @@
       position: absolute;
       border-left: 1px solid rgba($mf-navy, 0.15);
       height: calc(100% - 40px);
+      left: 50%;
       @include media-breakpoint-up(md){
          display: block;
       };
