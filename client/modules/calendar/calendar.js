@@ -7,9 +7,20 @@ Template.calendar.helpers({
 });
 
 Template.calendar.onCreated( function () {
+
+   function safeToRun() {
+      const user = Meteor.user();
+      if (user === undefined) {
+         return false
+      }
+      if (user.services !== undefined) {
+         return true
+      }
+   }
+
    this.autorun(function () {
-      if (Meteor.user()) {
-         getCalendar();
+      if (safeToRun()) {
+         getCalendar()
       }
    });
 
@@ -98,7 +109,9 @@ Template.calendar.onCreated( function () {
    (function(){
       Meteor.setInterval(function(){
          if (tabIsFocused) {
-            getCalendar();
+            if (safeToRun()) {
+               getCalendar();
+            }
          }
       }, 1000 * 5);
    })();
