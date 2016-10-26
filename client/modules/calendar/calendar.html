@@ -12,7 +12,7 @@
       <div class="list-group">
          {{#each gCalendar.items }}
          <a href="{{this.htmlLink}}" target="_blank" class="{{this.timeClass}} list-group-item">
-            <span class="label label-default label-pill pull-xs-right">{{this.start.formattedTime}} - {{this.end.formattedTime}}</span>
+            <span class="pull-xs-right">{{this.start.formattedTime}} - {{this.end.formattedTime}}</span>
             <h6 class="list-group-item-heading">
                {{this.summary}}
             </h6>
