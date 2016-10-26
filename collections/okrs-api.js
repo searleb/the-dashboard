@@ -1,6 +1,19 @@
 Okrs = new Mongo.Collection("okrs");
+OkrYears = new Mongo.Collection("okrYears");
 
 Okrs.allow({
+   insert: function(){
+      return true;
+   },
+   update: function(){
+      return true;
+   },
+   remove: function(){
+      return true;
+   }
+});
+
+OkrYears.allow({
    insert: function(){
       return true;
    },
@@ -21,6 +34,9 @@ if (Meteor.isServer){
          );
       }
    });
+   Meteor.publish('okrYears', () => {
+      return OkrYears.find({})
+   })
 }
 
 Meteor.methods({
@@ -44,11 +60,13 @@ Meteor.methods({
    /**
    * Add new OKR with starter objective to first position in the array
    */
-   'okrs.addNewOkr'(userId){
+   'okrs.addNewOkr'(userId, year, quarter){
       const newOkr = {
          "_id": new Mongo.ObjectID().valueOf(),
          "title": "",
          "totalProgress": 0,
+         "year": year,
+         "quarter": quarter,
          "objectives":[
             {
                "_id": new Mongo.ObjectID().valueOf(),
@@ -59,7 +77,7 @@ Meteor.methods({
       };
 
       const update = Okrs.update(
-         { "_id": userId._id },
+         { "_id": userId },
          { $push: { "okrs": { $each: [newOkr], $position: 0 } } }
       );
 
@@ -131,8 +149,8 @@ Meteor.methods({
    },
 
    /**
-    *  Update all OKR totalProgress
-    */
+   *  Update all OKR totalProgress
+   */
    'okrs.updateOkrsTotal'(userId) {
       const totals = Okrs.findOne(
          { '_id': userId },
@@ -155,5 +173,35 @@ Meteor.methods({
       if (update === 0 || totals === 0) {
          throw new Meteor.Error(500, "okrs.updateOkrsTotal failed", update)
       }
+   },
+
+   /**
+   * Added
+   */
+   'okrYears.addNewYear'(year) {
+      const yearObj = {
+         year: year,
+         quarters: [1,2,3,4]
+      }
+      const date = OkrYears.upsert({}, { $push: { years: yearObj } })
+
+      if (date === 0) {
+         throw new Meteor.Error(500, "okrYears.addNewYear failed", date)
+      }
+   },
+
+   /**
+   * Returns the last year recorded
+   */
+   'okrYears.getLastYear'() {
+      const okrYears = OkrYears.find({}).fetch()
+      let lastRecordedYear = 0
+
+      if (okrYears.length > 0) {
+         const arrayLength = okrYears[0].years.length -1
+         lastRecordedYear = okrYears[0].years[arrayLength].year
+      }
+
+      return lastRecordedYear;
    }
 });

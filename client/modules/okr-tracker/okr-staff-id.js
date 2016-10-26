@@ -14,6 +14,8 @@ Template.okrsStaffId.events({
          _id: event.target.id,
          title: event.target[0].value,
          totalProgress: 0,
+         year: Session.get('okrYear'),
+         quarter: Session.get('okrQuarter'),
          objectives: []
       };
 
@@ -71,8 +73,10 @@ Template.okrsStaffId.events({
    */
    'click .add-new-okr'(event){
       const _id = Router.current().params.id;
+      const year = Session.get('okrYear');
+      const quarter = Session.get('okrQuarter');
 
-      Meteor.call("okrs.addNewOkr", { _id }, function(error, result){
+      Meteor.call("okrs.addNewOkr", _id, year, quarter , function(error, result){
          if(error){
             console.error("error", error);
          }
@@ -131,17 +135,31 @@ Template.okrsStaffId.events({
 
 Template.okrsStaffId.helpers({
    /**
-   * Returns a list of all staff
+   * Returns the current staff member and
+   * filters the OKRS but session state
    */
-   staffList() {
-      const id = Router.current().params.id;
-      return Okrs.find({"_id": id}).fetch();
+   staffMember() {
+      const year = Session.get('okrYear')
+      const quarter = Session.get('okrQuarter')
+      const userDoc = Okrs.find().fetch();
+
+      userDoc[0].okrs = _.where(userDoc[0].okrs, { year: year, quarter: quarter })
+
+      return userDoc
    },
    dangerModeClass() {
       return Session.get('dangerModeClass');
+   },
+   year() {
+      return Session.get('okrYear');
+   },
+   quarter() {
+      return Session.get('okrQuarter');
    }
 });
 
 Template.okrsStaffId.onCreated(() => {
    Session.set('dangerModeClass', 'danger-off')
+   Session.set('okrYear', moment().year())
+   Session.set('okrQuarter', moment().quarter())
 })

@@ -1,14 +1,15 @@
 <template name="okrsStaffId">
    <div id="okrs">
       <div class="container">
-         {{#each user in staffList}}
+         {{#each user in staffMember}}
             <div class="row">
                <div class="col-sm-6">
                   <h1>{{user.name}}</h1>
                </div>
                <div class="col-sm-6 text-sm-right">
-                  <h1>{{user.okrsTotalProgress}}%</h1>
+                  <h1>{{year}} Q{{quarter}} : {{user.okrsTotalProgress}}%</h1>
                </div>
+               {{> yearlyTabs}}
                <div class="col-sm-6">
                   <button type="button" class="add-new-okr btn btn-info" data-id="{{user._id}}">
                      <i class="fa fa-plus-circle" aria-hidden="true"></i>
