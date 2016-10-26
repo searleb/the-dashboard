@@ -9,12 +9,10 @@ ul{
 
 .module{
 	background: #fff;
-	// margin: 30px;
 	padding: 20px;
 	box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.08);
-	// height: 340px;
 	overflow-y: auto;
-	width: calc(100% - 30px);
+	width: 100%;
 
 	&.width-25{
 		@include media-breakpoint-up(md){
@@ -60,14 +58,20 @@ ul{
 .btn {
 	background-color: $mf-green;
 	border: 1px solid $mf-green;
-	padding: 7px 12px 6px 12px;
 	color: $white !important;
-	&:hover {
+	&:hover,
+	&:focus {
 		box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.2);
 		transform: translateY(-2px);
-	}
-	&:focus{
 		outline: none !important;
+	}
+}
+.btn-info {
+	background-color: $brand-info;
+	border: 1px solid $brand-info;
+	&:hover {
+		background-color: $brand-info;
+		border-color: $brand-info;
 	}
 }
 

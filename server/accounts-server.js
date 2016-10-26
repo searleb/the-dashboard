@@ -4,7 +4,7 @@ Meteor.startup(function () {
    Accounts.config({
       restrictCreationByEmailDomain: function(email) {
          var domain = email.slice(email.lastIndexOf("@")+1); // or regex
-         var allowed = ["mentallyfriendly.com", "branddata.com", "digitaleskimo.net"];
+         var allowed = ["mentallyfriendly.com", "branddata.com", "digitaleskimo.net", 'wearefuturefriendly.com'];
          var oneOfOurs = _.contains(allowed, domain);
          if (oneOfOurs) {
             return true;
@@ -27,7 +27,6 @@ Meteor.startup(function () {
    );
 });
 
-
 Meteor.methods({
    'saveUserOffice': function(office) {
       var user = Meteor.user();
@@ -46,6 +45,19 @@ Meteor.publish("userData", function () {
             'services.google.picture': 1,
             'services.google.accessToken': 1,
             'services.google.email': 1
+         }
+      });
+   } else {
+      this.ready();
+   }
+});
+
+Meteor.publish('userList', function (){
+   if (this.userId) {
+      return Meteor.users.find({},
+         { fields: {
+            'profile': 1,
+            'services.google.picture': 1,
          }
       });
    } else {

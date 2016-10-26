@@ -2,28 +2,23 @@ if (Meteor.isClient) {
 
    Packery = {
       options: {
-         // options
          itemSelector: '.module',
          gutter: 15,
          stamp: '.stamp',
          percentPosition: true
       },
       init: function() {
-         console.log('init');
          Meteor.setTimeout(function(){
             $('.home-wrapper').packery(this.options);
          }, 100);
-         // this.layout()
       },
       layout: function(){
-         console.log('layout');
          var $grid = $('.home-wrapper').packery(this.options);
          Meteor.setTimeout(function(){
             $grid.packery('layout');
          }, 100);
       },
       destroy: function(){
-         console.log('destroy');
          var $grid = $('.home-wrapper').packery(this.options);
          $grid.packery('destroy');
       }

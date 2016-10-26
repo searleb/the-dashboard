@@ -1,0 +1,9 @@
+.nav.okr-tabs {
+   margin-top: 10px;
+   margin-bottom: 20px;
+   a {
+      &:hover {
+         border-color: transparent; 
+      }
+   }
+}
