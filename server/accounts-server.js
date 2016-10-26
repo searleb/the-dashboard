@@ -27,7 +27,6 @@ Meteor.startup(function () {
    );
 });
 
-
 Meteor.methods({
    'saveUserOffice': function(office) {
       var user = Meteor.user();
@@ -46,6 +45,19 @@ Meteor.publish("userData", function () {
             'services.google.picture': 1,
             'services.google.accessToken': 1,
             'services.google.email': 1
+         }
+      });
+   } else {
+      this.ready();
+   }
+});
+
+Meteor.publish('userList', function (){
+   if (this.userId) {
+      return Meteor.users.find({},
+         { fields: {
+            'profile': 1,
+            'services.google.picture': 1,
          }
       });
    } else {

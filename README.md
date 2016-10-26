@@ -1,6 +1,6 @@
 # Home Sweet Home
 
-### Set up
+## Installation
 - [Install Meteor](https://www.meteor.com/install)
 - Pull the repo
 - Open the MF 1Password and find `Home Sweet Home - Settings.json`, download and add this file to the root folder.
