@@ -1,50 +1,19 @@
 #calendar-template{
-    h5{
-        margin: 0px;
-        small{
-            display: block;
-        }
-    }
-
-    li{
-        background-color: $body-bg;
-        a{
-            &:hover, &focus{
-                text-decoration: none;
-            }
-        }
-        &.past{
-            a{
-                h5, small{
-                    color: $gray-dark;
-                }
-                span{
-                    background-color: $gray-dark;
-                }
-            }
-        }
-        &.current{
-            border-color: $brand-danger;
-            z-index: 2;
-            transform: scale(1.075);
-            border-radius: 4px;
-            a{
-                color: $brand-danger;
-                font-weight: 500;
-            }
-            .label-default{
-                background-color: $brand-danger;
-            }
-        }
-        &.future{
-            z-index: 1;
-            transform: scale(1.035);
-            a{
-                color: $brand-primary
-            }
-            .label-default{
-                background-color: $brand-primary;
-            }
-        }
-    }
+   .past{
+      display: none;
+   }
+   .list-group-item-danger{
+      background-color: $mf-green;
+      color: $mf-navy;
+      span{
+         transform: scale(1.1);
+      }
+   }
+   a{
+      span{
+         text-rendering: optimizeLegibility;
+         -webkit-font-smoothing: antialiased;
+         -moz-osx-font-smoothing: grayscale;
+      }
+   }
 }

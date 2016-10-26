@@ -1,27 +1,33 @@
 <template name="calendar">
-    <div id="calendar-template" class="module">
-        <h2>Today <small>{{dateToday}}</small></h2>
-        <h5>
-            <a href="//calendar.google.com" target="_blank">Calendar</a>
-        </h5>
-        {{#if gCalendar.items}}
-        <ul class="list-group">
-            {{#each gCalendar.items }}
-            <li class="list-group-item {{this.timeClass}}">
-                <a href="{{this.htmlLink}}" target="_blank">
-                    <span class="label label-default pull-right">{{this.start.formattedTime}} - {{this.end.formattedTime}}</span>
-                    <h5>
-                        {{this.summary}}
-                        <small>{{this.location}}</small>
-                    </h5>
-                </a>
-            </li>
-            {{/each}}
-        </ul>
-        {{else}}
-        <p>
-            No events today
-        </p>
-        {{/if}}
-    </div>
+   <div id="calendar-template" class="module width-50">
+      <div class="title">
+         <h4>Whats Next <span class="pull-xs-right">{{dateToday}}</span></h4>
+         <nav class="nav-inline">
+            <a href="//calendar.google.com" class="nav-item" title="Google Calendar" target="_blank">My Calendar</a>
+         </nav>
+      </div>
+
+      {{#if gCalendar.items}}
+
+      <div class="list-group">
+         {{#each gCalendar.items }}
+         <a href="{{this.htmlLink}}" target="_blank" class="{{this.timeClass}} list-group-item">
+            <span class="pull-xs-right">{{this.start.formattedTime}} - {{this.end.formattedTime}}</span>
+            <h6 class="list-group-item-heading">
+               {{this.summary}}
+            </h6>
+            {{#if this.location}}
+               <small>{{this.location}}</small>
+            {{/if}}
+         </a>
+         {{/each}}
+      </div>
+
+      {{else}}
+      <p>
+         Relax, your calendar looks empty for the rest of the day.
+      </p>
+
+      {{/if}}
+   </div>
 </template>

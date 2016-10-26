@@ -1,39 +1,81 @@
 #weather-template {
-   .studio-wrapper {
-      text-align: center;
-      margin-bottom: 5px;
-      border-radius: 10px;
-      border: 1px solid $gray-darker;
-      padding: 5px;
-      .row{
-         margin-right: 0;
-         margin-left: 0;
-      }
+   flex: 1;
+   padding: 20px;
+   background-color: #ffffff;
+   height: 215px;
+   @include media-breakpoint-up(md){
+      height: 134px;
+   };
+   .divider{
+      display: none;
+      position: absolute;
+      border-left: 1px solid rgba($mf-navy, 0.15);
+      height: calc(100% - 40px);
+      left: 50%;
+      @include media-breakpoint-up(md){
+         display: block;
+      };
+   }
+   .studio {
+      display: flex;
+      flex: 1;
+      align-items: center;
+
       svg {
-         fill: $white;
+         flex: 1;
+         fill: $mf-green;
          display: inline-block;
-         margin: auto;
-         vertical-align: middle;
-         width: 100%;
       }
-      .col-xs-4 {
-         padding: 0;
-         height: 80px;
+
+      .temp,
+      .currently{
+         flex: 1;
+         display: flex;
+         flex-flow: row wrap;
       }
-      address {
-         margin-bottom: 5px;
+
+      .temp {
+         h3,
+         small {
+            flex: 1 100%;
+            text-align: center;
+         }
+
+         small {
+            margin: 5px 0 0 0;
+         }
       }
-      .delta-indicator {
-         color: $gray-subtle;
+
+      .currently {
+         i,
+         small {
+            flex: 1 100%;
+            text-align: center;
+         }
+
+         small {
+            margin: 5px 0 0 0;
+         }
       }
+
+      .info {
+         flex: 3;
+      }
+
+      h4,
+      h3 {
+         margin: 0;
+      }
+
       i {
-         color: $white;
+         margin-top: -10px;
+         color: $mf-green;
          display: block;
          font-family: weather;
          font-style: normal;
          font-size: 35px;
          height: auto;
-         line-height: 45px;
+         line-height: 35px;
          &.icon-0:before {
             content: ":";
          }
@@ -178,6 +220,9 @@
          &.icon-47:before {
             content: "S";
          }
+      }
+      address {
+         margin-bottom: 0;
       }
    }
 }

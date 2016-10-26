@@ -1,13 +1,12 @@
-// google fonts
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
-@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+// Imports
 
-// @import "toolkit-light.min.scss";
-@import "toolkit-inverse.min.scss";
 @import "variables";
-@import "variables-inverse";
-@import "the-dashboard";
 @import "typography";
+@import "_bs-4-variables.scss";
+@import '{}/node_modules/bootstrap/scss/bootstrap.scss';
+@import "the-dashboard";
+
+
 
 // can't use varibles in @import statements :(
 @import "../modules/calendar/calendar";
@@ -18,9 +17,12 @@
 @import "../modules/user/user";
 @import "../modules/weather/weather";
 @import "../modules/favourites/favourites";
+
 @import "../modules/login/login";
 @import "../modules/meeting-rooms/meeting-rooms";
 @import "../modules/settings-modal/settings-modal";
-@import "../modules/sidebar/sidebar";
 @import "../modules/banter/banter";
 @import "../modules/loading/loading";
+@import "../modules/nav/nav";
+@import "../modules/search/search";
+@import "../modules/okr-tracker/okr-tracker";

@@ -1,73 +1,71 @@
 <template name="jobDetails">
-    <div class="container">
-         <div class="row">
-            <div id="workflowmax-job-details" class="module">
-                <h2>Job {{params}}</h2>
-                <div class="col-sm-6">
-                    <h3>Details</h3>
-                    {{#unless jobDetails}}
-                        <p>Loading...</p>
-                    {{/unless}}
-                    {{#with jobDetails}}
-                    <h4>{{name}}</h4>
-                    <h4>{{manager.name}}</h4>
-                    <p>Status: {{state}}</p>
-                    <p>{{description}}</p>
+   <div id="workflowmax-job-details" class="container-fluid">
+      <h4><a href="/workflowmax-jobs">&lt; Back to Current Jobs</a></h4>
+      <h3>Job {{params}}</h3>
 
-                    <ul>
-                        <li>
-                            <p>Client: {{client.name}}</p>
-                        </li>
-                        <li>
-                            Start Date: {{formatTime startdate 'DD MMM YY'}}
-                            <br>
-                            Due Date: {{formatTime duedate 'DD MMM YY'}}
-                        </li>
-                        {{#if tasks.task}}
-                        <ol>
-                            <h4>Tasks</h4>
-                            {{#each tasks.task}}
-                            <li>
-                                {{name}}
-                                <br>
-                                Estimated Hours: {{ minutesToHours estimatedminutes}}
-                                <br>
-                                Actual Hours: {{ minutesToHours actualminutes}}
-                                <br>
-                                Billable: {{billable}}
-                            </li>
-                            <br>
-                            {{/each}}
-                        </ol>
-                        {{/if}}
-                    </ul>
-                    {{/with}}
-                </div>
-
-                <div class="col-sm-6">
-                    <h3>Costs</h3>
-                    {{#unless jobCosts}}
-                        <p>Loading...</p>
-                    {{/unless}}
-                    {{#with jobCosts}}
-                    <ul>
-                        {{#each cost}}
-                        <li>
-                            Description: {{description}}
-                            <br>
-                            Notes: {{note}}
-                            <br>
-                            Quantity: {{quantity}}
-                            <br>
-                            Unit Cost: {{unitcost}}
-                            <br>
-                            Unit Price: {{unitprice}}
-                        </li>
-                        {{/each}}
-                    </ul>
-                    {{/with}}
-                </div>
-            </div>
-        </div>
-    </div>
+      <div class="row module">
+         <div class="col-sm-6">
+            <h4>Details</h4>
+            {{#unless jobDetails}}
+            <p>Loading...</p>
+            {{/unless}}
+            {{#with jobDetails}}
+            <h5>{{name}}</h5>
+            <h5>{{manager.name}}</h5>
+            <p>Status: {{state}}</p>
+            <p>{{description}}</p>
+            <ul>
+               <li>
+                  <p>Client: {{client.name}}</p>
+               </li>
+               <li>
+                  Start Date: {{formatTime startdate 'DD MMM YY'}}
+                  <br>
+                  Due Date: {{formatTime duedate 'DD MMM YY'}}
+               </li>
+               {{#if tasks.task}}
+               <ol>
+                  <h4>Tasks</h4>
+                  {{#each tasks.task}}
+                  <li>
+                     {{name}}
+                     <br>
+                     Estimated Hours: {{ minutesToHours estimatedminutes}}
+                     <br>
+                     Actual Hours: {{ minutesToHours actualminutes}}
+                     <br>
+                     Billable: {{billable}}
+                  </li>
+                  <br>
+                  {{/each}}
+               </ol>
+               {{/if}}
+            </ul>
+            {{/with}}
+         </div>
+         <div class="col-sm-6">
+            <h4>Costs</h4>
+            {{#unless jobCosts}}
+            <p>Loading...</p>
+            {{/unless}}
+            {{#with jobCosts}}
+            <ul>
+               {{#each cost}}
+               <li>
+                  Description: {{description}}
+                  <br>
+                  Notes: {{note}}
+                  <br>
+                  Quantity: {{quantity}}
+                  <br>
+                  Unit Cost: {{unitcost}}
+                  <br>
+                  Unit Price: {{unitprice}}
+               </li>
+               {{/each}}
+            </ul>
+            {{/with}}
+         </div>
+      </div>
+   </div>
 </template>

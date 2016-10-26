@@ -1,11 +1,8 @@
 #medium-blog{
-    .shadow{
-        box-shadow: 0px -4px 10px 11px $body-bg;
-        width: 100%;
-        position: relative;
-    }
+    flex: 1;
+
     ul{
-        max-height: 300px;
+        max-height: 450px;
         overflow-y: scroll;
         margin-bottom: 0px;
     }

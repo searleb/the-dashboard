@@ -59,11 +59,23 @@ Template.meetingRooms.onRendered(function () {
       var now = moment();
       var starting = moment(start);
       var ending = moment(end);
-      var className;
+
       if (starting <= now && ending >= now) {
          Session.set('is-session-class' + id, 'in-session');
       } else {
          Session.set('is-session-class' + id, 'not-in-session');
+      }
+   }
+
+   // checks if booking is tomorrow
+   function getIsTomorrow(start, end, id) {
+      var tomorrow = moment().add(1, 'day').format('YYYY-MM-DD');
+      var starting = moment(start).format('YYYY-MM-DD');
+
+      if (moment(tomorrow).isAfter(starting)) {
+         Session.set('is-tomorrow-class' + id, 'today');
+      } else {
+         Session.set('is-tomorrow-class' + id, 'tomorrow');
       }
    }
 
@@ -78,6 +90,7 @@ Template.meetingRooms.onRendered(function () {
 
             getProgress(start, end, id);
             getIsSession(start, end, id);
+            getIsTomorrow(start, end, id);
          });
       });
    }
@@ -98,14 +111,19 @@ Template.meetingRooms.helpers({
    },
    // returns a % progress number
    progressPercent: function(id){
-      return Session.get('progress-percent' + id);
+      var perc = Session.get('progress-percent' + id);
+      if (perc) {
+         return perc;
+      } else{
+         return 0;
+      }
    },
    // returns a class name if the booking is in session or not
    isInSession: function (id) {
       return Session.get('is-session-class' + id);
    },
    isTomorrow: function (id) {
-      return Session.get('is-session-class' + id);
+      return Session.get('is-tomorrow-class' + id);
    }
    // whatsFree: function(id) {
    //    console.log(id, Session.get('whatsFree' + id));

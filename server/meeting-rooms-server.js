@@ -33,10 +33,13 @@ Meteor.methods({
          });
          // sort the data by start date
          var data = spaceDetails.data.data;
+         _.each(data, function(el, index){
+            data[index].started_at = moment(el.started_at).format();
+            data[index].ended_at = moment(el.ended_at).format();
+         });
          var sorted = _.sortBy(data, 'started_at');
          return sorted;
       }
-
       return returnArray;
 
    },

@@ -13,6 +13,9 @@ Template.mediumFeed.helpers({
                 el.description = el.description.replace("Continue reading on Medium »", "");
             });
         }
+
+        Packery.layout();
+        
         return feed;
     }
 });

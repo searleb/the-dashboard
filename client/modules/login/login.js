@@ -1,5 +1,5 @@
 Template.login.events({
-   'click #login': function(){
+   'click #login-btn': function(){
       Meteor.loginWithGoogle({
          requestPermissions:
          ['https://www.googleapis.com/auth/calendar', 'email', 'openid'],
@@ -10,15 +10,17 @@ Template.login.events({
             google: true
          }
       }, function(err) {
-         console.log(err);
-         if (err.error == 403) {
-            alert("Sorry " + err.message.toLowerCase());
+         if (err) {
+            console.error(err);
+            if (err.error == 403) {
+               alert("Sorry " + err.message.toLowerCase());
+            }            
          }
       });
    },
    'click #logout': function(){
-      Accounts.logout();
-   }
+     Accounts.logout();
+  }
 });
 
 Template.login.helpers({

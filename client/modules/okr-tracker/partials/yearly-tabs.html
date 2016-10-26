@@ -1,0 +1,16 @@
+<template name="yearlyTabs">
+   <div class="col-sm-12">
+      <ul class="nav nav-tabs okr-tabs">
+         {{#each item in years}}
+         <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-year="{{item.year}}" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{item.year}}</a>
+            <div class="dropdown-menu">
+               {{#each quarter in item.quarters}}
+               <a class="dropdown-item" href="#" data-quarter="{{quarter}}">Q{{quarter}}</a>
+               {{/each}}
+            </div>
+         </li>
+         {{/each}}
+      </ul>
+   </div>
+</template>

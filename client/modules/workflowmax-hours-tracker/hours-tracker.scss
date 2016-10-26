@@ -1,0 +1,15 @@
+.hours-tracker{
+   table, th{
+      text-align: center;
+      border: 0px;
+   }
+   .table{
+      th, td{
+         border: 0px;
+      }
+   }
+   .btn.active{
+      transform: translateY(-2px);
+      box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.2);
+   }
+}

@@ -1,10 +1,20 @@
 @font-face {
     font-family: 'weather';
-    src: url('../fonts/artill_clean_icons.otf');    
+    src: url('../fonts/artill_clean_icons.otf');
     font-weight: normal;
     font-style: normal;
 }
 
-*{
-    font-family: 'Open Sans', sans-serif;
+@font-face {
+    font-family: 'maisonneue';
+    src: url('../fonts/maisonneue-book.woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'maisonneue bold';
+    src: url('../fonts/maisonneue-bold.woff');
+    font-weight: normal;
+    font-style: normal;
 }

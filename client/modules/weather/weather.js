@@ -41,7 +41,7 @@ Template.weather.onCreated(function(){
             Session.set("sydWeather", sydWeather);
          },
          error: function(error) {
-            console.log(error);
+            console.error(error);
          }
       });
    }
@@ -65,7 +65,7 @@ Template.weather.onCreated(function(){
             Session.set("ldnWeather", ldnWeather);
          },
          error: function(error) {
-            console.log(error);
+            console.error(error);
          }
       });
    }

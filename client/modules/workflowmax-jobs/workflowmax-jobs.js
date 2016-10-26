@@ -6,7 +6,7 @@ Template.workflowmaxJobs.onCreated(function(){
         } else {
             Session.set('jobList', data);
         }
-        console.log(Session.get('jobList'));
+      //   console.log(Session.get('jobList'));
     });
 });
 
@@ -34,7 +34,7 @@ Template.workflowmaxJobs.helpers({
                 Session.set('customFields', data);
             }
         });
-        console.log(Session.get('customFields'));
+      //   console.log(Session.get('customFields'));
         return Session.get('customFields');
     }
 

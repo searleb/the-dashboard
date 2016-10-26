@@ -1,38 +1,65 @@
 if (Meteor.isClient) {
-    // helper to convert objects to arrays for use in blaze templates
-    UI.registerHelper("arrayify", function(obj){
-        result = [];
-        for (var key in obj){
-            result.push({name:key,value:obj[key]});
-        }
-        return result;
-    });
+   // define global tab is focused variable
+   tabIsFocused = true;
 
-    // format time
-    UI.registerHelper('formatTime', function(time, formatting) {
-        if(formatting) {
-            return moment(time).format(formatting);
-        }
-    });
+   Packery = {
+      options: {
+         itemSelector: '.module',
+         gutter: 15,
+         stamp: '.stamp',
+         percentPosition: true
+      },
+      init: function() {
+         Meteor.setTimeout(function(){
+            $('.home-wrapper').packery(this.options);
+         }, 100);
+      },
+      layout: function(){
+         var $grid = $('.home-wrapper').packery(this.options);
+         Meteor.setTimeout(function(){
+            $grid.packery('layout');
+         }, 100);
+      },
+      destroy: function(){
+         var $grid = $('.home-wrapper').packery(this.options);
+         $grid.packery('destroy');
+      }
+   };
 
-    // format time
-    UI.registerHelper('dateToday', function() {
-        return moment().format('DD MMM YY');
-    });
+      // helper to convert objects to arrays for use in blaze templates
+   UI.registerHelper("arrayify", function(obj){
+      result = [];
+      for (var key in obj){
+         result.push({name:key,value:obj[key]});
+      }
+      return result;
+   });
 
-    UI.registerHelper('minutesToHours', function(time){
-       if (time) {
-          return time / 60;
-       }
-    });
+   // format time
+   UI.registerHelper('formatTime', function(time, formatting) {
+      if(formatting) {
+         return moment(time).format(formatting);
+      }
+   });
 
-    // add global event listener to window to check if window is in focus
-    tabIsFocused = true;
-    window.addEventListener('focus', function() {
+   // format date
+   UI.registerHelper('dateToday', function() {
+      return moment().format('DD MMM YY');
+   });
+
+   // conver minutes to hours
+   UI.registerHelper('minutesToHours', function(time){
+      if (time) {
+         return time / 60;
+      }
+   });
+
+   // add global event listener to window to check if window is in focus
+   window.addEventListener('focus', function() {
       tabIsFocused = true;
-    },false);
+   },false);
 
-    window.addEventListener('blur', function() {
+   window.addEventListener('blur', function() {
       tabIsFocused = false;
-    },false);
+   },false);
 }

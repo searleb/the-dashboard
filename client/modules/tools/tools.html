@@ -1,12 +1,14 @@
 <template name="tools">
-    <div id="tools" class="module">
-        <h2>Tools</h2>
-        <div class="group-selector btn-group">
-            <button class="btn btn-xs btn-default" type="button" name="development">Dev</button>
-            <button class="btn btn-xs btn-default" type="button" name="creative">Creative</button>
-            <button class="btn btn-xs btn-default" type="button" name="product-managers">PM's</button>
-            <button class="btn btn-xs btn-default" type="button" name="operations">Ops</button>
-            <button class="btn btn-xs btn-default" type="button" name="strategy">Strategy</button>
+    <div id="tools" class="module width-50">
+        <div class="title">
+            <h4>Quick Links</h4>
+            <div class="group-selector btn-group">
+                <button class="btn btn-sm btn-default" type="button" name="development">Dev</button>
+                <button class="btn btn-sm btn-default" type="button" name="creative">Creative</button>
+                <button class="btn btn-sm btn-default" type="button" name="product-managers">PM's</button>
+                <button class="btn btn-sm btn-default" type="button" name="operations">Ops</button>
+                <button class="btn btn-sm btn-default" type="button" name="strategy">Strategy</button>
+            </div>
         </div>
 
         <div class="tools">
@@ -15,40 +17,55 @@
                     <ul id="creative">
                         {{#each creative}}
                         <li>
-                            <a href="{{this.link}}" target="_blank">{{this.title}}</a>
-                            <span class="type">{{this.desc}}</span>
+                            <a href="{{this.link}}" target="_blank">
+                                <img src="http://www.google.com/s2/favicons?domain={{this.link}}"/>
+                                {{this.title}}
+                                <span class="type">{{this.desc}}</span>
+                            </a>
                         </li>
                         {{/each}}
                     </ul>
                     <ul id="development">
                         {{#each development}}
                         <li>
-                            <a href="{{this.link}}" target="_blank">{{this.title}}</a>
-                            <span class="type">{{this.desc}}</span>
+                            <a href="{{this.link}}" target="_blank">
+                                <img src="http://www.google.com/s2/favicons?domain={{this.link}}"/>
+                                {{this.title}}
+                                <span class="type">{{this.desc}}</span>
+                            </a>
                         </li>
                         {{/each}}
                     </ul>
                     <ul id="operations">
                         {{#each operations}}
                         <li>
-                            <a href="{{this.link}}" target="_blank">{{this.title}}</a>
-                            <span class="type">{{this.desc}}</span>
+                            <a href="{{this.link}}" target="_blank">
+                                <img src="http://www.google.com/s2/favicons?domain={{this.link}}"/>
+                                {{this.title}}
+                                <span class="type">{{this.desc}}</span>
+                            </a>
                         </li>
                         {{/each}}
                     </ul>
                     <ul id="product-managers">
                         {{#each productManagers}}
                         <li>
-                            <a href="{{this.link}}" target="_blank">{{this.title}}</a>
-                            <span class="type">{{this.desc}}</span>
+                            <a href="{{this.link}}" target="_blank">
+                                <img src="http://www.google.com/s2/favicons?domain={{this.link}}"/>
+                                {{this.title}}
+                                <span class="type">{{this.desc}}</span>
+                            </a>
                         </li>
                         {{/each}}
                     </ul>
                     <ul id="strategy">
                         {{#each strategy}}
                         <li>
-                            <a href="{{this.link}}" target="_blank">{{this.title}}</a>
-                            <span class="type">{{this.desc}}</span>
+                            <a href="{{this.link}}" target="_blank">
+                                <img src="http://www.google.com/s2/favicons?domain={{this.link}}"/>
+                                {{this.title}}
+                                <span class="type">{{this.desc}}</span>
+                            </a>
                         </li>
                         {{/each}}
                     </ul>
