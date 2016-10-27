@@ -1,3 +1,6 @@
+Template.okrsStaffList.onCreated(() =>{
+   Meteor.call('okrs.createMe')
+})
 
 Template.okrsStaffList.helpers({
    /**
