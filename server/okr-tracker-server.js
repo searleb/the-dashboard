@@ -1,7 +1,6 @@
 Meteor.startup(function(){
    Meteor.methods({
       'okrs.createMe'() {
-         console.log('createMe');
          /**
          * Fetch all users
          * @return {Object}
